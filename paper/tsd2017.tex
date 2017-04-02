@@ -90,7 +90,7 @@
 We present a medieval Latin charter speech recognition system which can be of great help for preserving Latin language documents from the same era, as optical character recognition systems are often challenged by historic documents.
 Our goal is to develop a medieval Latin recognizer that is built from multiple source languages but the target language.
 Our source languages for the acoustic model are the Visegrad languages (based on a geographical grouping): Czech, Hungarian and Polish.
-The baseline systems we start with are separately trained grapheme-based acoustic models for these three languages. 
+The baseline systems we start with are monolingual grapheme-based acoustic models for these three languages. 
 We introduce two pronunciation modeling techniques to outperform the separately trained models.
 The first one is using knowledge-based grapheme-to-phoneme (G2P) mapping from the source language to the target language. 
 The second one is training a Unified Simplified Grapheme (USG) acoustic model that is able deal with cross-lingual variations in the test data.
@@ -137,13 +137,13 @@ As part of out inquiry was to cover linguistic variability accross the Visegrad 
 First of all, textual data are scarce for medieval Latin, and texts originating from this geographical region are even more scarce.
 Additionally, most of the available sources mix local languages and Latin, with no metadata to separate them.
 For the scope of this paper, we collected monolingual texts only.
-\subsubsection{Training data}
+\subsubsection{Training data}\label{traintext}
 A smaller amount of in-domain data (medieval charters) were collected from~\cite{monasterium} (Monasterium), with an overall of 480k tokens.
 These documents are originating from the Hungarian Kingdom, from 1000 to 1524 AD.
 To increase the vocabulary size of the language model, we collected a relatively larger (but still small, compared to state-of-the-art language models used in speech recognition) 1.3 token corpus from~\cite{latinlibrary} (LatinLibrary).
 This corpus consists of literary and historical texts from the post-classical era.
 In spite of our efforts, at the time of writing this paper, we could not gather textual data from the age and area of the Kingdoms of Bohemia and Poland.
-\subsubsection{Test data}\label{textest}
+\subsubsection{Test data}\label{testtext}
 Using independent sources three-three charters were selected from the Kingdoms of Bohemia (CZ), Hungary (HU) and Poland (PL), from around 1200-1300 AD, for development and test data.
 The dev set was used for evaluating the language model, and to test the performance of our recognizers.
 Both dev and test sets were read out loud by historians fluent in medieval Latin.
@@ -190,15 +190,15 @@ A minibatch size of 512, an initial learning rate of 0.1, and final learning rat
 For our three separately trained baseline systems grapheme-based pronunciation models were used.
 It was based on the same principles described in detail in Section~\ref{simplified}, namely mapping the graphemes not present in the Latin grapheme set to their normalized counterparts.
 \subsection{Source-target grapheme to phoneme mapping (G2P)}\label{g2p}
-The Czech and Hungarian phoneme-based acoustic models we used were trained with G2P mapping between orthographic transcriptions and native phonemes.
-%The G2P rules were composed with the language model within a WFST framework~\cite{wfst}.
-But since we were using these models to recognize medieval Latin speech, Latin-specific pronunciation rules also had to be implemented, which map source language (Czech or Hungarian) phonemes to target language (Latin) phonemes.
+As source language acoustic training data we used Czech and Hungarian phoneme-based acoustic models with G2P mapping from orthographic transcriptions to native phonemes.
+To develop a pronunciation dictionary for the target language medieval Latin, first we mapped source languages phonemes to target language phonemes using expert knowledge.
+As a second step, Latin-specific pronunciation rules also had to be mplemented.
 These include a few context independent digraph mappings, and a few context dependent rewrite rules, summarized in Table~\ref{tbl:digraph} and Table~\ref{tbl:context} respectively, for both Czech and Hungarian.
 Both languages fully cover the phoneme inventory of medieval Latin.
 
-\begin{table}\label{tbl:digraph}
+\begin{table}
 	\centering
-	\caption{Latin digraph context-insensitive rewrite rules.}
+	\caption{Latin digraph context-insensitive rewrite rules.}\label{tbl:digraph}
 	\begin{tabular}{l|rrrr}
 	\hline
 	Digraph & ae & oe & ph & qu \\
@@ -209,9 +209,9 @@ Both languages fully cover the phoneme inventory of medieval Latin.
 	\end{tabular}
 \end{table}
 
-\begin{table}\label{tbl:context}
+\begin{table}
 	\centering
-	\caption{Latin context-sensitive rewrite rules. V: vowel, VP: palatal vowel, C: consonant, $*$: zero or any, \string^: beginning of word, $[\string^stx]$: not s, t or x.}
+	\caption{Latin context-sensitive rewrite rules. V: vowel, VP: palatal vowel, C: consonant, $*$: zero or any, \string^: beginning of word, $[\string^stx]$: not s, t or x.}\label{tbl:context}
 	\begin{tabular}{l|cc|cc|cc|cc}
 	\hline
 	GR & c & c & ch & ch & gu & gu & ti & ti \\
@@ -223,14 +223,21 @@ Both languages fully cover the phoneme inventory of medieval Latin.
 \end{table}
 
 The Latin alphabet we extracted from our corpora (see Section~\ref{text}) consisted of 24 elements.
+The G2P rules were composed with the language model within a WFST framework~\cite{wfst}.
 %The interpolated LM described in Section 2.1 was composed with the appropriate phoneme or grapheme based pronunciation dictionaries in the Weighted finite State Transducer (WFST) framework [17]. After the usual optimization processes the WFST recognition network translates between generalized triphones (or trigraphs) and words. 
-%The mapping of triphones (trigraphs) to senones is performed in the VoXerver WFST‒HMM‒DNN decoder. Approximately the same speed,  faster than real‒time decoding was performed in all experiments.
+%The mapping of triphones (trigraphs) to senones was performed in the VoXerver WFST‒HMM‒DNN decoder. Approximately the same speed, faster than real‒time decoding was performed in all experiments.
 \subsection{Unified Simplified Grapheme Modeling}\label{usg}
-The second method we propose for cross-native-language Latin spech recognition is Unified Simplified Grapheme (USG) pronunciation modeling technique, which comes in play when joint acoustic models are being trained to support recognition across multiple languages.
+The second method we used for improving language-independent speech recognition for medieval Latin was the Unified Simplified Grapheme (USG) pronunciation modeling technique.
+Our motivation with using this technique was two-fold:
+\begin{enumerate}
+\item Develop a target language acoustic model using different source languages.
+\item Support recognition of medieval Latiin spoken by speakers of a diverse native language background.
+\end{enumerate}
 %It is motivated by the intuition that ...
+For that we used a joint acoustic model of Czech, Hungarian and Polish.
 \subsubsection{Unified}
-The joint acoustic model requires a unified grapheme inventory for the trainig, so that only thosegraphemes are in the model that are in the intersection of the different grapheme inventory sets of the training languages.
-Those letters that are not in this intersection are mapped to their normalized forms, e.g. it had a diacritic mark (acute, caron, etc.) on it, we mapped it back to its normalized form (\texttt{\v{r}} to \texttt{r}, etc.).
+The joint acoustic model requires a unified grapheme inventory for the trainig, so that only those graphemes are in the model that are in the intersection of the different grapheme inventory sets of the training languages.
+Those graphemes that are not in this intersection are mapped to their normalized forms, e.g. it had a diacritic mark (acute, caron, etc.) on it, we mapped it back to its normalized form (\texttt{\v{r}} to \texttt{r}, etc.).
 \subsubsection{Simplified}\label{simplified}
 Since the target language was medieval Latin, the remaining unified grapheme set also had to be simplified to the Latin grapheme set, e.g. \texttt{\'{o}} to \texttt{o}.
 Further than that, those graphemes that are non-native to Latin, and can straightforwardly mapped to a native Latin grapheme(s), were also replaced.
@@ -238,14 +245,15 @@ These are mappings from \texttt{x} to \texttt{ks}, \texttt{y} to \texttt{i} and 
 As a result, a unified and simplified grapheme inventory set was produced, compatible with medieval Latin.
 The USG units were then used as acoustic model units in the training.
 \section{Experimental results}\label{results}
-We conducted expeiments on medieval Latin, spoken by native speakers of three languages (Czech, Hungarian and Polish), where the test are texts originating from different regions, as described in Sections~\ref{AM}~and~\ref{text}.
-We introduced two techniques to improve the recognition results on separately trained grapheme-based models, described in~\ref{baseline}.
-Our experimental results showed that both methods outperformed the baseline system.
-
-The best performing monolingual grapheme-base model results of that of Hungarian, with $45.8\%$ overall WER (see Table~\ref{tbl:baseline}) - this was the reference value when comparing the results.
+We conducted expeiments on medieval Latin, spoken by native speakers of three languages (Czech, Hungarian and Polish), where the test texts were originating from different regions, as described in Sections~\ref{AM}~and~\ref{text}.
+The experiments were performed using two techniques, with the intention of improving recognition results on separately trained grapheme-based models, described in~\ref{baseline}.
+Our experimental results showed that both proposed methods outperformed the baseline system.
 
 It has to be noted that the experiments conducted on the Hungarian text test set yielded to the best reults with all models.
-This is due to the fact, that the in-domain part of the language model training data was..., see Section~\ref{monasterium}.
+This is due to the fact, that the in-domain part of the language model training data was originating from the Hungarian language region see Section~\ref{traintext}.
+
+The best performing monolingual grapheme-base model results were that of Hungarian, with $45.8\%$ overall WER (see Table~\ref{tbl:baseline}) - this was the reference value when comparing the results.
+
 \subsection{Source-target G2P mapping results}
 The knowledge-based pronunciation modeling technique, where the source model is a phoneme-based acoustic model, and the source phonemes were mapped to the target phonemes in the pronunciation dictionary...
 We did not include a Polish source phoneme-based acoustic model results in this paper... 
