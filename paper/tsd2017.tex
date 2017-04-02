@@ -251,49 +251,25 @@ Our experimental results showed that both proposed methods outperformed the base
 
 It has to be noted that the experiments conducted on the Hungarian text test set yielded to the best reults with all models.
 This is due to the fact, that the in-domain part of the language model training data was originating from the Hungarian language region see Section~\ref{traintext}.
+On a related note, we also found that except for Polish, the baseline acoustic models were yielding the best results when testing with native speakers of the source language.
 
-The best performing monolingual grapheme-base model results were that of Hungarian, with $45.8\%$ overall WER (see Table~\ref{tbl:baseline}) - this was the reference value when comparing the results.
+The best performing monolingual grapheme-base model results were that of Hungarian, with $45.8\%$ overall WER (see Table~\ref{tbl:cz_hu_pl_grapheme}) - this was the reference value when comparing the results.
+\begin{table}
+\centering
+\caption{Results for monolingual grapheme-based models of Czech (76 hours), Hungarian (112 hours) and Polish (31 hours).}
+\input{tables/cz_hu_pl_grapheme.tex}\label{tbl:cz_hu_pl_grapheme}
+\end{table}
 
 \subsection{Source-target G2P mapping results}
-The knowledge-based pronunciation modeling technique, where the source model is a phoneme-based acoustic model, and the source phonemes were mapped to the target phonemes in the pronunciation dictionary...
+The results on the experiments with the knowledge-based pronunciation modeling technique, where the native phonemes of the source phoneme-based acoustic models were mapped to the target phonemes in the pronunciation dictionary, are in Table~\ref{tbl:cz_phoneme} for the source language Czech, and in Table~\ref{tbl:hu_phoneme} for the source language Hungarian.
+
 We did not include a Polish source phoneme-based acoustic model results in this paper... 
-\subsection{USG results}
-The Czech-Hungarian-Polish joint acoustic model
-%pool of recognizers
+
 \begin{table}
 \parbox{.45\linewidth}{
 \centering
-\caption{Results for separately trained grapheme-based models of Czech (76 hours), Hungarian (112 hours) and Polish (31 hours).}
-\input{tables/cz_hu_pl_grapheme.tex}\label{tbl:baseline}
-}
-\hfill
-\parbox{.45\linewidth}{
-\centering
-\caption{Czech grapheme-based baseline model. Size of acoustic model: 76 hours.}
-\input{tables/cz_grapheme.tex}
-}
-\hfill
-\parbox{.45\linewidth}{
-\centering
-\caption{Hungarian grapheme-based baseline model. Size of acoustic model: 112 hours.}
-\input{tables/hu_grapheme.tex}
-}
-\hfill
-\parbox{.45\linewidth}{
-\centering
-\caption{Polish grapheme-based baseline model. Size of acoustic model: 31 hours.}
-\input{tables/pl_grapheme.tex}
-}\hfill
-\parbox{.45\linewidth}{
-\centering
-\caption{Roman grapheme-based baseline model. Size of acoustic model: 35 hours.}
-\input{tables/ro_grapheme.tex}
-}
-\hfill
-\parbox{.45\linewidth}{
-\centering
 \caption{Czech source-target G2P model. Acoustic model size: 76 hours.}
-\input{tables/cz_phoneme.tex}
+\input{tables/cz_phoneme.tex}\label{tbl:cz_phoneme}
 }
 \hfill
 \parbox{.45\linewidth}{
@@ -301,29 +277,20 @@ The Czech-Hungarian-Polish joint acoustic model
 \caption{Hungarian source-target G2P model. Acoustic model size: 567 hours.}
 \input{tables/hu_phoneme.tex}\label{tbl:hu_phoneme}
 }
-\hfill
+\end{table}
+
+\subsection{USG results}
+The results for the Czech-Hungarian-Polish joint acoustic model are in Table~\ref{tbl:cz_hu_pl_usg}.
+We also tried adding a new source language, Roman to the joint USG acoustic model, which improved the results significantly, yielding in an overall $29.3\%$ WER, with a best WER if $7.3\%$ of the Czech speakers on the Hungarian test test, see in Table~\ref{tbl:cz_hu_pl_ro_usg}.
+The intution behind adding Roman as a further source language is, that from the four language it the closest one to Latin in terms of origin.
+
+Additionaly we also measured th WER on any combination of three of the four source langauges, to see how each source acoustic model contributes to the joint USG model.
+%pool of recognizers
+\begin{table}
 \parbox{.45\linewidth}{
 \centering
 \caption{USG model of Czech (76 hours), Hungarian (112 hours) and Polish (31 hours).}
 \input{tables/cz_hu_pl_usg.tex}\label{tbl:cz_hu_pl_usg}
-}
-\hfill
-\parbox{.45\linewidth}{
-\centering
-\caption{USG model of Czech (76 hours), Hungarian (112 hours) and Roman (35 hours).}
-\input{tables/cz_hu_ro_usg.tex}
-}
-\hfill
-\parbox{.45\linewidth}{
-\centering
-\caption{USG model of Hungarian (112 hours), Polish (31 hours) and Roman (35 hours).}
-\input{tables/hu_pl_ro_usg.tex}
-}
-\hfill
-\parbox{.45\linewidth}{
-\centering
-\caption{USG model of Czech (76 hours), Polish (31 hours) and Roman (35 hours).}
-\input{tables/cz_pl_ro_usg.tex}
 }
 \hfill
 \parbox{.45\linewidth}{
