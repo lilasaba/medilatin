@@ -167,7 +167,7 @@ Adding the LatinLibrary corpus increased the perplexity significantly, but reduc
 For Czech and Hungarian the Speecon databases~\cite{czech}~and~\cite{hungarian} and broadcast news speech data was used.
 For Polish, only broadcast news data~\cite{polish} was available, comprising 31 hours of manually transcribed speech.
 \subsubsection{Test data}
-Native speakers of Czech, Hungarian and Polish all of whom have experince with medieval Latin were asked to record the three dev and test sets described in Section~\ref{textest}.
+Native speakers of Czech, Hungarian and Polish all of whom have experince with medieval Latin were asked to record the three dev and test sets described in Section~\ref{testtext}.
 The recording conditions were accurately controlled: close‒talking microphones, quiet, non reverberant acoustic environment, fluent, flawless speech, and at least 16 kHz, 16 bit (linear PCM) encoding.
 No instructions were given regarding the pronunciation, the speakers were using their expertise on medieval Latin pronunciation rules combined with their native language pronunciation.
 The overall length of the recorded test speech was around 30 minutes.
@@ -195,6 +195,7 @@ To develop a pronunciation dictionary for the target language medieval Latin, fi
 As a second step, Latin-specific pronunciation rules also had to be mplemented.
 These include a few context independent digraph mappings, and a few context dependent rewrite rules, summarized in Table~\ref{tbl:digraph} and Table~\ref{tbl:context} respectively, for both Czech and Hungarian.
 Both languages fully cover the phoneme inventory of medieval Latin.
+The Latin alphabet we extracted from our corpora (see Section~\ref{text}) consisted of 24 elements.
 
 \begin{table}
 	\centering
@@ -222,8 +223,7 @@ Both languages fully cover the phoneme inventory of medieval Latin.
 	\end{tabular}
 \end{table}
 
-The Latin alphabet we extracted from our corpora (see Section~\ref{text}) consisted of 24 elements.
-The G2P rules were composed with the language model within a WFST framework~\cite{wfst}.
+%The G2P rules were composed with the language model within a WFST framework~\cite{wfst}.
 %The interpolated LM described in Section 2.1 was composed with the appropriate phoneme or grapheme based pronunciation dictionaries in the Weighted finite State Transducer (WFST) framework [17]. After the usual optimization processes the WFST recognition network translates between generalized triphones (or trigraphs) and words. 
 %The mapping of triphones (trigraphs) to senones was performed in the VoXerver WFST‒HMM‒DNN decoder. Approximately the same speed, faster than real‒time decoding was performed in all experiments.
 \subsection{Unified Simplified Grapheme Modeling}\label{usg}
@@ -231,7 +231,7 @@ The second method we used for improving language-independent speech recognition 
 Our motivation with using this technique was two-fold:
 \begin{enumerate}
 \item Develop a target language acoustic model using different source languages.
-\item Support recognition of medieval Latiin spoken by speakers of a diverse native language background.
+\item Support recognition of medieval Latin spoken by speakers of a diverse native language background.
 \end{enumerate}
 %It is motivated by the intuition that ...
 For that we used a joint acoustic model of Czech, Hungarian and Polish.
@@ -285,6 +285,7 @@ We also tried adding a new source language, Roman to the joint USG acoustic mode
 The intution behind adding Roman as a further source language is, that from the four language it the closest one to Latin in terms of origin.
 
 Additionaly we also measured th WER on any combination of three of the four source langauges, to see how each source acoustic model contributes to the joint USG model.
+We found, that...
 %pool of recognizers
 \begin{table}
 \parbox{.45\linewidth}{
@@ -302,6 +303,9 @@ Additionaly we also measured th WER on any combination of three of the four sour
 \subsubsection{Error analysis}
 %TODO: why hu is better with usg model.
 %TODO: why cz is better with hu phoneme model.
+The most striking results are the Czech speakers on the Hungarian text test set with both the knowledge-based and USG models.
+We had expected the Hungarian speakers to perform better with the Hungarian knowledge-based model and Hungarian text test set setting, but in fact the phoneme mapping masked the difference between \texttt{} and \texttt{} in the pronunciation of the Hungarian speakers.
+In addion to that, they were pronouncing the named entities using their native pronunciation, which also increased the WER.
 %TODO: why pl wer is so high.
 \subsection{Conclusions}
 In this paper, we presented two pronunciation modeling techniques for a target-language independent medieval Latin speech recognizer to eliminate the efforts of digitizing medieval Latin charter data.
@@ -311,9 +315,9 @@ With the objective of outperforming the monolingual grapheme-based models, we pr
 %1-sentence G2P
 %1-sentence USG
 The results showed that both methods outperform by large the best baseline system. 
-We concluded our work with comparing the results on a by-speaker-language and by-text-oringin basis, where we found that...
+We concluded our work with comparing the results on a by-speaker-language and by-text-origin basis, where we found speaker-language differences affecting the results.
 
-Future research directions include acquiring a considerable amount of medieval speech and textual data.
+Future research directions include acquiring a considerable amount of medieval speech and textual data, as well as more refined G2P modeling...
 
 % Bibliography
 \bibliographystyle{splncs03}
