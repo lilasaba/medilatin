@@ -39,7 +39,7 @@
 
 % TSD 2017: Put your title here (please, use capitalization, see e.g.
 % http://en.wikibooks.org/wiki/Basic_Book_Design/Capitalizing_Words_in_Titles)
-\title{Target Language-Independent Acoustic Modeling for Medieval Latin}
+\title{Language-Independent Acoustic Modeling for Medieval Latin}
 
 % TSD 2017: a short form should be given in case the title is too long for the running head
 \titlerunning{Cross-Lingual Medieval Latin LVCSR}
@@ -90,7 +90,7 @@
 We present a medieval Latin charter speech recognition system which can be of great help for preserving Latin language documents from the same era, as optical character recognition systems are often challenged by historic documents.
 Our goal is to develop a medieval Latin recognizer that is built from multiple source languages but the target language.
 Our source languages for the acoustic model are the Visegrad languages (based on a geographical grouping): Czech, Hungarian and Polish.
-The baseline systems we start with are separately trained grapheme-based acoustic models for all the above three languages. 
+The baseline systems we start with are separately trained grapheme-based acoustic models for these three languages. 
 We introduce two pronunciation modeling techniques to outperform the separately trained models.
 The first one is using knowledge-based grapheme-to-phoneme (G2P) mapping from the source language to the target language. 
 The second one is training a Unified Simplified Grapheme (USG) acoustic model that is able deal with cross-lingual variations in the test data.
@@ -243,8 +243,11 @@ We introduced two techniques to improve the recognition results on separately tr
 Our experimental results showed that both methods outperformed the baseline system.
 
 The best performing monolingual grapheme-base model results of that of Hungarian, with $45.8\%$ overall WER (see Table~\ref{tbl:baseline}) - this was the reference value when comparing the results.
+
+It has to be noted that the experiments conducted on the Hungarian text test set yielded to the best reults with all models.
+This is due to the fact, that the in-domain part of the language model training data was..., see Section~\ref{monasterium}.
 \subsection{Source-target G2P mapping results}
-The knowledge-based pronunciation modeling technique, where the source model is a phoneme-based acoustic model, and the source phonemes are mapped to the target phonemes in the pronunciation dictionary...
+The knowledge-based pronunciation modeling technique, where the source model is a phoneme-based acoustic model, and the source phonemes were mapped to the target phonemes in the pronunciation dictionary...
 We did not include a Polish source phoneme-based acoustic model results in this paper... 
 \subsection{USG results}
 The Czech-Hungarian-Polish joint acoustic model
@@ -272,6 +275,11 @@ The Czech-Hungarian-Polish joint acoustic model
 \centering
 \caption{Polish grapheme-based baseline model. Size of acoustic model: 31 hours.}
 \input{tables/pl_grapheme.tex}
+}\hfill
+\parbox{.45\linewidth}{
+\centering
+\caption{Roman grapheme-based baseline model. Size of acoustic model: 35 hours.}
+\input{tables/ro_grapheme.tex}
 }
 \hfill
 \parbox{.45\linewidth}{

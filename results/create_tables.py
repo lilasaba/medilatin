@@ -171,6 +171,10 @@ if __name__ == '__main__':
     training_unit = 'GRAPHEME'
     am_language = 'HU'
     table.write_table(am_language,training_unit)
+    ## Extract Ro GRAPHEME results.
+    training_unit = 'GRAPHEME'
+    am_language = 'RO'
+    table.write_table(am_language,training_unit)
     ## Create baseline table.
     training_unit = 'GRAPHEME'
     baseline_dict = table.query_baseline(training_unit)
