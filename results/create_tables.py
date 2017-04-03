@@ -19,24 +19,13 @@ class CREATE_TABLE:
         am_language_id = self.cur.fetchone()[0]
         self.cur.execute('''SELECT id FROM SpeakerLanguage WHERE speaker_language = ? ''', (speaker_language, ))
         speaker_language_id = self.cur.fetchone()[0]
-        ## Get SK speaker ID.
-        self.cur.execute('''SELECT id FROM SpeakerLanguage WHERE speaker_language = ? ''', ('SK', ))
-        sk_id = self.cur.fetchone()[0]
         self.cur.execute('''SELECT id FROM ParagraphLanguage WHERE paragraph_language = ? ''', (paragraph_language, ))
         paragraph_language_id = self.cur.fetchone()[0]
-        ## TODO: merge SK speaker id.
-        if speaker_language != 'CZ':
-            self.cur.execute('''SELECT wer FROM AllResults
-                    WHERE am_language_id = ?
-                    AND training_unit_id = ?
-                    AND speaker_language_id = ?
-                    AND paragraph_language_id = ? ''', (am_language_id,training_unit_id,speaker_language_id,paragraph_language_id,))
-        else:
-            self.cur.execute('''SELECT wer FROM AllResults
-                    WHERE am_language_id = ?
-                    AND training_unit_id = ?
-                    AND (speaker_language_id = ? OR speaker_language_id = ?)
-                    AND paragraph_language_id = ? ''', (am_language_id,training_unit_id,speaker_language_id,sk_id,paragraph_language_id,))
+        self.cur.execute('''SELECT wer FROM AllResults
+                WHERE am_language_id = ?
+                AND training_unit_id = ?
+                AND speaker_language_id = ?
+                AND paragraph_language_id = ? ''', (am_language_id,training_unit_id,speaker_language_id,paragraph_language_id,))
         results = [item for sublist in self.cur.fetchall() for item in sublist]
         average_wer = self.calculate_average(results)
         return average_wer
@@ -46,7 +35,7 @@ class CREATE_TABLE:
 
     def write_table(self,am_language,training_unit):
         outname = '%s_%s' % (am_language.lower(),training_unit.lower())
-        speaker_languages = ['CZ','HU','PL']
+        speaker_languages = ['CZ','HU','PL','SK']
         paragraph_languages = ['CZ','HU','PL']
         table = []
         for speaker_language in speaker_languages:
@@ -69,6 +58,9 @@ class CREATE_TABLE:
 
     def post_table(self,table):
         table = table.replace(' Avr.  ','\hline\n Avr. ')
+        ## If baseline table.
+        table = table.replace('lrrrrr','l|rrrr|r')
+        ## If g2p or usg table.
         table = table.replace('lrrrr','l|rrr|r')
         table = table.replace('\hline\n Speaker','\hline\n & \multicolumn{3}{c}{Latin Test Text} & \\\\\n\hline\n Speaker')
         table = table.replace('\hline\n AM Language','\hline\n & \multicolumn{3}{c}{Speaker} & \\\\\n\hline\n AM Language')
@@ -77,7 +69,7 @@ class CREATE_TABLE:
     def query_baseline(self,training_unit):
         results_dict = {}
         am_languages = ['CZ','HU','PL']
-        speaker_languages = ['CZ','HU','PL']
+        speaker_languages = ['CZ','HU','PL','SK']
         self.cur.execute('''SELECT id FROM TrainingUnit WHERE training_unit = ? ''', (training_unit, ))
         training_unit_id = self.cur.fetchone()[0]
         for am_language in am_languages:
@@ -87,19 +79,10 @@ class CREATE_TABLE:
             for speaker_language in speaker_languages:
                 self.cur.execute('''SELECT id FROM SpeakerLanguage WHERE speaker_language = ? ''', (speaker_language, ))
                 speaker_language_id = self.cur.fetchone()[0]
-                if speaker_language == 'CZ':
-                    self.cur.execute('''SELECT id FROM SpeakerLanguage WHERE speaker_language = ? ''', ('SK', ))
-                    sk_id = self.cur.fetchone()[0]
-
-                    self.cur.execute('''SELECT wer FROM AllResults
-                            WHERE am_language_id = ?
-                            AND training_unit_id = ?
-                            AND (speaker_language_id = ? OR speaker_language_id = ?) ''', (am_language_id,training_unit_id,speaker_language_id,sk_id ))
-                else:
-                    self.cur.execute('''SELECT wer FROM AllResults
-                            WHERE am_language_id = ?
-                            AND training_unit_id = ?
-                            AND speaker_language_id = ? ''', (am_language_id,training_unit_id,speaker_language_id, ))
+                self.cur.execute('''SELECT wer FROM AllResults
+                        WHERE am_language_id = ?
+                        AND training_unit_id = ?
+                        AND speaker_language_id = ? ''', (am_language_id,training_unit_id,speaker_language_id, ))
 
                 results = [item for sublist in self.cur.fetchall() for item in sublist]
                 average_wer = self.calculate_average(results)
@@ -123,7 +106,7 @@ class CREATE_TABLE:
 
         table = sorted(table)
 
-        table_str = tabulate.tabulate(table,headers=['AM Language','CZ','HU','PL','Avr.'],tablefmt="latex")
+        table_str = tabulate.tabulate(table,headers=['AM Language','CZ','HU','PL','SK','Avr.'],tablefmt="latex")
         table_str = self.post_table(table_str)
 
         with open('../paper/tables/%s.tex' % outname,'w',encoding='utf-8') as outf:

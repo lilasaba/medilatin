@@ -167,7 +167,7 @@ Adding the LatinLibrary corpus increased the perplexity significantly, but reduc
 For Czech and Hungarian the Speecon databases~\cite{czech}~and~\cite{hungarian} and broadcast news speech data was used.
 For Polish, only broadcast news data~\cite{polish} was available, comprising 31 hours of manually transcribed speech.
 \subsubsection{Test data}
-Native speakers of Czech, Hungarian and Polish all of whom have experince with medieval Latin were asked to record the three dev and test sets described in Section~\ref{testtext}.
+Native speakers of Czech, Hungarian, Polish and Slovakian all of whom have experince with medieval Latin were asked to record the three dev and test sets described in Section~\ref{testtext}.
 The recording conditions were accurately controlled: close‒talking microphones, quiet, non reverberant acoustic environment, fluent, flawless speech, and at least 16 kHz, 16 bit (linear PCM) encoding.
 No instructions were given regarding the pronunciation, the speakers were using their expertise on medieval Latin pronunciation rules combined with their native language pronunciation.
 The overall length of the recorded test speech was around 30 minutes.
@@ -263,7 +263,7 @@ The best performing monolingual grapheme-base model results were that of Hungari
 \subsection{Source-target G2P mapping results}
 The results on the experiments with the knowledge-based pronunciation modeling technique, where the native phonemes of the source phoneme-based acoustic models were mapped to the target phonemes in the pronunciation dictionary, are in Table~\ref{tbl:cz_phoneme} for the source language Czech, and in Table~\ref{tbl:hu_phoneme} for the source language Hungarian.
 The Hungarian knowledge-based acoustic model results are by far the best ones ($28.5\%$ overall WER).
-It is worth mentioning that the Czech speakers achieve a surprisingly low $7.3\%$ WER on the Hungarian text test set.
+It is worth mentioning that the Czech speakers achieve a surprisingly low $6.4\%$ WER on the Hungarian text test set.
 
 We did not include a Polish source phoneme-based acoustic model results in this paper as we were lacking an expert-based Polish G2P.
 
@@ -283,7 +283,7 @@ We did not include a Polish source phoneme-based acoustic model results in this 
 
 \subsection{USG results}
 The results for the Czech-Hungarian-Polish joint acoustic model are in Table~\ref{tbl:cz_hu_pl_usg}.
-We also tried adding a new source language, Romanian, to the joint USG acoustic model, which improved the results significantly, yielding in an overall $29.3\%$ WER, with a best WER if $12.1\%$ of the Czech speakers on the Hungarian test test, see in Table~\ref{tbl:cz_hu_pl_ro_usg}.
+We also tried adding a new source language, Romanian, to the joint USG acoustic model, which improved the results significantly, yielding in an overall $29.3\%$ WER, with a best WER if $11.8\%$ of the Czech speakers on the Hungarian test test, see in Table~\ref{tbl:cz_hu_pl_ro_usg}.
 The intution behind adding Romanian as a further source language is, that out of the four languages, it the most closely related one to Latin.
 
 Additionaly, we also measured the WER on any combination of three of the four source langauges, to see how each source acoustic model contributes to the joint USG model.
