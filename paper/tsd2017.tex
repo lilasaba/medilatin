@@ -40,9 +40,11 @@
 
 % TSD 2017: Put your title here (please, use capitalization, see e.g.
 % http://en.wikibooks.org/wiki/Basic_Book_Design/Capitalizing_Words_in_Titles)
+% még nem érzem elég találónak a címet. Ez igazábó nem nyelvfüggetlen modellezés, csak mentes az in-domain adattól. A "target" szó sem illik a címbe... De ez még jobban ráér...
 \title{Language-Independent Acoustic Modeling for Medieval Latin}
 
 % TSD 2017: a short form should be given in case the title is too long for the running head
+% ne felejstük update-elni majd.
 \titlerunning{Cross-Lingual Medieval Latin LVCSR}
 
 % TSD 2017: Author's names. Chinese authors should write their first names(s)
@@ -88,15 +90,12 @@
 %
 \begin{abstract}
 % TSD 2017:
-We present a medieval Latin charter speech recognition system which can be of great help for preserving Latin language documents from the same era, as optical character recognition systems are often challenged by historic documents.
-Our goal is to develop a medieval Latin recognizer that is built from multiple source languages but the target language.
-Our source languages for the acoustic model are the Visegrad languages (based on a geographical grouping): Czech, Hungarian and Polish.
-The baseline systems we start with are monolingual grapheme-based acoustic models for these three languages. 
-We introduce two pronunciation modeling techniques to outperform the separately trained models.
-The first one is using knowledge-based grapheme-to-phoneme (G2P) mapping from the source language to the target language. 
-The second one is training a Unified Simplified Grapheme (USG) acoustic model that is able deal with cross-lingual variations in the test data.
-We show that our methods outperform our best monolingual baseline system, reducing the WER by 17.3\% and 16.5\% respectively.
-We also observe, that adding more languages to our joint acoustic model further reduces the WER.
+A large vocabulary continuous speech recognition (LVCSR) system designed for dictation of medieval Latin language documents is introduced.
+Such language technology tool can be of great help for preserving Latin language charters from this era, as optical character recognition systems are often challenged by these historic documents.
+As corresponding historical research focuses on the Visegrad region, our primary aim is to make medieval Latin dictation available for texts and speakers of this region, concentrating on Czech, Hungarian and Polish.
+The acoustic models we start with are monolingual grapheme- and/or phoneme-based ones (depending of the language resources available) for these three languages. 
+In one hand, the application of medieval Latin knowledge based grapheme-to-phoneme (G2P) mapping from the source language to the target language resulted in significant improvement (...). 
+On the other hand, applying a simplified, unified grapheme inventory set for the three-language acoustic data set complemented with Romanian speech data yielded in competitive results - without using any target or source language G2P rules.
 % TSD 2017: keywords, comma-separated
 \keywords{G2P, medieval Latin, under-resourced speech recognition, unified simplified grapheme modeling}
 \end{abstract}
