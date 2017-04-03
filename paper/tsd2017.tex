@@ -262,8 +262,10 @@ The best performing monolingual grapheme-base model results were that of Hungari
 
 \subsection{Source-target G2P mapping results}
 The results on the experiments with the knowledge-based pronunciation modeling technique, where the native phonemes of the source phoneme-based acoustic models were mapped to the target phonemes in the pronunciation dictionary, are in Table~\ref{tbl:cz_phoneme} for the source language Czech, and in Table~\ref{tbl:hu_phoneme} for the source language Hungarian.
+The Hungarian knowledge-based acoustic model results are by far the best ones ($28.5\%$ overall WER).
+It is worth mentioning that the Czech speakers...
 
-We did not include a Polish source phoneme-based acoustic model results in this paper... 
+We did not include a Polish source phoneme-based acoustic model results in this paper as we were lacking an expert-based Polish G2P.
 
 \begin{table}
 \parbox{.45\linewidth}{
@@ -281,7 +283,7 @@ We did not include a Polish source phoneme-based acoustic model results in this 
 
 \subsection{USG results}
 The results for the Czech-Hungarian-Polish joint acoustic model are in Table~\ref{tbl:cz_hu_pl_usg}.
-We also tried adding a new source language, Roman to the joint USG acoustic model, which improved the results significantly, yielding in an overall $29.3\%$ WER, with a best WER if $7.3\%$ of the Czech speakers on the Hungarian test test, see in Table~\ref{tbl:cz_hu_pl_ro_usg}.
+We also tried adding a new source language, Roman to the joint USG acoustic model, which improved the results significantly, yielding in an overall $29.3\%$ WER, with a best WER if $12.1\%$ of the Czech speakers on the Hungarian test test, see in Table~\ref{tbl:cz_hu_pl_ro_usg}.
 The intution behind adding Roman as a further source language is, that from the four language it the closest one to Latin in terms of origin.
 
 Additionaly we also measured th WER on any combination of three of the four source langauges, to see how each source acoustic model contributes to the joint USG model.
@@ -296,7 +298,7 @@ We found, that...
 \hfill
 \parbox{.45\linewidth}{
 \centering
-\caption{USG model of Czech (76 hours), Hungarian (112 hours), Polish (31 hours) and roman (35 hours).}
+\caption{USG model of Czech (76 hours), Hungarian (112 hours), Polish (31 hours) and Roman (35 hours).}
 \input{tables/cz_hu_pl_ro_usg.tex}\label{tbl:cz_hu_pl_ro_usg}
 }
 \end{table}
