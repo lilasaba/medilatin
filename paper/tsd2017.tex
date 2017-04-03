@@ -123,8 +123,10 @@ Evaluation of the baseline systems and both above approaches is presented in sec
 
 \subsection{Related work}
 %TODO: \cite{schultz01}
+Different adaptaion techniques have been proposed in~\cite{schultz01} to train acoustic models from multiple source languages for a single target language where no training data was available.
 %TODO: \cite{bryne00}
 %TODO: \cite{besacier14}
+\cite{besacier14} gives a great overview on designing speech recognition systems for under-resourced languages.
 Similar work has been done for multi-dialectal languages such as Arabic in~\cite{elfeky16} where jointly trained acoustic models were outperformed by methods that unify dialect specific-acoustic models using knowledge distillation and multitask learning.
 
 To our knowledge, no previous work has been done on medieval Latin speech recognition, nor on classical Latin for that matter.
@@ -157,15 +159,14 @@ Resolving spelling variants resulted in a more consistent corpus in terms of per
 The language models we built from the two corpora were estimated with the SRI Language Modeling toolkit (SRILM)~\cite{srilm} using modified Kneser-Ney smoothing method.
 After estimating the mixture parameter, linear interpolation was used.
 
-The perplexity measures on the dev data showed, that the Monasterium corpus originating from the time and era of the Hungarian Kingdom was indeed best fitting with the Hungarian subset of the test data with a perplexity of 82, and $0.9\%$ OOV rate.
+The perplexity measures on the dev data showed, that the Monasterium corpus originating from the time and era of the Hungarian Kingdom was indeed best fitting with the Hungarian subset of the test data with a perplexity of 82, and an OOV rate of $0.9\%$.
 Adding the LatinLibrary corpus increased the perplexity significantly, but reduced the OOV rate by $7\%$ on the overall test data, as well as the WER, so we decided to use the interpolated language model.
 
 \subsection{Speech data}
 \subsubsection{Training data}
-%TODO: references, hours.
-%TODO: add Romanian.
 For Czech and Hungarian the Speecon databases~\cite{czech}~and~\cite{hungarian} and broadcast news speech data was used.
-For Polish, only broadcast news data~\cite{polish} was available, comprising 31 hours of manually transcribed speech.
+For Polish, only broadcast news data~\cite{romanian} was available, comprising 31 hours of manually transcribed speech.
+The Romanian speech database we used for our expriments was collected for~\cite{romanian} consisting of 35 hours of broadcast news.
 \subsubsection{Test data}
 Native speakers of Czech, Hungarian, Polish and Slovakian all of whom have experince with medieval Latin were asked to record the three dev and test sets described in Section~\ref{testtext}.
 The recording conditions were accurately controlled: close‒talking microphones, quiet, non reverberant acoustic environment, fluent, flawless speech, and at least 16 kHz, 16 bit (linear PCM) encoding.
