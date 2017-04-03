@@ -16,6 +16,7 @@
 \setcounter{tocdepth}{3}
 \usepackage{graphicx}
 \usepackage{url}
+\usepackage{tipa}
 
 % TSD 2017: Add any additional packages you use in your manuscript
 % -----pack
@@ -97,7 +98,7 @@ The second one is training a Unified Simplified Grapheme (USG) acoustic model th
 We show that our methods outperform our best monolingual baseline system, reducing the WER by 17.3\% and 16.5\% respectively.
 We also observe, that adding more languages to our joint acoustic model further reduces the WER.
 % TSD 2017: keywords, comma-separated
-\keywords{G2P, medieval Latin, low resource speech recognition, unified simplified grapheme modeling}
+\keywords{G2P, medieval Latin, under-resourced speech recognition, unified simplified grapheme modeling}
 \end{abstract}
 
 \section{Introduction}
@@ -263,7 +264,7 @@ The best performing monolingual grapheme-base model results were that of Hungari
 \subsection{Source-target G2P mapping results}
 The results on the experiments with the knowledge-based pronunciation modeling technique, where the native phonemes of the source phoneme-based acoustic models were mapped to the target phonemes in the pronunciation dictionary, are in Table~\ref{tbl:cz_phoneme} for the source language Czech, and in Table~\ref{tbl:hu_phoneme} for the source language Hungarian.
 The Hungarian knowledge-based acoustic model results are by far the best ones ($28.5\%$ overall WER).
-It is worth mentioning that the Czech speakers...
+It is worth mentioning that the Czech speakers achieve a surprisingly low $7.3\%$ WER on the Hungarian text test set.
 
 We did not include a Polish source phoneme-based acoustic model results in this paper as we were lacking an expert-based Polish G2P.
 
@@ -283,11 +284,11 @@ We did not include a Polish source phoneme-based acoustic model results in this 
 
 \subsection{USG results}
 The results for the Czech-Hungarian-Polish joint acoustic model are in Table~\ref{tbl:cz_hu_pl_usg}.
-We also tried adding a new source language, Roman to the joint USG acoustic model, which improved the results significantly, yielding in an overall $29.3\%$ WER, with a best WER if $12.1\%$ of the Czech speakers on the Hungarian test test, see in Table~\ref{tbl:cz_hu_pl_ro_usg}.
-The intution behind adding Roman as a further source language is, that from the four language it the closest one to Latin in terms of origin.
+We also tried adding a new source language, Romanian, to the joint USG acoustic model, which improved the results significantly, yielding in an overall $29.3\%$ WER, with a best WER if $12.1\%$ of the Czech speakers on the Hungarian test test, see in Table~\ref{tbl:cz_hu_pl_ro_usg}.
+The intution behind adding Romanian as a further source language is, that out of the four languages, it the most closely related one to Latin.
 
-Additionaly we also measured th WER on any combination of three of the four source langauges, to see how each source acoustic model contributes to the joint USG model.
-We found, that...
+Additionaly, we also measured the WER on any combination of three of the four source langauges, to see how each source acoustic model contributes to the joint USG model.
+We found, that each language contributed almost evenly to the four-language USG model. 
 %pool of recognizers
 \begin{table}
 \parbox{.45\linewidth}{
@@ -298,7 +299,7 @@ We found, that...
 \hfill
 \parbox{.45\linewidth}{
 \centering
-\caption{USG model of Czech (76 hours), Hungarian (112 hours), Polish (31 hours) and Roman (35 hours).}
+\caption{USG model of Czech (76 hours), Hungarian (112 hours), Polish (31 hours) and Romanian (35 hours).}
 \input{tables/cz_hu_pl_ro_usg.tex}\label{tbl:cz_hu_pl_ro_usg}
 }
 \end{table}
@@ -306,12 +307,12 @@ We found, that...
 %TODO: why hu is better with usg model.
 %TODO: why cz is better with hu phoneme model.
 The most striking results are the Czech speakers on the Hungarian text test set with both the knowledge-based and USG models.
-We had expected the Hungarian speakers to perform better with the Hungarian knowledge-based model and Hungarian text test set setting, but in fact the phoneme mapping masked the difference between \texttt{} and \texttt{} in the pronunciation of the Hungarian speakers.
+We had expected the Hungarian speakers to perform better with the Hungarian knowledge-based model and Hungarian text test set setting, but in fact the phoneme mapping masked the difference between mid-front \texttt{/e:/} and open-front \texttt{/\textipa{E}/} in the pronunciation of the Hungarian speakers.
 In addion to that, they were pronouncing the named entities using their native pronunciation, which also increased the WER.
 %TODO: why pl wer is so high.
 \subsection{Conclusions}
 In this paper, we presented two pronunciation modeling techniques for a target-language independent medieval Latin speech recognizer to eliminate the efforts of digitizing medieval Latin charter data.
-Our goal was to build an acoustic model for medieval Latin borrowing speech data from different source languages (Czech, Hungarian, Polish and ultimately Roman).
+Our goal was to build an acoustic model for medieval Latin, borrowing speech data from different source languages (Czech, Hungarian, Polish and ultimately Romanian).
 Our test set consisted of medieval Latin charters originating from different regions read by native speakers of the above languages.
 With the objective of outperforming the monolingual grapheme-based models, we presented two approaches: knowledge-based G2P modeling, and USG modeling.
 %1-sentence G2P
@@ -319,7 +320,7 @@ With the objective of outperforming the monolingual grapheme-based models, we pr
 The results showed that both methods outperform by large the best baseline system. 
 We concluded our work with comparing the results on a by-speaker-language and by-text-origin basis, where we found speaker-language differences affecting the results.
 
-Future research directions include acquiring a considerable amount of medieval speech and textual data, as well as more refined G2P modeling...
+Future research directions include acquiring a considerable amount of medieval speech and textual data, as well as implementng a more refined G2P modeling using a global pheneme inventory set.
 
 % Bibliography
 \bibliographystyle{splncs03}
