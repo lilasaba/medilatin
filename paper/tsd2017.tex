@@ -40,7 +40,6 @@
 
 % TSD 2017: Put your title here (please, use capitalization, see e.g.
 % http://en.wikibooks.org/wiki/Basic_Book_Design/Capitalizing_Words_in_Titles)
-% még nem érzem elég találónak a címet. Ez igazábó nem nyelvfüggetlen modellezés, csak mentes az in-domain adattól. A "target" szó sem illik a címbe... De ez még jobban ráér...
 \title{Language-Independent Acoustic Modeling for Medieval Latin}
 
 % TSD 2017: a short form should be given in case the title is too long for the running head
@@ -93,9 +92,9 @@
 A large vocabulary continuous speech recognition (LVCSR) system designed for dictation of medieval Latin language documents is introduced.
 Such language technology tool can be of great help for preserving Latin language charters from this era, as optical character recognition systems are often challenged by these historic documents.
 As corresponding historical research focuses on the Visegrad region, our primary aim is to make medieval Latin dictation available for texts and speakers of this region, concentrating on Czech, Hungarian and Polish.
-The acoustic models we start with are monolingual grapheme- and/or phoneme-based ones (depending of the language resources available) for these three languages. 
-In one hand, the application of medieval Latin knowledge based grapheme-to-phoneme (G2P) mapping from the source language to the target language resulted in significant improvement (...). 
-On the other hand, applying a simplified, unified grapheme inventory set for the three-language acoustic data set complemented with Romanian speech data yielded in competitive results - without using any target or source language G2P rules.
+The baseline acoustic models we start with are monolingual grapheme-based ones (depending of the language resources available) for these three languages. 
+In one hand, the application of medieval Latin knowledge-based grapheme-to-phoneme (G2P) mapping from the source language to the target language resulted in significant improvement, reducing the WER by $17.3\%$. 
+On the other hand, applying a simplified-unified grapheme (USG) inventory set for the three-language acoustic data set complemented with Romanian speech data yielded in competitive results - without using any target or source language G2P rules.
 % TSD 2017: keywords, comma-separated
 \keywords{G2P, medieval Latin, under-resourced speech recognition, unified simplified grapheme modeling}
 \end{abstract}
@@ -164,6 +163,7 @@ Adding the LatinLibrary corpus increased the perplexity significantly, but reduc
 \subsection{Speech data}
 \subsubsection{Training data}
 %TODO: references, hours.
+%TODO: add Romanian.
 For Czech and Hungarian the Speecon databases~\cite{czech}~and~\cite{hungarian} and broadcast news speech data was used.
 For Polish, only broadcast news data~\cite{polish} was available, comprising 31 hours of manually transcribed speech.
 \subsubsection{Test data}
@@ -302,9 +302,10 @@ We found, that each language contributed almost evenly to the four-language USG 
 \input{tables/cz_hu_pl_ro_usg.tex}\label{tbl:cz_hu_pl_ro_usg}
 }
 \end{table}
-\subsubsection{Error analysis}
+%\subsubsection{Error analysis}
 %TODO: why hu is better with usg model.
 %TODO: why cz is better with hu phoneme model.
+
 The most striking results are the Czech speakers on the Hungarian text test set with both the knowledge-based and USG models.
 We had expected the Hungarian speakers to perform better with the Hungarian knowledge-based model and Hungarian text test set setting, but in fact the phoneme mapping masked the difference between mid-front \texttt{/e:/} and open-front \texttt{/\textipa{E}/} in the pronunciation of the Hungarian speakers.
 In addion to that, they were pronouncing the named entities using their native pronunciation, which also increased the WER.
