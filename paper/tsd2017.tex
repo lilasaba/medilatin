@@ -93,7 +93,7 @@ A large vocabulary continuous speech recognition (LVCSR) system designed for dic
 Such language technology tool can be of great help for preserving Latin language charters from this era, as optical character recognition systems are often challenged by these historic documents.
 As corresponding historical research focuses on the Visegrad region, our primary aim is to make medieval Latin dictation available for texts and speakers of this region, concentrating on Czech, Hungarian and Polish.
 The baseline acoustic models we start with are monolingual grapheme-based ones -  according to the language resources available - for these three languages. 
-In one hand, the application of medieval Latin knowledge-based grapheme-to-phoneme (G2P) mapping from the source language to the target language resulted in significant improvement, reducing the WER by $17.3\%$. 
+In one hand, the application of medieval Latin knowledge-based grapheme-to-phoneme (G2P) mapping from the source language to the target language resulted in significant improvement, reducing the Word Error Rate (WER) by $17.3\%$. 
 On the other hand, applying a unified-simplified grapheme (USG) inventory set for the three-language acoustic data set complemented with Romanian speech data yielded in competitive results - without using any target or source language G2P rules.
 % TSD 2017: keywords, comma-separated
 \keywords{G2P, medieval Latin, under-resourced speech recognition, unified simplified grapheme modeling}
@@ -106,7 +106,6 @@ One of these pronunciation groups is the east-central european ~\cite{regional} 
 Although the target pronunciation is considered to be uniform for this group, it is also has to be taken into account, that the acoustic base of the different source languages varies, which can lead to different speakers pronouncing the same words differently.
 It also has to be noted, that apart from the variations in the pronunciations, orthographic and linguistic variations of Latin are also exhibited through regions.
 
-% The research goal of this paper is to create a speech regognition system from three source languages 
 This raises the question of how to create a speech recognition system which has to deal with pronunciation variations for native speakers of different languages reading linguistically different texts.
 We propose a system that aimes at the recognition of medieval Latin speech spoken by speakers from the Visegrad region.
 Therefore, it is important to collect in-domain textual/language data for the language model from the relevant geographican regions and time.
@@ -161,7 +160,7 @@ Adding the LatinLibrary corpus increased the perplexity significantly, but reduc
 
 \subsection{Speech data}
 \subsubsection{Training data}
-For Czech and Hungarian the Speecon databases~\cite{czech}~and~\cite{hungarian} and broadcast news speech data was used.
+For Czech and Hungarian the Speecon databases~\cite{czech}~and~\cite{hungarian} and broadcast news speech data was used, 76 and 112 hours respectively.
 For Polish, only broadcast news data~\cite{romanian} was available, comprising 31 hours of manually transcribed speech.
 The Romanian speech database we used for our expriments was collected for~\cite{romanian} consisting of 35 hours of broadcast news.
 \subsubsection{Test data}
@@ -253,7 +252,7 @@ On a related note, we also found that except for Polish, the baseline acoustic m
 The best performing monolingual grapheme-base model results were that of Hungarian, with $45.8\%$ overall WER (see Table~\ref{tbl:cz_hu_pl_ro_grapheme}) - this was the reference value when comparing the results.
 \begin{table}
 \centering
-\caption{Word Error Rate (WER[\%]) results for monolingual grapheme-based models of Czech (76 hours), Hungarian (112 hours) and Polish (31 hours).}
+\caption{Word Error Rate (WER[\%]) results for monolingual grapheme-based models of Czech, Hungarian, Polish and Roman (CZ+HU+PL+RO).}
 \input{tables/cz_hu_pl_ro_grapheme.tex}\label{tbl:cz_hu_pl_ro_grapheme}
 \end{table}
 
@@ -267,13 +266,13 @@ We did not include a Polish source phoneme-based acoustic model results in this 
 \begin{table}
 \parbox{.45\linewidth}{
 \centering
-\caption{WER of Latin-Czech source-target G2P model. Acoustic model size: 76 hours.}
+\caption{WER[\%] of Latin-Czech source-target G2P model. Acoustic model size: 76 hours.}
 \input{tables/cz_phoneme.tex}\label{tbl:cz_phoneme}
 }
 \hfill
 \parbox{.45\linewidth}{
 \centering
-\caption{WER of Latin-Hungarian source-target G2P model. Acoustic model size: 567 hours.}
+\caption{WER[\%] of Latin-Hungarian source-target G2P model. Acoustic model size: 567 hours.}
 \input{tables/hu_phoneme.tex}\label{tbl:hu_phoneme}
 }
 \end{table}
@@ -289,13 +288,13 @@ We found, that each language contributed almost evenly to the four-language USG 
 \begin{table}
 \parbox{.45\linewidth}{
 \centering
-\caption{WER of USG model of Czech (76 hours), Hungarian (112 hours) and Polish (31 hours).}
+\caption{WER[\%] of USG model of Czech, Hungarian and Polish (CZ+HU+PL).}
 \input{tables/cz_hu_pl_usg.tex}\label{tbl:cz_hu_pl_usg}
 }
 \hfill
 \parbox{.45\linewidth}{
 \centering
-\caption{WER of USG model of Czech (76 hours), Hungarian (112 hours), Polish (31 hours) and Romanian (35 hours).}
+\caption{WER[\%] of USG model of Czech, Hungarian, Polish and Romanian (CZ+HU+PL+RO).}
 \input{tables/cz_hu_pl_ro_usg.tex}\label{tbl:cz_hu_pl_ro_usg}
 }
 \end{table}
