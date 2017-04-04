@@ -40,7 +40,7 @@
 
 % TSD 2017: Put your title here (please, use capitalization, see e.g.
 % http://en.wikibooks.org/wiki/Basic_Book_Design/Capitalizing_Words_in_Titles)
-\title{Language Specific Knowledge and Data Free Acoustic Modeling for Medieval Latin LVCSR}
+\title{Language-Independent Acoustic Modeling for Medieval Latin}
 
 % TSD 2017: a short form should be given in case the title is too long for the running head
 % ne felejstük update-elni majd.
@@ -109,25 +109,19 @@ It also has to be noted, that apart from the variations in the pronunciations, o
 % The research goal of this paper is to create a speech regognition system from three source languages 
 This raises the question of how to create a speech recognition system which has to deal with pronunciation variations for native speakers of different languages reading linguistically different texts.
 We propose a system that aimes at the recognition of medieval Latin speech spoken by speakers from the Visegrad region.
-% A következő már nem kell, mert betettük visszatettük a szlovákot a cikkbe. Annak ellenére sem kell, hogy tanítóadat nincs rá, de nem is érdekes, csak használni akarják és teszt van.
-%\footnote{Sadly, but for this paper, although it belongs to the Visegrad region, the Slovakian language is not included in the experiments, due to the lack of speech data for acoustic model training.}
-%The system we develop is a joint system that can deal with both the variability in the speakers' pronunciations when speaking medieval Latin, as well as the grammatical/lexical variabilities of the target texts. %ebben nem találtam új infót az előzőekhez képest.
 Therefore, it is important to collect in-domain textual/language data for the language model from the relevant geographican regions and time.
 We describe the data acquisition process in section~\ref{text}.
 
-Our baseline system consists of separately trained grapheme-based acoustic models for the three Visegrad languages (Czech, Hungarian and Polish)
-%and for Romanian. 
-These separately trained models work good with their respective native speakers [reference not given for the sake of blind review], but perform poorly in mediaval Latin dictation task (see ...).
+Our baseline system consists of separately trained grapheme-based acoustic models for the three Visegrad languages (Czech, Hungarian, Polish and Romanian.
 We apply two different acoustic/pronunciation modeling techniques to develop models that are superior to the baseline.
-The first one, dicussed in detail in Section~\ref{g2p}, is based on the assumption that ...
-The second method we use is USGM (?) (Unified Simplified Grapheme Modeling), where a joint/minimal/common grapheme inventory is established for all the languages paricipating in the joint acoustic model training.
+The first one, dicussed in detail in Section~\ref{g2p}, is a knowledge-based pronunciation modeling technique, where the source language phonemes are mapped to the target language phonemes.
+The second method we use is USG (Unified Simplified Grapheme) modeling, where a joint grapheme inventory is established for all the languages paricipating in the joint acoustic model training.
 We describe the USG method in Section~\ref{usg}.
 Evaluation of the baseline systems and both above approaches is presented in section~\ref{results}.
 
 \subsection{Related work}
 %TODO: \cite{schultz01}
 Different adaptaion techniques have been proposed in~\cite{schultz01} to train acoustic models from multiple source languages for a single target language where no training data was available.
-%TODO: \cite{bryne00}
 %TODO: \cite{besacier14}
 \cite{besacier14} gives a great overview on designing speech recognition systems for under-resourced languages.
 Similar work has been done for multi-dialectal languages such as Arabic in~\cite{elfeky16} where jointly trained acoustic models were outperformed by methods that unify dialect specific-acoustic models using knowledge distillation and multitask learning.
@@ -179,7 +173,7 @@ The overall length of the recorded test speech was around 30 minutes.
 \section{Acoustic modeling}\label{AM}
 Building an acoustic model for speech recognition requires long hours of trancribed speech.
 As of today (medieval) Latin is not spoken natively, and as to our knowledge, there is no recorded speech database.
-One obvious way to handle this problem is build/create a medieval Latin database; a proposition that requires lot of time, resources and trained speakers of medieval Latin. 
+One obvious way to handle this problem is create a medieval Latin database; a proposition that requires lot of time, resources and trained speakers of medieval Latin. 
 Another way of circumvent the lack of available speech data is to use speech data of spoken languages, preferably those ones whose native speakers are going to use the system. 
 
 For all the different pronunciation modeling methods, the acoustic models were trained as follows.
@@ -192,7 +186,7 @@ The size of the hidden layers was kept constantly on 2.000.
 A minibatch size of 512, an initial learning rate of 0.1, and final learning rate of 0.01 was applied in 20 epochs using the KALDI toolkit~\cite{kaldi}.
 \subsection{Grapheme-based pronunciation modeling}\label{baseline}
 For our three separately trained baseline systems grapheme-based pronunciation models were used.
-It was based on the same principles described in detail in Section~\ref{simplified}, namely mapping the graphemes not present in the Latin grapheme set to their normalized counterparts.
+It was based on the same principles described in detail in Section~\ref{usg}, namely mapping the graphemes not present in the Latin grapheme set to their normalized counterparts.
 \subsection{Source-target grapheme to phoneme mapping (G2P)}\label{g2p}
 As source language acoustic training data we used Czech and Hungarian phoneme-based acoustic models with G2P mapping from orthographic transcriptions to native phonemes.
 To develop a pronunciation dictionary for the target language medieval Latin, first we mapped source languages phonemes to target language phonemes using expert knowledge.
@@ -239,11 +233,9 @@ Our motivation with using this technique was two-fold:
 \end{enumerate}
 %It is motivated by the intuition that ...
 For that we used a joint acoustic model of Czech, Hungarian and Polish.
-% szerintem ezt az alábbi 2 részt egybe kellene venni. Hiszen a két lépés inkább egyszerre, vagy legalábbis fordított sorrendben történik. Amúgy nem egymáshoz hasonlítjuk a nyelvek grafémáit, hanem a latinhoz és ami eltér, azt egyszerűsítjük.
-\subsubsection{Unified}
+
 The joint acoustic model requires a unified grapheme inventory for the trainig, so that only those graphemes are in the model that are in the intersection of the different grapheme inventory sets of the training languages.
 Those graphemes that are not in this intersection are mapped to their normalized forms, e.g. it had a diacritic mark (acute, caron, etc.) on it, we mapped it back to its normalized form (\texttt{\v{r}} to \texttt{r}, etc.).
-\subsubsection{Simplified}\label{simplified}
 Since the target language was medieval Latin, the remaining unified grapheme set also had to be simplified to the Latin grapheme set, e.g. \texttt{\'{o}} to \texttt{o}.
 Further than that, those graphemes that are non-native to Latin, and can straightforwardly mapped to a native Latin grapheme(s), were also replaced.
 These are mappings from \texttt{x} to \texttt{ks}, \texttt{y} to \texttt{i} and \texttt{w} to \texttt{v}.
@@ -258,11 +250,11 @@ It has to be noted that the experiments conducted on the Hungarian text test set
 This is due to the fact, that the in-domain part of the language model training data was originating from the Hungarian language region see Section~\ref{traintext}.
 On a related note, we also found that except for Polish, the baseline acoustic models were yielding the best results when testing with native speakers of the source language.
 
-The best performing monolingual grapheme-base model results were that of Hungarian, with $45.8\%$ overall WER (see Table~\ref{tbl:cz_hu_pl_grapheme}) - this was the reference value when comparing the results.
+The best performing monolingual grapheme-base model results were that of Hungarian, with $45.8\%$ overall WER (see Table~\ref{tbl:cz_hu_pl_ro_grapheme}) - this was the reference value when comparing the results.
 \begin{table}
 \centering
 \caption{Word Error Rate (WER[\%]) results for monolingual grapheme-based models of Czech (76 hours), Hungarian (112 hours) and Polish (31 hours).}
-\input{tables/cz_hu_pl_grapheme.tex}\label{tbl:cz_hu_pl_grapheme}
+\input{tables/cz_hu_pl_ro_grapheme.tex}\label{tbl:cz_hu_pl_ro_grapheme}
 \end{table}
 
 \subsection{Source-target G2P mapping results}

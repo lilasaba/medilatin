@@ -68,7 +68,7 @@ class CREATE_TABLE:
 
     def query_baseline(self,training_unit):
         results_dict = {}
-        am_languages = ['CZ','HU','PL']
+        am_languages = ['CZ','HU','PL','RO']
         speaker_languages = ['CZ','HU','PL','SK']
         self.cur.execute('''SELECT id FROM TrainingUnit WHERE training_unit = ? ''', (training_unit, ))
         training_unit_id = self.cur.fetchone()[0]
@@ -93,7 +93,7 @@ class CREATE_TABLE:
         return results_dict
 
     def write_baseline_table(self,baseline_dict):
-        outname = 'cz_hu_pl_grapheme'
+        outname = 'cz_hu_pl_ro_grapheme'
         table = []
         for am_language in baseline_dict.keys():
             wers = baseline_dict[am_language]
