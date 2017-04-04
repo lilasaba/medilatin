@@ -27,9 +27,8 @@ class CREATE_TABLE:
                 AND speaker_language_id = ?
                 AND paragraph_language_id = ? ''', (am_language_id,training_unit_id,speaker_language_id,paragraph_language_id,))
         results = [item for sublist in self.cur.fetchall() for item in sublist]
-        average_wer = self.calculate_average(results)
-        return average_wer
-    
+        return results
+
     def calculate_average(self,inlist):
         return round(sum(inlist) / len(inlist),1)
 
@@ -42,22 +41,34 @@ class CREATE_TABLE:
             row = []
             row.append(speaker_language)
             for paragraph_language in paragraph_languages:
-                wer = self.query_tu_al_sl_pl(training_unit,am_language,speaker_language,paragraph_language)
+                results = self.query_tu_al_sl_pl(training_unit,am_language,speaker_language,paragraph_language)
+                wer = self.calculate_average(results)
                 row.append(wer)
+
             row.append(self.calculate_average(row[1:]))
             table.append(row)
         print(table)
-        num_table = [i for i in zip(*table)][1:]
-        last_row = ['Avr.'] + [n for n in map(self.calculate_average,num_table)]
+
+        ## Calculate weighted column averages.
+        columns = []
+        for paragraph_language in paragraph_languages:
+            column = []
+            for speaker_language in speaker_languages:
+                results = self.query_tu_al_sl_pl(training_unit,am_language,speaker_language,paragraph_language)
+                column.extend(results)
+            columns.append(column)
+
+        paragraph_averages = [n for n in map(self.calculate_average,columns)]
+        last_row = ['$\sum$'] + paragraph_averages + [self.calculate_average(paragraph_averages)]
         table.append(last_row)
-        table_str = tabulate.tabulate(table,headers=['Speaker','CZ','HU','PL','Avr.'],tablefmt="latex")
+        table_str = tabulate.tabulate(table,headers=['Speaker','CZ','HU','PL','$\sum$'],tablefmt="latex")
         table_str = self.post_table(table_str)
 
         with open('../paper/tables/%s.tex' % outname,'w',encoding='utf-8') as outf:
             outf.write(table_str)
 
     def post_table(self,table):
-        table = table.replace(' Avr.  ','\hline\n Avr. ')
+        table = table.replace(' $\sum$  ','\hline\n $\sum$ ')
         ## If baseline table.
         table = table.replace('lrrrrr','l|rrrr|r')
         ## If g2p or usg table.
@@ -106,7 +117,7 @@ class CREATE_TABLE:
 
         table = sorted(table)
 
-        table_str = tabulate.tabulate(table,headers=['AM Language','CZ','HU','PL','SK','Avr.'],tablefmt="latex")
+        table_str = tabulate.tabulate(table,headers=['AM Language','CZ','HU','PL','SK','$\sum$'],tablefmt="latex")
         table_str = self.post_table(table_str)
 
         with open('../paper/tables/%s.tex' % outname,'w',encoding='utf-8') as outf:

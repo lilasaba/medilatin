@@ -93,7 +93,7 @@ A large vocabulary continuous speech recognition (LVCSR) system designed for dic
 Such language technology tool can be of great help for preserving Latin language charters from this era, as optical character recognition systems are often challenged by these historic documents.
 As corresponding historical research focuses on the Visegrad region, our primary aim is to make medieval Latin dictation available for texts and speakers of this region, concentrating on Czech, Hungarian and Polish.
 The baseline acoustic models we start with are monolingual grapheme-based ones -  according to the language resources available - for these three languages. 
-In one hand, the application of medieval Latin knowledge-based grapheme-to-phoneme (G2P) mapping from the source language to the target language resulted in significant improvement, reducing the Word Error Rate (WER) by $17.3\%$. 
+In one hand, the application of medieval Latin knowledge-based grapheme-to-phoneme (G2P) mapping from the source language to the target language resulted in significant improvement, reducing the Word Error Rate (WER) by $17.8\%$. 
 On the other hand, applying a unified-simplified grapheme (USG) inventory set for the three-language acoustic data set complemented with Romanian speech data yielded in competitive results - without using any target or source language G2P rules.
 % TSD 2017: keywords, comma-separated
 \keywords{G2P, medieval Latin, under-resourced speech recognition, unified simplified grapheme modeling}
@@ -249,7 +249,7 @@ It has to be noted that the experiments conducted on the Hungarian text test set
 This is due to the fact, that the in-domain part of the language model training data was originating from the Hungarian language region see Section~\ref{traintext}.
 On a related note, we also found that except for Polish, the baseline acoustic models were yielding the best results when testing with native speakers of the source language.
 
-The best performing monolingual grapheme-base model results were that of Hungarian, with $45.8\%$ overall WER (see Table~\ref{tbl:cz_hu_pl_ro_grapheme}) - this was the reference value when comparing the results.
+The best performing monolingual grapheme-base model results were that of Hungarian, with $42.0\%$ overall WER (see in Table~\ref{tbl:cz_hu_pl_ro_grapheme}) - this was the reference value when comparing the results.
 \begin{table}
 \centering
 \caption{Word Error Rate (WER[\%]) results for monolingual grapheme-based models of Czech, Hungarian, Polish and Roman (CZ+HU+PL+RO).}
@@ -258,7 +258,7 @@ The best performing monolingual grapheme-base model results were that of Hungari
 
 \subsection{Source-target G2P mapping results}
 The results on the experiments with the knowledge-based pronunciation modeling technique, where the native phonemes of the source phoneme-based acoustic models were mapped to the target phonemes in the pronunciation dictionary, are in Table~\ref{tbl:cz_phoneme} for the source language Czech, and in Table~\ref{tbl:hu_phoneme} for the source language Hungarian.
-The Hungarian knowledge-based acoustic model results are by far the best ones ($28.5\%$ overall WER).
+The Hungarian knowledge-based acoustic model results are by far the best ones ($24.2\%$ overall WER).
 It is worth mentioning that the Czech speakers achieve a surprisingly low $6.4\%$ WER on the Hungarian text test set.
 
 We did not include a Polish source phoneme-based acoustic model results in this paper as we were lacking an expert-based Polish G2P.
@@ -279,7 +279,7 @@ We did not include a Polish source phoneme-based acoustic model results in this 
 
 \subsection{USG results}
 The results for the Czech-Hungarian-Polish joint acoustic model are in Table~\ref{tbl:cz_hu_pl_usg}.
-We also tried adding a new source language, Romanian, to the joint USG acoustic model, which improved the results significantly, yielding in an overall $29.3\%$ WER, with a best WER if $11.8\%$ of the Czech speakers on the Hungarian test test, see in Table~\ref{tbl:cz_hu_pl_ro_usg}.
+We also tried adding a new source language, Romanian, to the joint USG acoustic model, which improved the results significantly, yielding in an overall $25.5\%$ WER, with a best WER if $11.8\%$ of the Czech speakers on the Hungarian test test, see in Table~\ref{tbl:cz_hu_pl_ro_usg}.
 The intution behind adding Romanian as a further source language is, that out of the four languages, it the most closely related one to Latin.
 
 Additionaly, we also measured the WER on any combination of three of the four source langauges, to see how each source acoustic model contributes to the joint USG model.
