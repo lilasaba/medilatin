@@ -1,31 +1,31 @@
 Fájlonkénti statisztika (C, S, D, I, WER%)
-Fridericus-Fridericus_cardinalis-Fridericus-PL                                        21      58      30       0   80.73
 Fridericus-Hradec_Holoubek-Fridericus-CS                                              51      57       1      29   79.82
 Fridericus-Hradec_MBK-Fridericus-CS                                                   52      54       3      24   74.31
 Fridericus-Hradec_Rabai-Fridericus-HU                                                 35      72       2       8   75.23
 Fridericus-Litterae_ex_Slovacia-Fridericus-SK                                         64      40       5      22   61.47
+Fridericus-audioclip-1491289221000-72107-Fridericus-PL                                60      44       5      19   62.39
 Fridericus-record20170228204821[1]-Fridericus-LT                                      22      85       2      19   97.25
 Fridericus-record20170228205015[1]-Fridericus-LT                                      29      75       5      18   89.91
 Nicolaus-Hradec_Holoubek-Nicolaus-CS                                                  72      37       1      21   53.64
 Nicolaus-Hradec_MBK-Nicolaus-CS                                                       77      31       2      19   47.27
 Nicolaus-Hradec_Rabai-Nicolaus-HU                                                     67      42       1      20   57.27
 Nicolaus-Litterae_ex_Slovacia-Nicolaus-SK                                             83      24       3      16   39.09
-Nicolaus-Nicolaus_de_Zech-Nicolaus-PL                                                 40      47      23       0   63.64
+Nicolaus-audioclip-1491289237000-70997-Nicolaus-PL                                    89      18       3      10   28.18
 Nicolaus-record20170228210031[1]-Nicolaus-LT                                          41      67       2      16   77.27
 Nicolaus-record20170228211427[1]-Nicolaus-LT                                          40      70       0      33   93.64
 Wencezlaus-Hradec_Holoubek-Wencezlaus-CS                                              89      63       0      42   69.08
 Wencezlaus-Hradec_MBK-Wencezlaus-CS                                                   85      66       1      33   65.79
-Wencezlaus-Hradec_Rabai-Wencezlaus-HU                                                 75      73       4      33   72.37
+Wencezlaus-Hradec_Rabai-Wencezlaus-HU                                                 78      70       4      33   70.39
 Wencezlaus-Litterae_ex_Slovacia-Wencezlaus-SK                                         95      53       4      23   52.63
-Wencezlaus-Wenzeslaus-Wencezlaus-PL                                                   40      70      42       2   75.00
+Wencezlaus-audioclip-1491289236000-104491-Wencezlaus-PL                               93      54       5      15   48.68
 Wencezlaus-record20170228211228[1]-Wencezlaus-LT                                      43     107       2      35   94.74
-Wencezlaus-record20170228212003[1]-Wencezlaus-LT                                      36     116       0      31   96.71
+Wencezlaus-record20170228212003[1]-Wencezlaus-LT                                      41     107       4      31   93.42
 
 Kategóriánkénti statisztika (C, S, D, I, WER%)
-Fridericus                                                                           274     441      48     120   79.82
-Nicolaus                                                                             420     318      32     125   61.69
-Wencezlaus                                                                           463     548      53     199   75.19
+Fridericus                                                                           313     427      23     139   77.20
+Nicolaus                                                                             469     289      12     135   56.62
+Wencezlaus                                                                           524     520      20     212   70.68
 
 Összesített statisztika (C, S, D, I, WER%)
-összes                                                                              1157    1307     133     444   72.55
+összes                                                                              1306    1236      55     486   68.43
 
