@@ -61,7 +61,7 @@ class CREATE_TABLE:
         paragraph_averages = [n for n in map(self.calculate_average,columns)]
         last_row = ['$\sum$'] + paragraph_averages + [self.calculate_average(paragraph_averages)]
         table.append(last_row)
-        table_str = tabulate.tabulate(table,headers=['Speaker','CZ','HU','PL','$\sum$'],tablefmt="latex")
+        table_str = tabulate.tabulate(table,headers=['Speaker','CZ','HU','PL','$\sum$'],tablefmt="latex",floatfmt=".1f")
         table_str = self.post_table(table_str)
 
         with open('../paper/tables/%s.tex' % outname,'w',encoding='utf-8') as outf:
@@ -117,7 +117,7 @@ class CREATE_TABLE:
 
         table = sorted(table)
 
-        table_str = tabulate.tabulate(table,headers=['AM Language','CZ','HU','PL','SK','$\sum$'],tablefmt="latex")
+        table_str = tabulate.tabulate(table,headers=['AM Language','CZ','HU','PL','SK','$\sum$'],tablefmt="latex",floatfmt=".1f")
         table_str = self.post_table(table_str)
 
         with open('../paper/tables/%s.tex' % outname,'w',encoding='utf-8') as outf:
