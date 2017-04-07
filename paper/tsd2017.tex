@@ -247,7 +247,7 @@ The USG units were then used as acoustic model units in the training.
 \section{Experimental results}\label{results}
 We conducted experiments on medieval Latin, spoken by native speakers of four languages (Czech, Hungarian, Polish and Slovakian), where the test texts were originating from different regions, as described in Sections~\ref{AM}~and~\ref{text}.
 The best performing monolingual grapheme-base model results were that of Hungarian, with $34.6\%$ overall WER (see in Table~\ref{tbl:cz_hu_pl_ro_grapheme}), possibly because of the larger training data - this was the reference value when comparing the results.
-On a related note, we also found that except for Czech, each monolingual grapheme-based acoustic modelhad the best performance over its own test set.
+On a related note, we also found that except for Czech, each monolingual grapheme-based acoustic model had the best performance over its own test set.
 
 \begin{table}
 \centering
@@ -282,6 +282,7 @@ When adding Romanian, we got the best experimental results of $20.4\%$ with the 
 
 It is worth mentioning, that compared to the knowledge-based Hungarian model (Table~\ref{tbl:hu_phoneme}), the results on the Polish speaker test set improved by a significant $6.5\%$.
 This could be due to the ability of the four-language model to generalize better over different speaker test tests.
+This generalizing ability intensifies when adding training data of a new language, as the models of similar graphemes are merged, and work better on different native language speaker test sets.
 
 \begin{table}
 \parbox{.45\linewidth}{
