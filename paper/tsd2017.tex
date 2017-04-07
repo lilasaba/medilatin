@@ -268,33 +268,33 @@ It is worth mentioning that the Czech speakers achieve a surprisingly low $6.4\%
 \begin{table}
 \parbox{.45\linewidth}{
 \centering
-\caption{WER[\%] of Latin-Czech source-target G2P model. Acoustic model size: 76 hours.}
+\caption{WER[\%] for Latin-Czech source-target G2P model. Acoustic model size: 76 hours.}
 \input{tables/cz_phoneme.tex}\label{tbl:cz_phoneme}
 }
 \hfill
 \parbox{.45\linewidth}{
 \centering
-\caption{WER[\%] of Latin-Hungarian source-target G2P model. Acoustic model size: 567 hours.}
+\caption{WER[\%] for Latin-Hungarian source-target G2P model. Acoustic model size: 567 hours.}
 \input{tables/hu_phoneme.tex}\label{tbl:hu_phoneme}
 }
 \end{table}
 
 \subsection{USG results}
-The results for the Czech-Hungarian-Polish joint acoustic model are in Table~\ref{tbl:cz_hu_pl_usg}.
-This setting yielded to an overall $26.9\%$ WER. 
-When adding Romanian, we got the best experimental results of $20.4\%$ with the four-language USG model.
+The results for the Czech-Hungarian-Polish joint acoustic model are in Table~\ref{tbl:three_language_usg}.
+This setting yielded to a competitive overall $21.9\%$ WER. 
 We also measured the WER on any combination of three of the four languages, and found that each language contribued almost evenly to the four-language model.
+When adding Romanian, we got the best experimental results of $20.4\%$ with the four-language USG model.
 
 \begin{table}
 \parbox{.45\linewidth}{
 \centering
-\caption{WER[\%] of USG model of Czech, Hungarian and Polish (CZ+HU+PL).}
-\input{tables/cz_hu_pl_usg.tex}\label{tbl:cz_hu_pl_usg}
+\caption{WER[\%] for all the three-language USG models.}
+\input{tables/three_language_usg.tex}\label{tbl:three_language_usg}
 }
 \hfill
 \parbox{.45\linewidth}{
 \centering
-\caption{WER[\%] of USG model of Czech, Hungarian, Polish and Romanian (CZ+HU+PL+RO).}
+\caption{WER[\%] for USG model of Czech, Hungarian, Polish and Romanian (CZ+HU+PL+RO).}
 \input{tables/cz_hu_pl_ro_usg.tex}\label{tbl:cz_hu_pl_ro_usg}
 }
 \end{table}

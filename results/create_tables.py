@@ -75,11 +75,12 @@ class CREATE_TABLE:
         table = table.replace('lrrrr','l|rrr|r')
         table = table.replace('\hline\n Speaker','\hline\n & \multicolumn{3}{c}{Latin Test Text} & \\\\\n\hline\n Speaker')
         table = table.replace('\hline\n AM Language','\hline\n & \multicolumn{3}{c}{Speaker} & \\\\\n\hline\n AM Language')
+        ## Three-language table.
+        table = table.replace('_','+')
         return table
 
-    def query_baseline(self,training_unit):
+    def query_baseline(self,training_unit,am_languages):
         results_dict = {}
-        am_languages = ['CZ','HU','PL','RO']
         speaker_languages = ['CZ','HU','PL','SK']
         self.cur.execute('''SELECT id FROM TrainingUnit WHERE training_unit = ? ''', (training_unit, ))
         training_unit_id = self.cur.fetchone()[0]
@@ -103,8 +104,7 @@ class CREATE_TABLE:
         print(results_list)
         return results_dict
 
-    def write_baseline_table(self,baseline_dict):
-        outname = 'cz_hu_pl_ro_grapheme'
+    def write_baseline_table(self,baseline_dict,outname):
         table = []
         for am_language in baseline_dict.keys():
             wers = baseline_dict[am_language]
@@ -175,8 +175,16 @@ if __name__ == '__main__':
     table.write_table(am_language,training_unit)
     ## Create baseline table.
     training_unit = 'GRAPHEME'
-    baseline_dict = table.query_baseline(training_unit)
-    table.write_baseline_table(baseline_dict)
+    am_languages = ['CZ','HU','PL','RO']
+    baseline_dict = table.query_baseline(training_unit,am_languages)
+    outname = 'cz_hu_pl_ro_grapheme'
+    table.write_baseline_table(baseline_dict,outname)
+    ## Create three-language-usg table.
+    training_unit = 'USG'
+    am_languages = ['CZ_HU_PL','CZ_HU_RO','CZ_PL_RO','HU_PL_RO']
+    baseline_dict = table.query_baseline(training_unit,am_languages)
+    outname = 'three_language_usg'
+    table.write_baseline_table(baseline_dict,outname)
 
     table.cur.close()
     table.conn.close()
