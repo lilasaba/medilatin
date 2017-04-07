@@ -160,7 +160,7 @@ The perplexity measures on the dev data showed, that the Monasterium corpus orig
 Adding the LatinLibrary corpus increased the perplexity significantly, but reduced the OOV rate by $7\%$ on the overall test data, as well as the WER, so we decided to use the interpolated language model.
 
 \subsection{Speech data}
-\subsubsection{Training data}
+\subsubsection{Training data}\label{speechtraining}
 For Czech, the read part of Speecon database ~\cite{czech} was used, 76 hours in sum. For Hungarian, beyond Speecon ~\cite{hungarian}, manually transcribed broadcast news (112 hours) and conversational speech data was used, altogether 567 hours.
 For Polish, only broadcast news data~\cite{romanian} was available, comprising 31 hours of manually transcribed speech.
 The Romanian speech database used for the expriments was originally collected for~\cite{romanian} consisting of 35 hours of broadcast news.
@@ -233,11 +233,12 @@ Our motivation with using this technique was three-fold:
 \item Validate the intuition that - since the writing systems of the Countries of Visegrad region are based on Latin - the deviations from the common ancestor (medieval Latin) are extinguishable through unifications and simplifications of the national graphemes.
 \end{enumerate}
 %It is motivated by the intuition that ...
-So, we used a joint grapheme acoustic model of Czech, Hungarian and Polish and its completion with Romanian was also investigated. 
+We experimented with joint three- or four-language USG acoustic models of any combination of the four languages (Czech, Hungarian, Polish and Romanian). 
 % We chosed grapheme instead of phoneme as the basis of joint acoustic model because G2P was not available for the half of the languages.
 
-The joint acoustic model requires a unified grapheme inventory for the trainig, so that the graphemes are in the intersection of the different grapheme inventory sets of the training languages need special treatment.
-These graphemes are mapped to their normalized forms, e.g. it had a diacritic mark (acute, caron, etc.) on it, we mapped it back to its simplified (normalized) form (\texttt{\v{r}} to \texttt{r}, \texttt{\'{o}} to \texttt{o}, etc.).
+The joint acoustic model requires a unified grapheme inventory for the trainig, so that only those graphemes are used in the model that are in the intersection of the different grapheme inventory sets of the training languages.
+Those graphemes that are not in this intersection are mapped to their normalized forms, e.g. it had a diacritic mark (acute, caron, etc.) on it, we mapped it back to its normalized form (\texttt{\v{r}} to \texttt{r}, etc.).
+Since the target language was medieval Latin, the remaining unified grapheme set also had to be simplified to the Latin grapheme set, e.g. \texttt{\'{o}} to \texttt{o}.
 Further than that, those graphemes that are non-native to Latin, and can straightforwardly mapped to a native Latin grapheme(s), were also replaced.
 These are mappings from \texttt{x} to \texttt{ks}, \texttt{y} to \texttt{i} and \texttt{w} to \texttt{v}.
 As a result, a unified and simplified grapheme inventory set was produced, formally compatible with medieval Latin.
@@ -245,12 +246,12 @@ The USG units were then used as acoustic model units in the training.
 \section{Experimental results}\label{results}
 We conducted experiments on medieval Latin, spoken by native speakers of four languages (Czech, Hungarian, Polish and Slovakian), where the test texts were originating from different regions, as described in Sections~\ref{AM}~and~\ref{text}.
 
-It can be noticed on Table 4 and 5 that the experiments conducted on the Hungarian origin text test set yielded to the best results with all models.
+The results show that the experiments conducted on the Hungarian origin text test set yielded to the best results with all models.
 This is due to the fact, that the in-domain part of the language model training data was originating from the Hungarian language region see Section~\ref{traintext}.
 % ezt ellenőrizni és revidiálni kell az új eredmények szerint:
 On a related note, we also found that except for Polish, the baseline acoustic models were yielding the best results when testing with native speakers of the source language.
 
-The best performing monolingual grapheme-base model results were that of Hungarian, with $42.0\%$ overall WER (see in Table~\ref{tbl:cz_hu_pl_ro_grapheme}), possibly because of the highest amount of training data - this was the reference value when comparing the results.
+The best performing monolingual grapheme-base model results were that of Hungarian, with $34.4\%$ overall WER (see in Table~\ref{tbl:cz_hu_pl_ro_grapheme}), possibly because of the larger training data - this was the reference value when comparing the results.
 \begin{table}
 \centering
 \caption{Word Error Rate (WER[\%]) results for monolingual grapheme-based models of Czech, Hungarian, Polish and Romanian (CZ, HU, PL, RO).}
@@ -282,7 +283,9 @@ We also tried adding a new source language, Romanian, to the joint USG acoustic 
 The intution behind adding Romanian as a further source language is, that out of the four languages, it the most closely related one to Latin.
 
 Additionaly, we also measured the WER on any combination of three of the four source languages, to see how each source acoustic model contributes to the joint USG model.
-As Table~\ref{tbl:cz_hu_pl_ro_usg} shows, each language contributed almost evenly to the four-language USG model. To avoid over weighting, Hungarian data set was reduced to 112 hours of Broadcast News speech.  
+
+As Table~\ref{tbl:three_lang_results} shows, each language contributed almost evenly to the four-language USG model.
+To avoid overweighting, in all these settings, the Hungarian data set was reduced to 112 hours of Broadcast News speech.  
 %pool of recognizers
 \begin{table}
 \parbox{.45\linewidth}{
