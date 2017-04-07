@@ -93,7 +93,7 @@
 A large vocabulary continuous speech recognition (LVCSR) system designed for dictation of medieval Latin language documents is introduced.
 Such language technology tool can be of great help for preserving Latin language charters from this era, as optical character recognition systems are often challenged by these historic materials.
 As corresponding historical research focuses on the Visegrad region, our primary aim is to make medieval Latin dictation available for texts and speakers of this region, concentrating on Czech, Hungarian and Polish.
-The baseline acoustic models we start with are monolingual grapheme-based ones for these three languages - according to the language resources available. 
+The baseline acoustic models we start with are monolingual grapheme-based ones. 
 In one hand, the application of medieval Latin knowledge-based grapheme-to-phoneme (G2P) mapping from the source language to the target language resulted in significant improvement, reducing the Word Error Rate (WER) by $13.3\%$. 
 On the other hand, applying a unified-simplified grapheme (USG) inventory set for the three-language acoustic data set complemented with Romanian speech data yielded in competitive results - without using any target or source language G2P rules.
 % TSD 2017: keywords, comma-separated
@@ -112,7 +112,7 @@ We propose a system that aimes at the recognition of medieval Latin speech spoke
 Therefore, it is important to collect in-domain textual/language data for the language model from the relevant geographican regions and time.
 We describe the data acquisition process in section~\ref{text}.
 
-Our baseline system consists of separately trained grapheme-based acoustic models for three of the Visegrad languages (Czech, Hungarian, Polish) and Romanian is added as well.
+Our baseline system consists of separately trained grapheme-based acoustic models for three of the Visegrad languages (Czech, Hungarian, Polish) complemented with the Romance language Romanian.
 We apply two different acoustic/pronunciation modeling techniques to develop models that are superior to the baseline.
 The first one, dicussed in detail in Section~\ref{g2p}, is a knowledge-based pronunciation modeling technique, where the source language phonemes are mapped to the target language phonemes.
 The second method applied is a unified simplified grapheme (USG) acoustic modeling approach, where a joint grapheme inventory is established for all the languages paricipating in the joint acoustic model training.
@@ -142,8 +142,7 @@ To increase the vocabulary size of the language model, we collected a relatively
 This corpus consists of literary and historical texts from the post-classical era.
 In spite of our efforts, at the time of writing this paper, we could not gather textual data from the age and area of the Kingdoms of Bohemia and Poland.
 \subsubsection{Test data}\label{testtext}
-% three-tree?? Nagyzolunk, vagy rosszul értem?
-Using independent sources, three-three charters were selected from the Kingdoms of Bohemia (CZ), Hungary (HU) and Poland (PL), from around 1200-1300 AD, for development and test data.
+Using independent sources, three charters were selected from the Kingdoms of Bohemia (CZ), Hungary (HU) and Poland (PL), from around 1200-1300 AD, for development and test data.
 The dev set was used for evaluating the language model, and to test the performance of the LVCSR approaches.
 Both dev and test sets were read out loud by historians fluent in medieval Latin.
 \subsubsection{Alternate spellings}
@@ -166,7 +165,7 @@ For Czech, the read part of Speecon database ~\cite{czech} was used, 76 hours in
 For Polish, only broadcast news data~\cite{romanian} was available, comprising 31 hours of manually transcribed speech.
 The Romanian speech database used for the expriments was originally collected for~\cite{romanian} consisting of 35 hours of broadcast news.
 \subsubsection{Test data}
-Native speakers of Czechia, Hungary, Poland and Slovakia - all of whom have experince with medieval Latin - were asked to record the three dev and test sets described in Section~\ref{testtext}.
+Native speakers of Czech, Hungarian, Polish and Slovakian - all of whom have experince with medieval Latin - were asked to record the three dev and test sets described in Section~\ref{testtext}.
 The recording conditions were accurately controlled: close‒talking microphones, quiet, non reverberant acoustic environment, fluent, flawless speech, and at least 16 kHz, 16 bit (linear PCM) encoding.
 No instructions were given regarding the pronunciation, the speakers were using their expertise on medieval Latin pronunciation - affected certainly by their native language.
 The overall length of the recorded test speech was around 30 minutes.
