@@ -230,19 +230,20 @@ Our motivation with using this technique was three-fold:
 \begin{enumerate}
 \item Develop a target language acoustic model using available language resources.
 \item Support recognition of medieval Latin spoken by speakers of a diverse native language background.
-\item Validate the intuition that - since the writing systems of the Countries of Visegrad region are based on Latin - the deviations from the common ancestor (medieval Latin) are extinguishable through unifications and simplifications of the national graphemes.
+\item Validate the intuition that - since the writing systems of the Countries of Visegrad region are based on Latin - the deviations from the common ancestor (medieval Latin) are extinguishable through unifications and simplifications of the native graphemes.
 \end{enumerate}
 %It is motivated by the intuition that ...
-We experimented with joint three- or four-language USG acoustic models of any combination of the four languages (Czech, Hungarian, Polish and Romanian). 
+We experimented with joint three- and four-language USG acoustic models of any combination of the four languages (Czech, Hungarian, Polish and Romanian). 
 % We chosed grapheme instead of phoneme as the basis of joint acoustic model because G2P was not available for the half of the languages.
 
 The joint acoustic model requires a unified grapheme inventory for the trainig, so that only those graphemes are used in the model that are in the intersection of the different grapheme inventory sets of the training languages.
-Those graphemes that are not in this intersection are mapped to their normalized forms, e.g. it had a diacritic mark (acute, caron, etc.) on it, we mapped it back to its normalized form (\texttt{\v{r}} to \texttt{r}, etc.).
+Those graphemes that were not in this intersection, got mapped to their normalized forms, e.g. if a grapheme had a diacritic mark (acute, caron, etc.) on it, we mapped it back to its normalized form (\texttt{\v{r}} to \texttt{r}, etc.).
 Since the target language was medieval Latin, the remaining unified grapheme set also had to be simplified to the Latin grapheme set, e.g. \texttt{\'{o}} to \texttt{o}.
 Further than that, those graphemes that are non-native to Latin, and can straightforwardly mapped to a native Latin grapheme(s), were also replaced.
-These are mappings from \texttt{x} to \texttt{ks}, \texttt{y} to \texttt{i} and \texttt{w} to \texttt{v}.
+These included mappings from \texttt{x} to \texttt{ks}, \texttt{y} to \texttt{i} and \texttt{w} to \texttt{v}.
 As a result, a unified and simplified grapheme inventory set was produced, formally compatible with medieval Latin.
 The USG units were then used as acoustic model units in the training.
+
 \section{Experimental results}\label{results}
 We conducted experiments on medieval Latin, spoken by native speakers of four languages (Czech, Hungarian, Polish and Slovakian), where the test texts were originating from different regions, as described in Sections~\ref{AM}~and~\ref{text}.
 The best performing monolingual grapheme-base model results were that of Hungarian, with $34.4\%$ overall WER (see in Table~\ref{tbl:cz_hu_pl_ro_grapheme}), possibly because of the larger training data - this was the reference value when comparing the results.
