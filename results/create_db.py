@@ -103,7 +103,9 @@ class CREATEDB:
         am_language_list = [] 
         if 'CZ' in fn:
             am_language_list.append('CZ')
-        if 'HU' in fn:
+        if 'HUSHORT' in fn:
+            am_language_list.append('HUSHORT')
+        elif 'HU' in fn:
             am_language_list.append('HU')
         if 'PL' in fn:
             am_language_list.append('PL')
