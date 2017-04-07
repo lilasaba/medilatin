@@ -105,6 +105,8 @@ class CREATEDB:
             am_language_list.append('CZ')
         if 'HUSHORT' in fn:
             am_language_list.append('HUSHORT')
+        elif 'HULONG' in fn:
+            am_language_list.append('HULONG')
         elif 'HU' in fn:
             am_language_list.append('HU')
         if 'PL' in fn:

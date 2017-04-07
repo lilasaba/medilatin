@@ -278,17 +278,16 @@ It is worth mentioning that the Czech speakers achieve a surprisingly low $6.4\%
 \end{table}
 
 \subsection{USG results}
-The results for the Czech-Hungarian-Polish joint acoustic model are in Table~\ref{tbl:three_lang_results}, along with the other three-language USG model results.
-For the four-language USG model in Table~\ref{tbl:three_lang_results} we used the smaller (112 hours) Hungarian training data to avoid over-weighting.
-This setting yielded to a significantly better overall $20.4\%$ WER. 
-As Table~\ref{tbl:three_lang_results} shows, each language contributed almost evenly to the four-language USG model.
-To avoid overweighting, in all these settings, the Hungarian data set was reduced to 112 hours of Broadcast News speech.  
-%pool of recognizers
+The results for the Czech-Hungarian-Polish joint acoustic model are in Table~\ref{tbl:cz_hu_pl_usg}.
+This setting yielded to an overall $26.9\%$ WER. 
+When adding Romanian, we got the best experimental results of $20.4\%$ with the four-language USG model.
+We also measured the WER on any combination of three of the four languages, and found that each language contribued almost evenly to the four-language model.
+
 \begin{table}
 \parbox{.45\linewidth}{
 \centering
 \caption{WER[\%] of USG model of Czech, Hungarian and Polish (CZ+HU+PL).}
-\input{tables/cz_hu_pl_ro_usg.tex}\label{tbl:three_lang_results}
+\input{tables/cz_hu_pl_usg.tex}\label{tbl:cz_hu_pl_usg}
 }
 \hfill
 \parbox{.45\linewidth}{

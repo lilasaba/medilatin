@@ -149,9 +149,9 @@ if __name__ == '__main__':
     training_unit = 'USG'
     am_language = 'CZ_HU_PL_RO'
     table.write_table(am_language,training_unit)
-    ## Extract CZ_HUSHORT_PL_RO USG results.
+    ## Extract CZ_HULONG_PL_RO USG results.
     training_unit = 'USG'
-    am_language = 'CZ_HUSHORT_PL_RO'
+    am_language = 'CZ_HULONG_PL_RO'
     table.write_table(am_language,training_unit)
     ## Extract CZ PHONEME results.
     training_unit = 'PHONEME'
