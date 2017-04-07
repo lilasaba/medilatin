@@ -139,7 +139,7 @@ A smaller amount of in-domain data (medieval charters) were collected from~\cite
 These documents are originating from the Hungarian Kingdom, from 1000 to 1524 AD.
 To increase the vocabulary size of the language model, we collected a relatively larger (but still small, compared to state-of-the-art language models used in speech recognition) 1.3M-token corpus from~\cite{latinlibrary} (LatinLibrary).
 This corpus consists of literary and historical texts from the post-classical era.
-In spite of our efforts, at the time of writing this paper, we could not gather textual data from the age and area of the Kingdoms of Bohemia and Poland.
+In spite of our efforts, at the time of writing this paper, we could not gather a measurable amount of textual data from the age and area of the Kingdoms of Bohemia and Poland.
 \subsubsection{Test data}\label{testtext}
 Using independent sources, three charters were selected from the Kingdoms of Bohemia (CZ), Hungary (HU) and Poland (PL), from around 1200-1300 AD, for development and test data.
 The dev set was used for evaluating the language model, and to test the performance of the LVCSR approaches.
@@ -153,7 +153,7 @@ Resolving spelling variants resulted in a more consistent corpus in terms of per
 %TODO: verbatim text excerpts (cz).
 \subsubsection{Language model}
 The word trigram language models we built from the two corpora were estimated with the SRI Language Modeling toolkit (SRILM)~\cite{srilm} using modified Kneser-Ney smoothing method.
-After estimating the mixture parameter, linear interpolation was used to merge the language models of the two text corpora.
+After estimating the mixture parameter, linear interpolation was used to merge the two language models.
 
 The perplexity measures on the dev data showed, that the Monasterium corpus originating from the time and era of the Hungarian Kingdom was indeed best fitting with the Hungarian subset of the test data with a perplexity of 82, and an OOV rate of $0.9\%$.
 Adding the LatinLibrary corpus increased the perplexity significantly, but reduced the OOV rate by $7\%$ on the overall test data, as well as the WER, so we decided to use the interpolated language model.
@@ -162,7 +162,7 @@ Adding the LatinLibrary corpus increased the perplexity significantly, but reduc
 \subsubsection{Training data}\label{speechtraining}
 For Czech, the read part of Speecon database~\cite{czech} was used, 76 hours in sum.
 For Hungarian, beyond Speecon~\cite{hungarian}, manually transcribed broadcast news (112 hours) and conversational speech data was used, altogether 567 hours.
-With the exception of the Hungarian knowledge-based model (described in Section~\ref{g2p}), the 112-hor broadcast news set was used for training.
+With the exception of the Hungarian knowledge-based model (described in Section~\ref{g2p}), the 112-hour broadcast news set was used for training.
 For Polish, only broadcast news data~\cite{romanian} was available, comprising 31 hours of manually transcribed speech.
 The Romanian speech database used for the expriments was originally collected for~\cite{romanian} consisting of 35 hours of broadcast news.
 \subsubsection{Test data}
@@ -179,7 +179,7 @@ Another way of circumvent the lack of available speech data is to use speech dat
 
 For all the different pronunciation modeling methods, the acoustic models were trained as follows.
 Mel-Frequency Cepstrum $+$ Energy features were used with Linear Discriminant Analysis (LDA) + Maximum Likelihood Linear Transformation (MLLT), with a splice context of $\pm4$ frames, 10 ms of frame shift.
-$9\times40$ dimensional spliced up feature vectors served as input to the feed‒forward, 6 hidden‒layer neural network with p‒norm [16] activation function.
+$9\times40$ dimensional spliced up feature vectors served as input to the feed-forward, 6 hidden-layer neural network with p-norm~\cite{kaldi} activation function.
 Prior to DNN training, a Gauss Mixture Model (GMM) pre-training was performed.
 Clustering and Regression Tree (CART)~\cite{kaldi} was applied to obtain across‒word context dependent shared state phone (or graph) models and their time alignment.
 The number of senones (and so the size of the DNN softmax output layer) was between 7.000 and 11.000 depending on the nature of the training data.
@@ -193,7 +193,7 @@ The same principles - described in detail in Section~\ref{usg} - are applied, na
 \subsection{Source-target grapheme to phoneme mapping (G2P)}\label{g2p}
 As source language acoustic training data, Czech and Hungarian phoneme-based acoustic models were used with G2P mapping from orthographic transcriptions to native phonemes.
 To develop a pronunciation dictionary for the target language medieval Latin, first we mapped source languages phonemes to target language phonemes using expert knowledge.
-As a second step, Latin-specific pronunciation rules also had to be mplemented.
+As a second step, Latin-specific pronunciation rules also had to be implemented.
 These include a set of context independent digraph mappings and context dependent rewrite rules, summarized in Table~\ref{tbl:digraph} and Table~\ref{tbl:context} respectively, for both Czech and Hungarian.
 Both languages fully cover the phoneme inventory of medieval Latin.
 The Latin alphabet, extracted from our corpora (see Section~\ref{text}), consisted of 24 elements.
@@ -224,9 +224,6 @@ The Latin alphabet, extracted from our corpora (see Section~\ref{text}), consist
 	\end{tabular}
 \end{table}
 
-%The G2P rules were composed with the language model within a WFST framework~\cite{wfst}.
-%The interpolated LM described in Section 2.1 was composed with the appropriate phoneme or grapheme based pronunciation dictionaries in the Weighted finite State Transducer (WFST) framework [17]. After the usual optimization processes the WFST recognition network translates between generalized triphones (or trigraphs) and words. 
-%The mapping of triphones (trigraphs) to senones was performed in the VoXerver WFST‒HMM‒DNN decoder. Approximately the same speed, faster than real‒time decoding was performed in all experiments.
 \subsection{Unified Simplified Grapheme Acoustic Modeling}\label{usg}
 The second method used for improving speech recognition of medieval Latin - this time in a fully data driven way - was the Unified Simplified Grapheme (USG) acoustic modeling technique.
 Our motivation with using this technique was three-fold:
@@ -248,12 +245,9 @@ As a result, a unified and simplified grapheme inventory set was produced, forma
 The USG units were then used as acoustic model units in the training.
 \section{Experimental results}\label{results}
 We conducted experiments on medieval Latin, spoken by native speakers of four languages (Czech, Hungarian, Polish and Slovakian), where the test texts were originating from different regions, as described in Sections~\ref{AM}~and~\ref{text}.
-
-The results show that the experiments conducted on the Hungarian origin text test set yielded to the best results with all models.
-This is due to the fact, that the in-domain part of the language model training data was originating from the Hungarian language region see Section~\ref{traintext}.
-On a related note, we also found that except for Polish, the baseline acoustic models were yielding the best results when testing with native speakers of the source language.
-
 The best performing monolingual grapheme-base model results were that of Hungarian, with $34.4\%$ overall WER (see in Table~\ref{tbl:cz_hu_pl_ro_grapheme}), possibly because of the larger training data - this was the reference value when comparing the results.
+On a related note, we also found that except for Czech, each monolingual grapheme-based acoustic modelhad the best performance over its own test set.
+
 \begin{table}
 \centering
 \caption{Word Error Rate (WER[\%]) results for monolingual grapheme-based models of Czech, Hungarian, Polish and Romanian (CZ, HU, PL, RO).}
@@ -280,10 +274,11 @@ It is worth mentioning that the Czech speakers achieve a surprisingly low $6.4\%
 \end{table}
 
 \subsection{USG results}
-The results for the Czech-Hungarian-Polish joint acoustic model are in Table~\ref{tbl:three_language_usg}.
-This setting yielded to a competitive overall $21.9\%$ WER. 
+The results for the three-language joint acoustic models are in Table~\ref{tbl:three_language_usg}.
+Among the three-language USG models, the Czech-Hungarian-Romanian model had the best performance with a competitive overall $21.9\%$ WER. 
 We also measured the WER on any combination of three of the four languages, and found that each language contribued almost evenly to the four-language model.
-When adding Romanian, we got the best experimental results of $20.4\%$ with the four-language USG model.
+When adding Romanian, we got the best experimental results of $20.4\%$ with the four-language USG model (see in Table~\ref{tbl:cz_hu_pl_ro_usg}).
+It is worth mentioning, that compared to the knowledge-based Hungarian model (Table~\ref{tbl:hu_phoneme}), the results on the Polish speaker test set improved by a significant $6.5\%$.
 
 \begin{table}
 \parbox{.45\linewidth}{
@@ -302,10 +297,12 @@ When adding Romanian, we got the best experimental results of $20.4\%$ with the 
 %TODO: why hu is better with usg model.
 %TODO: why cz is better with hu phoneme model.
 %TODO: revise according to new PL results!
-% ma eddig jutottam. Az alábbiakat aktualizálni, kiegészíteni kell a full magyar 4 nyelvű USG szerint. A konklúziót is!
-The most striking results are the Czech speakers on the Hungarian text test set with both the knowledge-based and USG models.
+The most striking results in Tables~\ref{tbl:hu_phoneme}~and~\ref{tbl:cz_hu_pl_ro_usg} were that all but the Hungarian speaker test set performed better on the Hungarian text test set.
 We had expected the Hungarian speakers to perform better with the Hungarian knowledge-based model and Hungarian text test set setting, but in fact the phoneme mapping masked the difference between mid-front \texttt{/e:/} and open-front \texttt{/\textipa{E}/} in the pronunciation of the Hungarian speakers.
 In addion to that, they were pronouncing the named entities using their native pronunciation, which also increased the WER.
+
+Finally, the results show that the experiments conducted on the Hungarian origin text test set yielded to the best results with all models.
+This is due to the fact, that the in-domain part of the language model training data was originating from the Hungarian language region see Section~\ref{traintext}.
 %TODO: why pl wer is so high.
 \subsection{Conclusions}
 %TODO: to be revised
@@ -318,7 +315,7 @@ With the objective of outperforming the monolingual grapheme-based models, we pr
 The results showed that both methods outperform by large the best baseline system. 
 We concluded our work with comparing the results on a by-speaker-language and by-text-origin basis, where we found speaker-language differences affecting the results.
 
-Future research directions include acquiring a considerable amount of medieval speech and textual data, as well as implementng a more refined G2P modeling using a global pheneme inventory set.
+Future research directions include acquiring a considerable amount of medieval speech and textual data, as well as implementing a more refined G2P modeling using a global phoneme inventory set.
 
 % Bibliography
 \bibliographystyle{splncs03}
