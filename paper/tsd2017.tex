@@ -155,7 +155,7 @@ Resolving spelling variants resulted in a more consistent corpus in terms of per
 The word trigram language models we built from the two corpora were estimated with the SRI Language Modeling toolkit (SRILM)~\cite{srilm} using modified Kneser-Ney smoothing method.
 After estimating the mixture parameter, linear interpolation was used to merge the two language models.
 
-The perplexity measures on the dev data showed, that the Monasterium corpus originating from the time and era of the Hungarian Kingdom was indeed best fitting with the Hungarian subset of the test data with a perplexity of 82, and an OOV rate of $0.9\%$.
+The perplexity measures on the dev data showed, that the Monasterium corpus originating from the time and era of the Hungarian Kingdom was indeed best fitting with the Hungarian subset of the test data with a perplexity of 82, and an OOV rate of $0.9\%$. (The perplexities measured on the Bohemian and Polish origin text were in the range of 500 to 3500)
 Adding the LatinLibrary corpus increased the perplexity significantly (up to 672), but reduced the OOV rate by $7\%$ on the overall test data, as well as the WER, so we decided to use the interpolated language model.
 
 \subsection{Speech data}
@@ -236,17 +236,15 @@ Our motivation with using this technique was three-fold:
 We experimented with joint three- or four-language USG acoustic models of any combination of the four languages (Czech, Hungarian, Polish and Romanian). 
 % We chosed grapheme instead of phoneme as the basis of joint acoustic model because G2P was not available for the half of the languages.
 
-The joint acoustic model requires a unified grapheme inventory for the trainig, so that only those graphemes are used in the model that are in the intersection of the different grapheme inventory sets of the training languages.
-Those graphemes that are not in this intersection are mapped to their normalized forms, e.g. it had a diacritic mark (acute, caron, etc.) on it, we mapped it back to its normalized form (\texttt{\v{r}} to \texttt{r}, etc.).
-Since the target language was medieval Latin, the remaining unified grapheme set also had to be simplified to the Latin grapheme set, e.g. \texttt{\'{o}} to \texttt{o}.
+The joint acoustic model requires a unified grapheme inventory for the trainig. Our proposal was to simplify all special character, i.e. those graphemes that had a diacritic mark (acute, caron, etc.) on it, were mapped back to their normalized form (\texttt{\v{r}} to \texttt{r}, \texttt{\'{o}} to \texttt{o}, etc.).
 Further than that, those graphemes that are non-native to Latin, and can straightforwardly mapped to a native Latin grapheme(s), were also replaced.
 These are mappings from \texttt{x} to \texttt{ks}, \texttt{y} to \texttt{i} and \texttt{w} to \texttt{v}.
 As a result, a unified and simplified grapheme inventory set was produced, formally compatible with medieval Latin.
 The USG units were then used as acoustic model units in the training.
 \section{Experimental results}\label{results}
 We conducted experiments on medieval Latin, spoken by native speakers of four languages (Czech, Hungarian, Polish and Slovakian), where the test texts were originating from different regions, as described in Sections~\ref{AM}~and~\ref{text}.
-The best performing monolingual grapheme-base model results were that of Hungarian, with $34.4\%$ overall WER (see in Table~\ref{tbl:cz_hu_pl_ro_grapheme}), possibly because of the larger training data - this was the reference value when comparing the results.
-On a related note, we also found that except for Czech, each monolingual grapheme-based acoustic modelhad the best performance over its own test set.
+The best performing monolingual grapheme-base model results were that of Hungarian, with $34.6\%$ overall WER (see in Table~\ref{tbl:cz_hu_pl_ro_grapheme}), possibly because of the larger training data - this was the reference value when comparing the results.
+On a related note, we also found that except for Czech, each monolingual grapheme-based acoustic model had the best performance over its own test set.
 
 \begin{table}
 \centering
@@ -257,7 +255,7 @@ On a related note, we also found that except for Czech, each monolingual graphem
 \subsection{Source-target G2P mapping results}
 The results on the experiments with the knowledge-based pronunciation modeling technique, where the native phonemes of the source phoneme-based acoustic models were mapped to the target phonemes in the pronunciation dictionary, are in Table~\ref{tbl:cz_phoneme} for the source language Czech, and in Table~\ref{tbl:hu_phoneme} for the source language Hungarian.
 The Hungarian knowledge-based acoustic model significantly outperforms the (Hungarian grapheme-based) baseline, with an $21.1\%$ overall WER.
-It is worth mentioning that the Czech speakers achieve a surprisingly low $6.4\%$ WER on the Hungarian text test set.
+It is worth mentioning that the Czech and Slovakian speakers achieve a surprisingly low $6.4\%$ and $9.1\%$ WER, respectively, on the Hungarian text test set.
 
 \begin{table}
 \parbox{.45\linewidth}{
@@ -276,10 +274,10 @@ It is worth mentioning that the Czech speakers achieve a surprisingly low $6.4\%
 \subsection{USG results}
 The results for the three-language joint acoustic models are in Table~\ref{tbl:three_language_usg}.
 Among the three-language USG models, the Czech-Hungarian-Romanian model had the best performance with a competitive overall $21.9\%$ WER. 
-We also measured the WER on any combination of three of the four languages, and found that each language contribued almost evenly to the four-language model.
-When adding Romanian, we got the best experimental results of $20.4\%$ with the four-language USG model (see in Table~\ref{tbl:cz_hu_pl_ro_usg}).
+When adding Romanian, we got the overall best experimental results of $20.4\%$ with the four-language USG model (see in Table~\ref{tbl:cz_hu_pl_ro_usg}).
+We also measured the WER on any combination of three of the four languages, and found that each language contributed to the four-language model.
 
-It is worth mentioning, that compared to the knowledge-based Hungarian model (Table~\ref{tbl:hu_phoneme}), the results on the Polish speaker test set improved by a significant $6.5\%$.
+It is worth mentioning, that compared to the knowledge-based Hungarian model (Table~\ref{tbl:hu_phoneme}), the results on the Polish speaker test set improved by a significant $6.5\%$ (absolute).
 This could be due to the ability of the four-language model to generalize better over different speaker test tests.
 
 \begin{table}
@@ -303,7 +301,7 @@ The most striking results in Tables~\ref{tbl:hu_phoneme}~and~\ref{tbl:cz_hu_pl_r
 We had expected the Hungarian speakers to perform better with the Hungarian knowledge-based model and Hungarian text test set setting, but in fact the phoneme mapping masked the difference between mid-front \texttt{/e:/} and open-front \texttt{/\textipa{E}/} in the pronunciation of the Hungarian speakers.
 In addion to that, they were pronouncing the named entities using their native pronunciation, which also increased the WER.
 
-Similarly, the results on the Hungarian speaker test set also improved by $3\%$ with the four-language USG model compared to the knoeledge-based Hungarian model in Table~\ref{tbl:hu_phoneme}.
+Similarly, the results on the Hungarian speaker test set also improved by $3\%$ (absolute) with the four-language USG model compared to the knoeledge-based Hungarian model in Table~\ref{tbl:hu_phoneme}.
 This was supposedly also because the pronunciation of the Hungarian speakers deviated from the one defined in the knowledge-based model, and the four-language model was able to generalize better. 
 
 Finally, the results show that the experiments conducted on the Hungarian origin text test set yielded to the best results with all models.
@@ -318,12 +316,12 @@ With the objective of building an acoustic model without source language speech 
 
 The results showed that both methods outperform by large the best baseline system. 
 We found that the best model was the four-language USG model.
-When comparing it to the knowledge-based Hungarian phoneme-based model, which was using expert knowledge and trained on larger amount of data, it seemed that the four-language USG model was best in evening out the inconsistencies of the pronunciations in the different speaker test sets.
-
-We concluded our work with noting that with all models we got the best results on the Hungarian text test set, which is due to the in-domain part of the language model.
+When comparing it to the knowledge-based Hungarian phoneme-based model, which was using expert knowledge and trained on larger amount of data, it seemed that the four-language USG model was better in evening out the inconsistencies of the pronunciations in the different speaker test sets, as well.
+% ez nem kell alább
+%We concluded our work with noting that with all models we got the best results on the Hungarian text test set, which is due to the in-domain part of the language model.
 %comparing the results on a by-speaker-language and by-text-origin basis, where we found speaker-language differences affecting the results.
 
-Future research directions include acquiring a considerable amount of medieval speech and textual data, as well as implementing a more refined G2P modeling using a global phoneme inventory set.
+Future research directions include acquiring a considerable amount of medieval speech and textual data, as well as implementing a more refined G2P modeling using a global phoneme inventory set. Furthermore, adding more data to the USG approach may result in even higher recognition accuracy allowing dictational applications.
 
 % Bibliography
 \bibliographystyle{splncs03}
