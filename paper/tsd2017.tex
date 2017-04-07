@@ -246,12 +246,12 @@ The USG units were then used as acoustic model units in the training.
 
 \section{Experimental results}\label{results}
 We conducted experiments on medieval Latin, spoken by native speakers of four languages (Czech, Hungarian, Polish and Slovakian), where the test texts were originating from different regions, as described in Sections~\ref{AM}~and~\ref{text}.
-The best performing monolingual grapheme-base model results were that of Hungarian, with $34.4\%$ overall WER (see in Table~\ref{tbl:cz_hu_pl_ro_grapheme}), possibly because of the larger training data - this was the reference value when comparing the results.
+The best performing monolingual grapheme-base model results were that of Hungarian, with $34.6\%$ overall WER (see in Table~\ref{tbl:cz_hu_pl_ro_grapheme}), possibly because of the larger training data - this was the reference value when comparing the results.
 On a related note, we also found that except for Czech, each monolingual grapheme-based acoustic modelhad the best performance over its own test set.
 
 \begin{table}
 \centering
-\caption{Word Error Rate (WER[\%]) results for monolingual grapheme-based models of Czech, Hungarian, Polish and Romanian (CZ, HU, PL, RO).}
+\caption{Word Error Rate (WER[\%]) results for monolingual grapheme-based acoustic models of Czech, Hungarian, Polish and Romanian (CZ, HU, PL, RO).}
 \input{tables/cz_hu_pl_ro_grapheme.tex}\label{tbl:cz_hu_pl_ro_grapheme}
 \end{table}
 
@@ -263,13 +263,13 @@ It is worth mentioning that the Czech speakers achieve a surprisingly low $6.4\%
 \begin{table}
 \parbox{.45\linewidth}{
 \centering
-\caption{WER[\%] for Latin-Czech source-target G2P model. Acoustic model size: 76 hours.}
+\caption{WER[\%] for Latin-Czech source-target G2P model. Acoustic model training set: 76 hours.}
 \input{tables/cz_phoneme.tex}\label{tbl:cz_phoneme}
 }
 \hfill
 \parbox{.45\linewidth}{
 \centering
-\caption{WER[\%] for Latin-Hungarian source-target G2P model. Acoustic model size: 567 hours.}
+\caption{WER[\%] for Latin-Hungarian source-target G2P model. Acoustic modeltraining set: 567 hours.}
 \input{tables/hu_phoneme.tex}\label{tbl:hu_phoneme}
 }
 \end{table}
@@ -300,7 +300,7 @@ This could be due to the ability of the four-language model to generalize better
 %TODO: why hu is better with usg model.
 %TODO: why cz is better with hu phoneme model.
 %TODO: revise according to new PL results!
-The most striking results in Tables~\ref{tbl:hu_phoneme}~and~\ref{tbl:cz_hu_pl_ro_usg} were that all but the Hungarian speaker test set performed better on the Hungarian text test set.
+The most striking results in Tables~\ref{tbl:hu_phoneme}~and~\ref{tbl:cz_hu_pl_ro_usg} were that all but the Hungarian speaker test sets performed better on the Hungarian text test set.
 We had expected the Hungarian speakers to perform better with the Hungarian knowledge-based model and Hungarian text test set setting, but in fact the phoneme mapping masked the difference between mid-front \texttt{/e:/} and open-front \texttt{/\textipa{E}/} in the pronunciation of the Hungarian speakers.
 In addion to that, they were pronouncing the named entities using their native pronunciation, which also increased the WER.
 
@@ -308,18 +308,18 @@ Similarly, the results on the Hungarian speaker test set also improved by $3\%$ 
 This was supposedly also because the pronunciation of the Hungarian speakers deviated from the one defined in the knowledge-based model, and the four-language model was able to generalize better. 
 
 Finally, the results show that the experiments conducted on the Hungarian origin text test set yielded to the best results with all models.
-This is due to the fact, that the in-domain part of the language model training data was originating from the Hungarian language region see Section~\ref{traintext}.
+This is due to the fact that the in-domain part of the language model training data was originating from the Hungarian language region, see Section~\ref{traintext}.
 %TODO: why pl wer is so high.
 \subsection{Conclusions}
 %TODO: to be revised
-In this paper, we introduced two acoustic modeling techniques for a target language independent medieval Latin speech recognizer to eliminate the efforts of digitizing medieval Latin charter data.
-Our goal was to build an acoustic model for medieval Latin, borrowing speech data from different source languages (Czech, Hungarian, Polish and ultimately Romanian).
+In this paper, we introduced two acoustic modeling techniques for a target language independent medieval Latin speech recognizer to elevate the efforts of digitizing medieval Latin charter data.
+Our goal was to build an acoustic model for medieval Latin, borrowing speech data from different source languages (Czech, Hungarian, Polish and Romanian).
 Our test set consisted of medieval Latin charters originating from different regions read by native speakers of the above languages.
 With the objective of building an acoustic model without source language speech data, we presented two approaches: knowledge-based G2P modeling, and USG modeling.
 
-The results showed that both methods outperform by large the best baseline system. 
+The results showed that both methods outperform by far the best baseline system. 
 We found that the best model was the four-language USG model.
-When comparing it to the knowledge-based Hungarian phoneme-based model, which was using expert knowledge and trained on larger amount of data, it seemed that the four-language USG model was best in evening out the inconsistencies of the pronunciations in the different speaker test sets.
+When comparing it to the knowledge-based Hungarian phoneme-based model, which was using expert knowledge and trained on larger amount of data, it seemed that the four-language USG model was best in evening out the inconsistencies of the pronunciations in different speaker test sets.
 
 We concluded our work with noting that with all models we got the best results on the Hungarian text test set, which is due to the in-domain part of the language model.
 %comparing the results on a by-speaker-language and by-text-origin basis, where we found speaker-language differences affecting the results.
