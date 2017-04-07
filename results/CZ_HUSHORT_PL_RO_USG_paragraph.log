@@ -1,31 +1,31 @@
 Fájlonkénti statisztika (C, S, D, I, WER%)
-Fridericus-Hradec_Holoubek-Fridericus-CS                                              81      24       4       2   27.52
-Fridericus-Hradec_MBK-Fridericus-CS                                                   69      32       8       3   39.45
-Fridericus-Hradec_Rabai-Fridericus-HU                                                 85      22       2       2   23.85
-Fridericus-Litterae_ex_Slovacia-Fridericus-SK                                         86      16       7       3   23.85
-Fridericus-audioclip-1491289221000-72107-Fridericus-PL                                79      24       6      12   38.53
-Fridericus-record20170228204821[1]-Fridericus-LT                                      52      54       3      11   62.39
-Fridericus-record20170228205015[1]-Fridericus-LT                                      57      51       1       7   54.13
-Nicolaus-Hradec_Holoubek-Nicolaus-CS                                                  99      11       0       3   12.73
-Nicolaus-Hradec_MBK-Nicolaus-CS                                                       99       9       2       2   11.82
-Nicolaus-Hradec_Rabai-Nicolaus-HU                                                     98      11       1       2   12.73
-Nicolaus-Litterae_ex_Slovacia-Nicolaus-SK                                             99      10       1       4   13.64
-Nicolaus-audioclip-1491289237000-70997-Nicolaus-PL                                   105       4       1       3    7.27
-Nicolaus-record20170228210031[1]-Nicolaus-LT                                          96      14       0       2   14.55
-Nicolaus-record20170228211427[1]-Nicolaus-LT                                          92      17       1       9   24.55
-Wencezlaus-Hradec_Holoubek-Wencezlaus-CS                                             126      24       2       6   21.05
-Wencezlaus-Hradec_MBK-Wencezlaus-CS                                                  119      29       4       9   27.63
-Wencezlaus-Hradec_Rabai-Wencezlaus-HU                                                130      20       2       8   19.74
-Wencezlaus-Litterae_ex_Slovacia-Wencezlaus-SK                                        130      19       3       6   18.42
-Wencezlaus-audioclip-1491289236000-104491-Wencezlaus-PL                              119      30       3       6   25.66
-Wencezlaus-record20170228211228[1]-Wencezlaus-LT                                      88      61       3      11   49.34
-Wencezlaus-record20170228212003[1]-Wencezlaus-LT                                      92      59       1      21   53.29
+Fridericus-Hradec_Holoubek-Fridericus-CS                                              85      22       2       5   26.61
+Fridericus-Hradec_MBK-Fridericus-CS                                                   75      30       4       4   34.86
+Fridericus-Hradec_Rabai-Fridericus-HU                                                 85      23       1       4   25.69
+Fridericus-Litterae_ex_Slovacia-Fridericus-SK                                         87      18       4       5   24.77
+Fridericus-audioclip-1491289221000-72107-Fridericus-PL                                82      23       4       9   33.03
+Fridericus-record20170228204821[1]-Fridericus-LT                                      59      44       6       9   54.13
+Fridericus-record20170228205015[1]-Fridericus-LT                                      59      47       3       6   51.38
+Nicolaus-Hradec_Holoubek-Nicolaus-CS                                                 100      10       0       5   13.64
+Nicolaus-Hradec_MBK-Nicolaus-CS                                                      101       9       0       2   10.00
+Nicolaus-Hradec_Rabai-Nicolaus-HU                                                     97      12       1       3   14.55
+Nicolaus-Litterae_ex_Slovacia-Nicolaus-SK                                            102       8       0       6   12.73
+Nicolaus-audioclip-1491289237000-70997-Nicolaus-PL                                   102       7       1       3   10.00
+Nicolaus-record20170228210031[1]-Nicolaus-LT                                          98      12       0       2   12.73
+Nicolaus-record20170228211427[1]-Nicolaus-LT                                          93      16       1       7   21.82
+Wencezlaus-Hradec_Holoubek-Wencezlaus-CS                                             126      25       1       8   22.37
+Wencezlaus-Hradec_MBK-Wencezlaus-CS                                                  128      21       3       4   18.42
+Wencezlaus-Hradec_Rabai-Wencezlaus-HU                                                127      25       0       7   21.05
+Wencezlaus-Litterae_ex_Slovacia-Wencezlaus-SK                                        133      16       3       3   14.47
+Wencezlaus-audioclip-1491289236000-104491-Wencezlaus-PL                              128      24       0      11   23.03
+Wencezlaus-record20170228211228[1]-Wencezlaus-LT                                      97      52       3      22   50.66
+Wencezlaus-record20170228212003[1]-Wencezlaus-LT                                      95      55       2      13   46.05
 
 Kategóriánkénti statisztika (C, S, D, I, WER%)
-Fridericus                                                                           509     223      31      40   38.53
-Nicolaus                                                                             688      76       6      25   13.90
-Wencezlaus                                                                           804     242      18      67   30.73
+Fridericus                                                                           532     207      24      42   35.78
+Nicolaus                                                                             693      74       3      28   13.64
+Wencezlaus                                                                           834     218      12      68   28.01
 
 Összesített statisztika (C, S, D, I, WER%)
-összes                                                                              2001     541      55     132   28.03
+összes                                                                              2059     499      39     138   26.03
 
