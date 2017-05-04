@@ -114,23 +114,23 @@ We describe the data acquisition process in section~\ref{text}.
 
 Our baseline system consists of separately trained grapheme-based acoustic models for three of the Visegrad languages (Czech, Hungarian, Polish) complemented with the Romance language Romanian.
 We apply two different acoustic/pronunciation modeling techniques to develop models that are superior to the baseline.
-The first one, dicussed in detail in Section~\ref{g2p}, is a knowledge-based pronunciation modeling technique, where the source language phonemes are mapped to the target language phonemes.
-The second method applied is a Unified Simplified Grapheme (USG) acoustic modeling approach, where a joint grapheme inventory is established for all the languages paricipating in the joint acoustic model training.
+The first one, discussed in detail in Section~\ref{g2p}, is a knowledge-based pronunciation modeling technique, where the source language phonemes are mapped to the target language phonemes.
+The second method applied is a Unified Simplified Grapheme (USG) acoustic modeling approach, where a joint grapheme inventory is established for all the languages participating in the joint acoustic model training.
 We describe the USG method in Section~\ref{usg}.
 Evaluation of the baseline systems and both above approaches is presented in section~\ref{results}.
 
 \subsection{Related work}
 %TODO: \cite{schultz01}
-Different adaptaion techniques have been proposed in~\cite{schultz01} to train acoustic models from multiple source languages for a single target language where training data was limited.
+Different adaptation techniques have been proposed in~\cite{schultz01} to train acoustic models from multiple source languages for a single target language where training data was limited.
 %TODO: \cite{besacier14}
 \cite{besacier14} gives a great overview on designing speech recognition systems for under-resourced languages.
 Similar work has been done for multi-dialectal languages such as Arabic in~\cite{elfeky16} where jointly trained acoustic models were outperformed by methods that unify dialect specific-acoustic models using knowledge distillation and multitask learning.
-However, no  approach is known for the authors where the graphemes of multiple languages are merged succesfully and applied for acoustic modeling of a different language.
+However, no  approach is known for the authors where the graphemes of multiple languages are merged successfully and applied for acoustic modeling of a different language.
 To our knowledge, no previous work has been done on medieval Latin speech recognition, nor on classical Latin for that matter.
 
 \section{Data}
 \subsection{Textual data}\label{text}
-As part of our inquiry was to cover linguistic variability accross the Visegrad region, aquiring textual data posed a few challenges.
+As part of our inquiry was to cover linguistic variability across the Visegrad region, aquiring textual data posed a few challenges.
 First of all, textual data are scarce for medieval Latin, and texts originating from this geographical region are even more difficult to obtain in electronic format.
 Additionally, most of the available sources mix local languages and Latin, with no metadata to separate them.
 For the scope of this paper, we collected monolingual (Latin) texts only.
@@ -165,7 +165,7 @@ For Czech, the read part of Speecon database~\cite{czech} was used, 76 hours in 
 For Hungarian, beyond Speecon~\cite{hungarian}, manually transcribed broadcast news (112 hours) and conversational speech data was used, altogether 567 hours.
 With the exception of the Hungarian knowledge-based model (described in Section~\ref{g2p}), the 112-hour broadcast news set was used for training.
 For Polish, only broadcast news data~\cite{romanian} was available, comprising 31 hours of manually transcribed speech.
-The Romanian speech database used for the expriments was originally collected for~\cite{romanian} consisting of 35 hours of broadcast news.
+The Romanian speech database used for the experiments was originally collected for~\cite{romanian} consisting of 35 hours of broadcast news.
 \subsubsection{Test data}
 Native speakers of Czech, Hungarian, Polish and Slovakian - all of whom have experince with medieval Latin - were asked to record the three dev and test sets described in Section~\ref{testtext}.
 The recording conditions were accurately controlled: close‒talking microphones, quiet, non reverberant acoustic environment, fluent, flawless speech, and at least 16 kHz, 16 bit (linear PCM) encoding.
@@ -173,7 +173,7 @@ No instructions were given regarding the pronunciation, the speakers were using 
 The overall length of the recorded test speech was around 30 minutes.
 
 \section{Acoustic modeling}\label{AM}
-Building an acoustic model for speech recognition requires long hours of trancribed speech.
+Building an acoustic model for speech recognition requires long hours of transcribed speech.
 As of today (medieval) Latin is not spoken natively, and as to our knowledge, there is no recorded speech database.
 One obvious way to handle this problem is by creating a medieval Latin database; a proposition that requires lot of time, resources and trained speakers of medieval Latin. 
 Another way of circumventing the lack of available speech data is to use speech data of spoken languages, preferably those ones whose native speakers are going to use the system. 
@@ -277,7 +277,7 @@ It is worth mentioning that the Czech and Slovakian speaker test sets achieve a 
 The results for the three-language joint acoustic models are in Table~\ref{tbl:three_language_usg}.
 Among the three-language USG models, the Czech-Hungarian-Romanian model had the best performance with a competitive overall $21.9\%$ WER. 
 When adding Romanian, we got the best experimental results of $20.4\%$ with the four-language USG model (see in Table~\ref{tbl:cz_hu_pl_ro_usg}).
-We also measured the WER on any combination of three of the four languages, and found that each language contribued to the four-language model.
+We also measured the WER on any combination of three of the four languages, and found that each language contributed to the four-language model.
 
 It is worth mentioning, that compared to the knowledge-based Hungarian model (Table~\ref{tbl:hu_phoneme}), the results on the Polish speaker test set improved by a significant $6.5\%$ (absolute).
 This could be due to the ability of the four-language model to generalize better over different speaker test tests.
@@ -302,9 +302,9 @@ This generalizing ability intensifies when adding training data of a new languag
 %TODO: revise according to new PL results!
 The most striking results in Tables~\ref{tbl:hu_phoneme}~and~\ref{tbl:cz_hu_pl_ro_usg} were that all but the Hungarian speaker test sets performed better on the Hungarian text test set.
 We had expected the Hungarian speakers to perform better with the Hungarian knowledge-based model and Hungarian text test set setting, but in fact the phoneme mapping masked the difference between mid-front \texttt{/e:/} and open-front \texttt{/\textipa{E}/} in the pronunciation of the Hungarian speakers.
-In addion to that, they were pronouncing the named entities using their native pronunciation, which also increased the WER.
+In addition to that, they were pronouncing the named entities using their native pronunciation, which also increased the WER.
 
-Similarly, the results on the Hungarian speaker test set also improved by $3\%$ (absolute) with the four-language USG model compared to the knoeledge-based Hungarian model in Table~\ref{tbl:hu_phoneme}.
+Similarly, the results on the Hungarian speaker test set also improved by $3\%$ (absolute) with the four-language USG model compared to the knowledge-based Hungarian model in Table~\ref{tbl:hu_phoneme}.
 This was supposedly also because the pronunciation of the Hungarian speakers deviated from the one defined in the knowledge-based model, and the four-language model was able to generalize better. 
 
 Finally, the results show that the experiments conducted on the Hungarian origin text test set yielded to the best results with all models.
