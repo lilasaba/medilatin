@@ -236,6 +236,7 @@ We experimented with joint three- and four-language USG acoustic models of any c
 The joint acoustic model requires a unified grapheme inventory for the training.
 Our proposal was to simplify all special characters, i.e. those graphemes that had a diacritic mark (acute, caron, etc.) on them, were mapped back to their normalized form (e.g. \texttt{\v{r}} to \texttt{r}, \texttt{\'{i}} to \texttt{i}, etc.).
 That way the graphemic transcription of the Czech word \texttt{\v{r}ekl} becomes \texttt{/r~e~k~l/}.
+For the four languages an overall of 32 of such unifications/simplifications were made.
 Further than that, those graphemes that are non-native to Latin, and can straightforwardly mapped to a native Latin grapheme(s), were also replaced.
 These included mappings from \texttt{x} to \texttt{ks}, \texttt{y} to \texttt{i} and \texttt{w} to \texttt{v}.
 That way the graphemic transcription of the word \texttt{taxi} becomes \texttt{/t~a~ks~i/}.
