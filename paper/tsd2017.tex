@@ -144,7 +144,7 @@ To increase the vocabulary size of the language model, we collected a relatively
 This corpus consists of literary and historical texts from the post-classical era.
 In spite of our efforts, at the time of writing this paper, we could not gather a measurable amount of textual data from the age and area of the Kingdoms of Bohemia and Poland.
 \subsubsection{Test data}\label{testtext}
-Using independent sources, three charters were selected from the Kingdoms of Bohemia (CZ), Hungary (HU) and Poland (PL), from around 1200-1300 AD, for development and test data.
+Using independent sources, three charters were selected from the Kingdoms of Bohemia (CZ), Hungary (HU) and Poland (PL), from around 1200-1300 AD, as test data.
 The dev set was used for evaluating the language model, and to test the performance of the LVCSR approaches.
 The test sets were read out loud by historians fluent in medieval Latin.
 \subsubsection{Alternate spellings}
@@ -192,7 +192,7 @@ A minibatch size of 512, an initial learning rate of 0.1, and final learning rat
 
 \subsection{Grapheme-based pronunciation modeling}\label{baseline}
 For our three separately trained baseline systems, grapheme-based acoustic models were used where pronunciation is modeled in an implicit way.
-The language-specific graphemes (e.g. \texttt{\H{o}}, \texttt{l{}}) that are not part of the Latin alphabet were trained, but not used in the recognition phase.
+The language-specific graphemes (e.g. \texttt{\"{o}}, \texttt{\'{n}}) that are not part of the Latin alphabet were trained, but not used in the recognition phase.
 
 \subsection{Source-target grapheme to phoneme mapping (G2P)}\label{g2p}
 The source languages for the acoustic model training were Czech and Hungarian with G2P mapping from orthographic transcriptions to native phonemes.
@@ -239,13 +239,26 @@ Our motivation with using this technique was three-fold:
 We experimented with joint three- and four-language USG acoustic models of any combination of the four languages (Czech, Hungarian, Polish and Romanian). 
 The joint acoustic model requires a unified grapheme inventory for the training.
 Our proposal was to simplify all special characters, i.e. those graphemes that had a diacritic mark (acute, caron, etc.) on them, were mapped back to their normalized form (e.g. \texttt{\v{r}} to \texttt{r}, \texttt{\'{i}} to \texttt{i}, etc.).
-That way the graphemic transcription of the Czech word \texttt{\v{r}ekl} becomes \texttt{/r~e~k~l/}.
+Table~\ref{tbl:usg-examples} contains examples for the unification/simplification process for all four languages.
 For the four languages an overall of 32 of such unifications/simplifications were made.
 Further than that, those graphemes that are non-native to Latin, and can straightforwardly mapped to a native Latin grapheme(s), were also replaced.
 These included mappings from \texttt{x} to \texttt{ks}, \texttt{y} to \texttt{i} and \texttt{w} to \texttt{v}.
-That way the graphemic transcription of the word \texttt{taxi} becomes \texttt{/t~a~ks~i/}.
+%That way the graphemic transcription of the word \texttt{taxi} becomes \texttt{/t~a~ks~i/}.
 As a result, a unified and simplified grapheme inventory set was produced, formally compatible with medieval Latin.
 The USG units were then used as acoustic model units in the training.
+
+\begin{table}
+	\centering
+	\caption{Simplification examples for the unified model.}\label{tbl:usg-examples}
+	\begin{tabular}{l|rrrr}
+	\hline
+	Language & CZ & HU & PL & RO \\
+	\hline
+	Orthographic & \v{r}ekl & \H{o}z & mi\'{s} & ap\u{a} \\
+	USG & rekl & oz & mis & apa \\
+	\hline
+	\end{tabular}
+\end{table}
 
 \section{Experimental results}\label{results}
 We conducted experiments on medieval Latin, spoken by native speakers of four languages (Czech, Hungarian, Polish and Slovakian), where the test texts were originating from different regions, as described in Sections~\ref{AM}~and~\ref{text}.
@@ -325,7 +338,7 @@ The results showed that both methods outperform by far the best baseline system.
 We found that the best model was the four-language USG model.
 When comparing it to the knowledge-based Hungarian phoneme-based model, which was using expert knowledge to map words to phoneme sequences, and trained on larger amount of data, it seemed that the four-language USG model was better in evening out the inconsistencies of the pronunciations in different speaker test sets.
 
-Future research directions include acquiring a considerable amount of medieval speech and textual data, as well as implementing a more refined G2P modeling using a global phoneme inventory set.
+Future research directions include acquiring a considerable amount of medieval speech and textual data, as well as implementing a more refined G2P modeling using a unified phoneme inventory set.
 Furthermore, adding more data when using the USG approach may result in even higher recognition accuracy, allowing dictational applications.
 
 % Bibliography
