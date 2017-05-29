@@ -188,7 +188,7 @@ A minibatch size of 512, an initial learning rate of 0.1, and final learning rat
 
 \subsection{Grapheme-based pronunciation modeling}\label{baseline}
 For our three separately trained baseline systems, grapheme-based acoustic models were used where pronunciation is modeled in an implicit way.
-The same principles - described in detail in Section~\ref{usg} - are applied, namely, mapping the graphemes not present in the Latin grapheme set to their normalized (simplified) counterparts.
+The language-specific graphemes (e.g. \texttt{\H{o}}, \texttt{l{}}) that are not part of the Latin alphabet were trained, but not used in the recognition phase.
 
 \subsection{Source-target grapheme to phoneme mapping (G2P)}\label{g2p}
 The source languages for the acoustic model training were Czech and Hungarian with G2P mapping from orthographic transcriptions to native phonemes.
@@ -234,9 +234,11 @@ Our motivation with using this technique was three-fold:
 \end{enumerate}
 We experimented with joint three- and four-language USG acoustic models of any combination of the four languages (Czech, Hungarian, Polish and Romanian). 
 The joint acoustic model requires a unified grapheme inventory for the training.
-Our proposal was to simplify all special characters, i.e. those graphemes that had a diacritic mark (acute, caron, etc.) on them, were mapped back to their normalized form (e.g. \texttt{\v{r}} to \texttt{r}, \texttt{\'{o}} to \texttt{o}, etc.).
+Our proposal was to simplify all special characters, i.e. those graphemes that had a diacritic mark (acute, caron, etc.) on them, were mapped back to their normalized form (e.g. \texttt{\v{r}} to \texttt{r}, \texttt{\'{i}} to \texttt{i}, etc.).
+That way the graphemic transcription of the Czech word \texttt{\v{r}ekl} becomes \texttt{/r~e~k~l/}.
 Further than that, those graphemes that are non-native to Latin, and can straightforwardly mapped to a native Latin grapheme(s), were also replaced.
 These included mappings from \texttt{x} to \texttt{ks}, \texttt{y} to \texttt{i} and \texttt{w} to \texttt{v}.
+That way the graphemic transcription of the word \texttt{taxi} becomes \texttt{/t~a~ks~i/}.
 As a result, a unified and simplified grapheme inventory set was produced, formally compatible with medieval Latin.
 The USG units were then used as acoustic model units in the training.
 
