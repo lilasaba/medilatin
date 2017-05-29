@@ -105,22 +105,21 @@ On the other hand, applying a Unified Simplified Grapheme (USG) inventory set fo
 
 \section{Introduction}
 The pronunciation of Latin texts mainly depends on the era and region of their origin~\cite{regional}.
-Apart from the two widely studied classical and ecclesiastical pronunciation styles~\cite{allen78}, regional pronunciations emerged after the classical era.
-One of these pronunciation groups is the East-Central European ~\cite{regional} one, which uses roughly the same pronunciation rules, described in detail in Section~\ref{g2p}.
+Apart from the two widely studied classical and ecclesiastical pronunciation styles~\cite{allen78}, many other regional pronunciations exists that emerged after the classical era.
+One of these pronunciation groups is the East-Central European ~\cite{regional} one, described in detail in Section~\ref{g2p}.
 Although the target pronunciation is considered to be uniform for this group, it also has to be taken into account, that the acoustic base of the different source languages varies, which can lead to various accents.
 It also has to be noted, that apart from the variations in the pronunciations, orthographic and grammatical variations of Latin are also exhibited through regions.
 
-This raises the question of how to create a speech recognition system which has to deal with pronunciation variations for native speakers of different languages reading linguistically different texts.
-We propose a system that aimes at the recognition of medieval Latin speech spoken by speakers from the Visegrad region.
-Therefore, it is important to collect in-domain textual/language data for the language model from the relevant geographican regions and time.
+This raises the question of how to create a speech recognition system which has to deal with pronunciation variations of native speakers of different languages reading linguistically different texts.
+We propose a system built for the recognition of medieval Latin speech spoken by speakers from the Visegrad region.
+It is also important to collect in-domain textual/language data for the language model from the relevant geographican regions and time.
 We describe the data acquisition process in section~\ref{text}.
 
 Our baseline system consists of separately trained grapheme-based acoustic models for three of the Visegrad languages (Czech, Hungarian, Polish) complemented with the Romance language Romanian.
 We apply two different acoustic/pronunciation modeling techniques to develop models that are superior to the baseline.
 The first one, discussed in detail in Section~\ref{g2p}, is a knowledge-based pronunciation modeling technique, where the source language phonemes are mapped to the target language phonemes.
-The second method applied is a Unified Simplified Grapheme (USG) acoustic modeling approach, where a joint grapheme inventory is established for all the languages participating in the joint acoustic model training.
-We describe the USG method in Section~\ref{usg}.
-Evaluation of the baseline systems and both above approaches is presented in section~\ref{results}.
+The second method applied is a Unified Simplified Grapheme (USG) acoustic modeling approach, where a joint grapheme inventory is established for all the languages participating in the joint acoustic model training, described in Section~\ref{usg}.
+The evaluation of all systems is presented in section~\ref{results}.
 
 \subsection{Related work}
 %TODO: \cite{schultz01}
@@ -128,7 +127,7 @@ Different adaptation techniques have been proposed in~\cite{schultz01} to train 
 %TODO: \cite{besacier14}
 \cite{besacier14} gives a great overview on designing speech recognition systems for under-resourced languages.
 Similar work has been done for multi-dialectal languages such as Arabic in~\cite{elfeky16} where jointly trained acoustic models were outperformed by methods that unify dialect specific-acoustic models using knowledge distillation and multitask learning.
-However, no  approach is known for the authors where the graphemes of multiple languages are merged successfully and applied for acoustic modeling of a different language.
+However, no approach is known for the authors where the graphemes of multiple languages are merged successfully and applied for acoustic modeling of a different language.
 To our knowledge, no previous work has been done on medieval Latin speech recognition, nor on classical Latin for that matter.
 
 \section{Data}
@@ -144,8 +143,7 @@ To increase the vocabulary size of the language model, we collected a relatively
 This corpus consists of literary and historical texts from the post-classical era.
 In spite of our efforts, at the time of writing this paper, we could not gather a measurable amount of textual data from the age and area of the Kingdoms of Bohemia and Poland.
 \subsubsection{Test data}\label{testtext}
-Using independent sources, three charters were selected from the Kingdoms of Bohemia (CZ), Hungary (HU) and Poland (PL), from around 1200-1300 AD, as test data.
-The dev set was used for evaluating the language model, and to test the performance of the LVCSR approaches.
+Using independent sources, three charters were selected from the Kingdoms of Bohemia (CZ), Hungary (HU) and Poland (PL), from around 1200-1300 AD, as test data for evaluating the language model, and to test the performance of the LVCSR approaches.
 The test sets were read out loud by historians fluent in medieval Latin.
 \subsubsection{Alternate spellings}
 One interesting feature of the acquired corpora is that they contain a significant number of spelling variants.
@@ -153,12 +151,11 @@ Having spelling variants in the corpus with identical pronunciation introduces n
 To detect the spelling variants we took all pairs in the pronunciation dictionary whose pronunciation were identical, and used context and expert knowledge to decide whether the pair of equivalent pronunciations are spelling variants or homophones.
 We obtained a unified spelling for these variants by favouring the more frequent variant in the corpus (e.g. \textit{maiestati} to \textit{majestati}).
 Resolving spelling variants resulted in a more consistent corpus in terms of perplexity (reducing it from 775 to 672), and reduced the OOV rate by 0.8\%.
-%TODO: verbatim text excerpts (cz).
 \subsubsection{Language model}
 The word trigram language models we built from the two corpora were estimated with the SRI Language Modeling toolkit (SRILM)~\cite{srilm} using modified Kneser-Ney smoothing method.
 After estimating the mixture parameter, linear interpolation was used to merge the two language models.
 
-The perplexity measures on the dev data showed, that the Monasterium corpus originating from the time and era of the Hungarian Kingdom was indeed best fitting with the Hungarian subset of the test data with a perplexity of 82, and an OOV rate of $0.9\%$.
+The perplexity measures on the test data showed that the Monasterium corpus originating from the time and era of the Hungarian Kingdom was indeed best fitting with the Hungarian subset of the test data with a perplexity of 82, and an OOV rate of $0.9\%$.
 The perplexities measured on the Czech and Polish origin text sets were ranging from 500 to 3200.
 Adding the LatinLibrary corpus increased the perplexity significantly (up to 672), but reduced the OOV rate by $7\%$ on the overall test data, as well as the WER, so we decided to use the interpolated language model.
 
@@ -171,7 +168,7 @@ For Polish, only broadcast news data~\cite{romanian} was available, comprising 3
 The Romanian speech database used for the experiments was originally collected for~\cite{romanian} consisting of 35 hours of broadcast news.
 \subsubsection{Test data}
 Native speakers of Czech, Hungarian, Polish and Slovakian - all of whom have experince with medieval Latin - were asked to record the three dev and test sets described in Section~\ref{testtext}.
-The recording conditions were accurately controlled: close‒talking microphones, quiet, non reverberant acoustic environment, fluent, flawless speech, and at least 16 kHz, 16 bit (linear PCM) encoding.
+The recording conditions were accurately controlled: close-talking microphones, quiet, non reverberant acoustic environment, fluent, flawless speech, and at least 16 kHz, 16 bit (linear PCM) encoding.
 No instructions were given regarding the pronunciation, the speakers were using their expertise on medieval Latin pronunciation - affected certainly by their native language.
 The overall length of the recorded test speech was around 30 minutes.
 
