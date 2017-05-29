@@ -43,7 +43,6 @@
 \title{Unified Simplified Grapheme Acoustic Modeling for Medieval Latin LVCSR}
 
 % TSD 2017: a short form should be given in case the title is too long for the running head
-% ne felejstük update-elni majd.
 \titlerunning{Medieval Latin LVCSR}
 
 % TSD 2017: Author's names. Chinese authors should write their first names(s)
@@ -103,7 +102,7 @@ On the other hand, applying a Unified Simplified Grapheme (USG) inventory set fo
 \section{Introduction}
 The pronunciation of Latin texts mainly depends on the era and region of their origin~\cite{regional}.
 Apart from the two widely studied classical and ecclesiastical pronunciation styles~\cite{allen78}, regional pronunciations emerged after the classical era.
-One of these pronunciation groups is the east-central european ~\cite{regional} one, which uses roughly the same pronunciation rules, described in detail in Section~\ref{g2p}.
+One of these pronunciation groups is the East-Central European ~\cite{regional} one, which uses roughly the same pronunciation rules, described in detail in Section~\ref{g2p}.
 Although the target pronunciation is considered to be uniform for this group, it also has to be taken into account, that the acoustic base of the different source languages varies, which can lead to various accents.
 It also has to be noted, that apart from the variations in the pronunciations, orthographic and grammatical variations of Latin are also exhibited through regions.
 
@@ -230,13 +229,11 @@ The second method used for improving speech recognition of medieval Latin - this
 Our motivation with using this technique was three-fold:
 \begin{enumerate}
 \item Develop a target language acoustic model using available language resources.
-\item Support recognition of medieval Latin spoken by speakers of a diverse native language background.
-\item Validate the intuition that - since the writing systems of the Countries of Visegrad region are based on Latin - the deviations from the common ancestor (medieval Latin) are extinguishable through unifications and simplifications of the native graphemes.
+\item Support recognition of medieval Latin spoken by speakers of diverse native language background.
+\item As the writing systems in the Visegrad region are originating from medieval Latin, we were aiming to validate the intuition that by unifying and simplifying the native graphemes, the deviations from the common ancestor cancel out.
 \end{enumerate}
-%It is motivated by the intuition that ...
 We experimented with joint three- and four-language USG acoustic models of any combination of the four languages (Czech, Hungarian, Polish and Romanian). 
-
-The joint acoustic model requires a unified grapheme inventory for the trainig.
+The joint acoustic model requires a unified grapheme inventory for the training.
 Our proposal was to simplify all special characters, i.e. those graphemes that had a diacritic mark (acute, caron, etc.) on them, were mapped back to their normalized form (e.g. \texttt{\v{r}} to \texttt{r}, \texttt{\'{o}} to \texttt{o}, etc.).
 Further than that, those graphemes that are non-native to Latin, and can straightforwardly mapped to a native Latin grapheme(s), were also replaced.
 These included mappings from \texttt{x} to \texttt{ks}, \texttt{y} to \texttt{i} and \texttt{w} to \texttt{v}.
@@ -245,7 +242,7 @@ The USG units were then used as acoustic model units in the training.
 
 \section{Experimental results}\label{results}
 We conducted experiments on medieval Latin, spoken by native speakers of four languages (Czech, Hungarian, Polish and Slovakian), where the test texts were originating from different regions, as described in Sections~\ref{AM}~and~\ref{text}.
-The best performing monolingual grapheme-base model results were that of Hungarian, with $34.6\%$ overall WER (see in Table~\ref{tbl:cz_hu_pl_ro_grapheme}), possibly because of the larger training data - this was the reference value when comparing the results.
+The best performing monolingual grapheme-based model results were that of Hungarian, with $34.6\%$ overall WER (see in Table~\ref{tbl:cz_hu_pl_ro_grapheme}), possibly because of the larger training data - this was the reference value when comparing the results.
 On a related note, we also found that except for Czech, each monolingual grapheme-based acoustic model had the best performance over its own test set.
 
 \begin{table}
@@ -268,7 +265,7 @@ It is worth mentioning that the Czech and Slovakian speaker test sets achieve a 
 \hfill
 \parbox{.45\linewidth}{
 \centering
-\caption{WER[\%] for Latin-Hungarian source-target G2P model. Acoustic modeltraining set: 567 hours.}
+\caption{WER[\%] for Latin-Hungarian source-target G2P model. Acoustic model training set: 567 hours.}
 \input{tables/hu_phoneme.tex}\label{tbl:hu_phoneme}
 }
 \end{table}
