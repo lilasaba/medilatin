@@ -212,9 +212,7 @@ The Latin alphabet, extracted from our corpora (see Section~\ref{text}), consist
 	HU & e & \o & f & kv \\
 	\hline
 	\end{tabular}
-\end{table}
-
-\begin{table}
+\vspace*{0.4 cm}
 	\centering
 	\caption{Latin context-sensitive rewrite rules. V: vowel, VP: palatal vowel, \string^VP: everything but a palatal vowel, C: consonant, $*$: zero or any, \string^: beginning of word, $[\string^stx]$: not s, t or x.}\label{tbl:context}
 	\begin{tabular}{l|cc|cc|cc|cc}
@@ -312,10 +310,6 @@ This generalizing ability intensifies when adding training data of a new languag
 \input{tables/cz_hu_pl_ro_usg.tex}\label{tbl:cz_hu_pl_ro_usg}
 }
 \end{table}
-%\subsubsection{Error analysis}
-%TODO: why hu is better with usg model.
-%TODO: why cz is better with hu phoneme model.
-%TODO: revise according to new PL results!
 The most striking results in Tables~\ref{tbl:hu_phoneme}~and~\ref{tbl:cz_hu_pl_ro_usg} were that all but the Hungarian speaker test sets performed better on the Hungarian text test set.
 We had expected the Hungarian speakers to perform better with the Hungarian knowledge-based model and Hungarian text test set setting, but in fact the phoneme mapping masked the difference between mid-front \texttt{/e:/} and open-front \texttt{/\textipa{E}/} in the pronunciation of the Hungarian speakers.
 In addition to that, they were pronouncing the named entities using their native pronunciation, which also increased the WER.
@@ -325,9 +319,7 @@ This was supposedly also because the pronunciation of the Hungarian speakers dev
 
 Finally, the results show that the experiments conducted on the Hungarian origin text test set yielded to the best results with all models.
 This is due to the fact that the in-domain part of the language model training data was originating from the Hungarian language region, see Section~\ref{traintext}.
-%TODO: why pl wer is so high.
 \subsection{Conclusions}
-%TODO: to be revised
 In this paper, we introduced two acoustic modeling techniques for a target language independent medieval Latin speech recognizer to elevate the efforts of digitizing medieval Latin charter data.
 Our goal was to build an acoustic model for medieval Latin, borrowing speech data from different source languages (Czech, Hungarian, Polish and Romanian).
 Our test set consisted of medieval Latin charters originating from different regions read by native speakers of the above languages.
