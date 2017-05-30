@@ -57,18 +57,18 @@
 % \author{Firstname1 Surname1\inst{1} \and Firstname2 Surname2 \inst{2}}
 
 % TSD 2017: Author's names for headings. For 1-2 authors, use the following form
-\authorrunning{Lili Szab\'{o} \and P\'{e}ter Mihajlik}
+%\authorrunning{Lili Szab\'{o} \and P\'{e}ter Mihajlik}
 % TSD 2017: For more than 2 authors, please, use the following
-% \authorrunning{Name1 Surname1 et al.}
+ \authorrunning{Lili Szab\'{o} et al.}
 
 % TSD 2017: The authors' affiliations
-\institute{SpeechTex \\
+\institute{SpeechTex Ltd.\\
 % TSD 2017: optional url
 \url{www.speechtex.com} \\
 \mailsa\\
 % TSD 2017: For authors from different institutions, add 2nd institution, etc.
 \and
-Thinktech \\
+ThinkTECH Research Center \\
 \mailsb\\
 % \url{www.website.org} \\
 \and
@@ -235,14 +235,14 @@ Our motivation with using this technique was three-fold:
 \end{enumerate}
 We experimented with joint three- and four-language USG acoustic models of any combination of the four languages (Czech, Hungarian, Polish and Romanian). 
 The joint acoustic model requires a unified grapheme inventory for the training.
-Our proposal was to simplify all special characters, i.e. those graphemes that had a diacritic mark (acute, caron, etc.) on them, were mapped back to their normalized form (e.g. \texttt{\v{r}} to \texttt{r}, \texttt{\'{i}} to \texttt{i}, etc.).
+Our proposal was to simplify all special characters, i.e. those graphemes that had a diacritic mark (acute, caron, etc.) on them, were mapped back to their normalized form.
 Table~\ref{tbl:usg-examples} contains examples for the unification/simplification process for all four languages.
-For the four languages an overall of 32 of such unifications/simplifications were made.
+For the four languages an overall of 32 of such unifications/simplifications were made, reducing the unified grapheme inventory set from 58 to 26.
 Further than that, those graphemes that are non-native to Latin, and can straightforwardly mapped to a native Latin grapheme(s), were also replaced.
 These included mappings from \texttt{x} to \texttt{ks}, \texttt{y} to \texttt{i} and \texttt{w} to \texttt{v}.
 %That way the graphemic transcription of the word \texttt{taxi} becomes \texttt{/t~a~ks~i/}.
 As a result, a unified and simplified grapheme inventory set was produced, formally compatible with medieval Latin.
-The USG units were then used as acoustic model units in the training.
+The USG units were then used as acoustic model units in the multiple language training.
 
 \begin{table}
 	\centering
