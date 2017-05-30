@@ -121,11 +121,8 @@ The first one, discussed in detail in Section~\ref{g2p}, is a knowledge-based pr
 The second method applied is a Unified Simplified Grapheme (USG) acoustic modeling approach, where a joint grapheme inventory is established for all the languages participating in the joint acoustic model training, described in Section~\ref{usg}.
 The evaluation of all systems is presented in section~\ref{results}.
 
-\subsection{Related work}
-%TODO: \cite{schultz01}
-Different adaptation techniques have been proposed in~\cite{schultz01} to train acoustic models from multiple source languages for a single target language where training data was limited.
-%TODO: \cite{besacier14}
-\cite{besacier14} gives a great overview on designing speech recognition systems for under-resourced languages.
+\subsubsection{Related work}
+Different adaptation techniques have been proposed in~\cite{schultz01} and \cite{besacier14}to train acoustic models from multiple source languages for a single target language where training data was limited.
 Similar work has been done for multi-dialectal languages such as Arabic in~\cite{elfeky16} where jointly trained acoustic models were outperformed by methods that unify dialect specific-acoustic models using knowledge distillation and multitask learning.
 However, no approach is known for the authors where the graphemes of multiple languages are merged successfully and applied for acoustic modeling of a different language.
 To our knowledge, no previous work has been done on medieval Latin speech recognition, nor on classical Latin for that matter.
@@ -192,12 +189,12 @@ For our three separately trained baseline systems, grapheme-based acoustic model
 The language-specific graphemes (e.g. \texttt{\"{o}}, \texttt{\'{n}}) that are not part of the Latin alphabet were trained, but not used in the recognition phase.
 
 \subsection{Source-target grapheme to phoneme mapping (G2P)}\label{g2p}
-The source languages for the acoustic model training were Czech and Hungarian with G2P mapping from orthographic transcriptions to native phonemes.
-To develop a pronunciation dictionary for the target language medieval Latin, first we mapped source language-phonemes to target language phonemes using expert knowledge.
-As a second step, Latin-specific pronunciation rules also had to be implemented.
+This method utilizes already trained acoustic models where the source language phonemes are mapped to the target language phonemes using expert knowledge.
+The source language acoustic models are trained with with G2P mapping from orthographic transcriptions to native phonemes.
+In our experiment we used Czech and Hungarian as (separately trained) source languages for the target language Latin.
+After mapping source language phonemes to Latin phonemes, Latin-specific pronunciation rules were implemented.
 These include a set of context independent digraph mappings and context dependent rewrite rules, summarized in Table~\ref{tbl:digraph} and Table~\ref{tbl:context} respectively, for both Czech and Hungarian.
-Both languages fully cover the phoneme inventory of medieval Latin.
-The Latin alphabet, extracted from our corpora (see Section~\ref{text}), consisted of 24 elements.
+Both languages fully cover the phoneme inventory of medieval Latin which is of size 24.
 
 \begin{table}
 	\centering
