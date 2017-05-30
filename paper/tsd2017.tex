@@ -59,7 +59,7 @@
 % TSD 2017: Author's names for headings. For 1-2 authors, use the following form
 %\authorrunning{Lili Szab\'{o} \and P\'{e}ter Mihajlik}
 % TSD 2017: For more than 2 authors, please, use the following
- \authorrunning{Lili Szab\'{o} et al.}
+ \authorrunning{Szab\'{o}, Lili et al.}
 
 % TSD 2017: The authors' affiliations
 \institute{SpeechTex Ltd.\\
@@ -68,7 +68,7 @@
 \mailsa\\
 % TSD 2017: For authors from different institutions, add 2nd institution, etc.
 \and
-ThinkTECH Research Center \\
+THINKTech Research Center \\ % már a saját cégem nevét sem tudom, bocs :~
 \mailsb\\
 % \url{www.website.org} \\
 \and
@@ -228,7 +228,7 @@ Our motivation with using this technique was three-fold:
 \begin{enumerate}
 \item Develop a target language acoustic model using available language resources.
 \item Support recognition of medieval Latin spoken by speakers of diverse native language background.
-\item As the writing systems in the Visegrad region are originating from medieval Latin, we were aiming to validate the intuition that by unifying and simplifying the native graphemes, the deviations from the common ancestor cancel out.
+\item As the writing systems in the Visegrad region are originating from medieval Latin, we were aiming to validate the intuition that by unifying and simplifying the native graphemes, the deviations from the common ancestor may cancel out.
 \end{enumerate}
 We experimented with joint three- and four-language USG acoustic models of any combination of the four languages (Czech, Hungarian, Polish and Romanian). 
 The joint acoustic model requires a unified grapheme inventory for the training.
@@ -248,7 +248,7 @@ The USG units were then used as acoustic model units in the multiple language tr
 	\hline
 	Language & CZ & HU & PL & RO \\
 	\hline
-	Orthographic & \v{r}ekl & \H{o}z & mi\'{s} & ap\u{a} \\
+	Orthography & \v{r}ekl & \H{o}z & mi\'{s} & ap\u{a} \\  % nem vagyok biztos benne, de nekem így természetesebb...
 	USG & rekl & oz & mis & apa \\
 	\hline
 	\end{tabular}
@@ -267,8 +267,8 @@ On a related note, we also found that only the Hungarian monolingual grapheme-ba
 
 \subsection{Source-target G2P mapping results}
 The results on the experiments with the knowledge-based pronunciation modeling technique, where the native phonemes of the source phoneme-based acoustic models were mapped to the target phonemes in the pronunciation dictionary, are in Table~\ref{tbl:cz_phoneme} for the source language Czech, and in Table~\ref{tbl:hu_phoneme} for the source language Hungarian.
-The Hungarian knowledge-based acoustic model significantly outperforms the (Hungarian grapheme-based) baseline, with an $21.1\%$ overall WER.
-It is worth mentioning that the Czech and Slovak speaker test sets achieve a surprisingly low $6.4\%$ and $9.1\%$ WER respectively on the Hungarian text test set.
+The Hungarian knowledge-based acoustic model - possibly due to the larger data set - outperforms the (Hungarian grapheme-based) baseline significantly, with an $21.1\%$ overall WER.
+It is worth mentioning that the Czech and Slovak speaker test sets achieve a surprisingly low $6.4\%$ and $9.1\%$ WER respectively on the Hungarian text test set. % én csak ezeket boldítanám be.
 
 \begin{table}
 \parbox{.45\linewidth}{
@@ -307,9 +307,13 @@ This generalizing ability intensifies when adding training data of a new languag
 \input{tables/cz_hu_pl_ro_usg.tex}\label{tbl:cz_hu_pl_ro_usg}
 }
 \end{table}
-The most striking result in Table~\ref{tbl:hu_phoneme} was that all but the Hungarian speaker test sets performed better on the Hungarian text test set.
-We had expected the Hungarian speakers to perform better with the Hungarian knowledge-based model and Hungarian text test set setting, but in fact the phoneme mapping masked the difference between mid-front \texttt{/e:/} and open-front \texttt{/\textipa{E}/} in the pronunciation of the Hungarian speakers.
-In addition to that, they were pronouncing the named entities using their native pronunciation, which also increased the WER.
+The most striking result was obtained by the comparison of Table~\ref{tbl:hu_phoneme} and Table~\ref{tbl:cz_hu_pl_ro_usg} Hungarian speakers' results on Hungarian test text.
+% az alábbi nem igaz, mert a lengyel is jobb az USG-vel a magyaron. 
+%all but the Hungarian speaker test sets performed better on the Hungarian text test set.
+
+
+We had expected the opposite results, i.e., the Hungarian speakers to perform better with the Hungarian knowledge-based model and Hungarian text test set setting, but in fact the phoneme mapping masked the difference between mid-front \texttt{/e:/} and open-front \texttt{/\textipa{E}/} in the pronunciation of the Hungarian speakers.
+In addition to that, they were pronouncing the named entities using their native pronunciation, which also increased the WER in the case of the phonetic approach.
 
 Similarly, the results on the Hungarian speaker test set also improved by $3\%$ (absolute) with the four-language USG model compared to the knowledge-based Hungarian model in Table~\ref{tbl:hu_phoneme}.
 This was supposedly also because the pronunciation of the Hungarian speakers deviated from the one defined in the knowledge-based model, and the four-language model was able to generalize better. 
