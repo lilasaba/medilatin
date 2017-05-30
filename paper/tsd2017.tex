@@ -158,7 +158,7 @@ Adding the LatinLibrary corpus increased the perplexity significantly (up to 672
 
 \subsection{Speech data}
 \subsubsection{Training data}\label{speechtraining}
-For Czech, the read part of Speecon database~\cite{czech} was used, 76 hours in sum.
+For Czech, the read part of Speecon database~\cite{czech} was used, recorded with medium distance microphone, 76 hours in sum.
 The 567-hour database for Hungarian consisted of the Speecon~\cite{hungarian} database, manually transcribed broadcast news (112 hours) and conversational speech data.
 With the exception of the Hungarian knowledge-based model (described in Section~\ref{g2p}), the 112-hour broadcast news set was used for training.
 For Polish, only broadcast news data~\cite{romanian} was available, comprising 31 hours of manually transcribed speech.
@@ -257,7 +257,7 @@ The USG units were then used as acoustic model units in the multiple language tr
 \section{Experimental results}\label{results}
 We conducted experiments on medieval Latin, spoken by native speakers of four languages (Czech, Hungarian, Polish and Slovak), where the test texts were originating from different regions, as described in Sections~\ref{AM}~and~\ref{text}.
 The best performing monolingual grapheme-based model results were that of Hungarian, with $34.6\%$ overall WER (see in Table~\ref{tbl:cz_hu_pl_ro_grapheme}), possibly because of the larger training data - this was the reference value when comparing the results.
-On a related note, we also found that the Hungarian and Polish monolingual grapheme-based acoustic models had the best performance over their own test sets.
+On a related note, we also found that only the Hungarian monolingual grapheme-based acoustic model had the best performance over its own test sets.
 
 \begin{table}
 \centering
