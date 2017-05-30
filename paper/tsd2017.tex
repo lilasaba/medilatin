@@ -159,12 +159,12 @@ Adding the LatinLibrary corpus increased the perplexity significantly (up to 672
 \subsection{Speech data}
 \subsubsection{Training data}\label{speechtraining}
 For Czech, the read part of Speecon database~\cite{czech} was used, 76 hours in sum.
-For Hungarian, beyond Speecon~\cite{hungarian}, manually transcribed broadcast news (112 hours) and conversational speech data was used, altogether 567 hours.
+The 567-hour database for Hungarian consisted of the Speecon~\cite{hungarian} database, manually transcribed broadcast news (112 hours) and conversational speech data.
 With the exception of the Hungarian knowledge-based model (described in Section~\ref{g2p}), the 112-hour broadcast news set was used for training.
 For Polish, only broadcast news data~\cite{romanian} was available, comprising 31 hours of manually transcribed speech.
 The Romanian speech database used for the experiments was originally collected for~\cite{romanian} consisting of 35 hours of broadcast news.
 \subsubsection{Test data}
-Native speakers of Czech, Hungarian, Polish and Slovakian - all of whom have experince with medieval Latin - were asked to record the three test sets described in Section~\ref{testtext}.
+Native speakers of Czech, Hungarian, Polish and Slovak - all of whom have experince with medieval Latin - were asked to record the three test sets described in Section~\ref{testtext}.
 The recording conditions were accurately controlled: close-talking microphones, quiet, non reverberant acoustic environment, fluent, flawless speech, and at least 16 kHz, 16 bit (linear PCM) encoding.
 No instructions were given regarding the pronunciation, the speakers were using their expertise on medieval Latin pronunciation - affected certainly by their native language.
 The overall length of the recorded test speech was around 30 minutes.
@@ -185,7 +185,7 @@ The size of the hidden layers was kept constantly on 2.000.
 A minibatch size of 512, an initial learning rate of 0.1, and final learning rate of 0.01 was applied in 20 epochs using the Kaldi toolkit~\cite{kaldi}.
 
 \subsection{Grapheme-based pronunciation modeling}\label{baseline}
-For our three separately trained baseline systems, grapheme-based acoustic models were used where pronunciation is modeled in an implicit way.
+For our three separately trained baseline systems, grapheme-based acoustic models were used where pronunciation is modeled using graphemes as subword units.
 The language-specific graphemes (e.g. \texttt{\"{o}}, \texttt{\'{n}}) that are not part of the Latin alphabet were trained, but not used in the recognition phase.
 
 \subsection{Source-target grapheme to phoneme mapping (G2P)}\label{g2p}
@@ -255,9 +255,9 @@ The USG units were then used as acoustic model units in the multiple language tr
 \end{table}
 
 \section{Experimental results}\label{results}
-We conducted experiments on medieval Latin, spoken by native speakers of four languages (Czech, Hungarian, Polish and Slovakian), where the test texts were originating from different regions, as described in Sections~\ref{AM}~and~\ref{text}.
+We conducted experiments on medieval Latin, spoken by native speakers of four languages (Czech, Hungarian, Polish and Slovak), where the test texts were originating from different regions, as described in Sections~\ref{AM}~and~\ref{text}.
 The best performing monolingual grapheme-based model results were that of Hungarian, with $34.6\%$ overall WER (see in Table~\ref{tbl:cz_hu_pl_ro_grapheme}), possibly because of the larger training data - this was the reference value when comparing the results.
-On a related note, we also found that except for Czech, each monolingual grapheme-based acoustic model had the best performance over its own test set.
+On a related note, we also found that teh Hungarian and Polish monolingual grapheme-based acoustic models had the best performance over their own test sets.
 
 \begin{table}
 \centering
@@ -268,18 +268,18 @@ On a related note, we also found that except for Czech, each monolingual graphem
 \subsection{Source-target G2P mapping results}
 The results on the experiments with the knowledge-based pronunciation modeling technique, where the native phonemes of the source phoneme-based acoustic models were mapped to the target phonemes in the pronunciation dictionary, are in Table~\ref{tbl:cz_phoneme} for the source language Czech, and in Table~\ref{tbl:hu_phoneme} for the source language Hungarian.
 The Hungarian knowledge-based acoustic model significantly outperforms the (Hungarian grapheme-based) baseline, with an $21.1\%$ overall WER.
-It is worth mentioning that the Czech and Slovakian speaker test sets achieve a surprisingly low $6.4\%$ and $9.1\%$ WER respectively on the Hungarian text test set.
+It is worth mentioning that the Czech and Slovak speaker test sets achieve a surprisingly low $6.4\%$ and $9.1\%$ WER respectively on the Hungarian text test set.
 
 \begin{table}
 \parbox{.45\linewidth}{
 \centering
-\caption{WER[\%] for Latin-Czech source-target G2P model. Acoustic model training set: 76 hours.}
+\caption{WER[\%] for Czech-Latin source-target G2P model. Acoustic model training set: 76 hours.}
 \input{tables/cz_phoneme.tex}\label{tbl:cz_phoneme}
 }
 \hfill
 \parbox{.45\linewidth}{
 \centering
-\caption{WER[\%] for Latin-Hungarian source-target G2P model. Acoustic model training set: 567 hours.}
+\caption{WER[\%] for Hungarian-Latin source-target G2P model. Acoustic model training set: 567 hours.}
 \input{tables/hu_phoneme.tex}\label{tbl:hu_phoneme}
 }
 \end{table}
@@ -287,7 +287,7 @@ It is worth mentioning that the Czech and Slovakian speaker test sets achieve a 
 \subsection{USG results}
 The results for the three-language joint acoustic models are in Table~\ref{tbl:three_language_usg}.
 Among the three-language USG models, the Czech-Hungarian-Romanian model had the best performance with a competitive overall $21.9\%$ WER. 
-When adding Romanian, we got the best experimental results of $20.4\%$ with the four-language USG model (see in Table~\ref{tbl:cz_hu_pl_ro_usg}).
+Cmplemented with Polish, we got the best experimental results of $20.4\%$ with the four-language USG model (see in Table~\ref{tbl:cz_hu_pl_ro_usg}).
 We also measured the WER on any combination of three of the four languages, and found that each language contributed to the four-language model.
 
 It is worth mentioning, that compared to the knowledge-based Hungarian model (Table~\ref{tbl:hu_phoneme}), the results on the Polish speaker test set improved by a significant $6.5\%$ (absolute).
