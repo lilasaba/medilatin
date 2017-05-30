@@ -105,7 +105,7 @@ On the other hand, applying a Unified Simplified Grapheme (USG) inventory set fo
 
 \section{Introduction}
 The pronunciation of Latin texts mainly depends on the era and region of their origin~\cite{regional}.
-Apart from the two widely studied classical and ecclesiastical pronunciation styles~\cite{allen78}, many other regional pronunciations exists that emerged after the classical era.
+Apart from the two widely studied classical and ecclesiastical pronunciation styles~\cite{allen78}, many other regional pronunciations exist that emerged after the classical era.
 One of these pronunciation groups is the East-Central European ~\cite{regional} one, described in detail in Section~\ref{g2p}.
 Although the target pronunciation is considered to be uniform for this group, it also has to be taken into account, that the acoustic base of the different source languages varies, which can lead to various accents.
 It also has to be noted, that apart from the variations in the pronunciations, orthographic and grammatical variations of Latin are also exhibited through regions.
@@ -122,7 +122,7 @@ The second method applied is a Unified Simplified Grapheme (USG) acoustic modeli
 The evaluation of all systems is presented in section~\ref{results}.
 
 \subsubsection{Related work}
-Different adaptation techniques have been proposed in~\cite{schultz01} and \cite{besacier14}to train acoustic models from multiple source languages for a single target language where training data was limited.
+Different adaptation techniques have been proposed in~\cite{schultz01} and \cite{besacier14} to train acoustic models from multiple source languages for a single target language where training data was limited.
 Similar work has been done for multi-dialectal languages such as Arabic in~\cite{elfeky16} where jointly trained acoustic models were outperformed by methods that unify dialect specific-acoustic models using knowledge distillation and multitask learning.
 However, no approach is known for the authors where the graphemes of multiple languages are merged successfully and applied for acoustic modeling of a different language.
 To our knowledge, no previous work has been done on medieval Latin speech recognition, nor on classical Latin for that matter.
@@ -190,8 +190,8 @@ The language-specific graphemes (e.g. \texttt{\"{o}}, \texttt{\'{n}}) that are n
 
 \subsection{Source-target grapheme to phoneme mapping (G2P)}\label{g2p}
 This method utilizes already trained acoustic models where the source language phonemes are mapped to the target language phonemes using expert knowledge.
-The source language acoustic models are trained with with G2P mapping from orthographic transcriptions to native phonemes.
-In our experiment we used Czech and Hungarian as (separately trained) source languages for the target language Latin.
+The source language acoustic models are trained with G2P mapping from orthographic transcriptions to native phonemes.
+In our experiments we used Czech and Hungarian as (separately trained) source languages for the target language Latin.
 After mapping source language phonemes to Latin phonemes, Latin-specific pronunciation rules were implemented.
 These include a set of context independent digraph mappings and context dependent rewrite rules, summarized in Table~\ref{tbl:digraph} and Table~\ref{tbl:context} respectively, for both Czech and Hungarian.
 Both languages fully cover the phoneme inventory of medieval Latin which is of size 24.
@@ -233,7 +233,7 @@ Our motivation with using this technique was three-fold:
 We experimented with joint three- and four-language USG acoustic models of any combination of the four languages (Czech, Hungarian, Polish and Romanian). 
 The joint acoustic model requires a unified grapheme inventory for the training.
 Our proposal was to simplify all special characters, i.e. those graphemes that had a diacritic mark (acute, caron, etc.) on them, were mapped back to their normalized form.
-Table~\ref{tbl:usg-examples} contains examples for the unification/simplification process for all four languages.
+Table~\ref{tbl:usg-examples} contains examples of the unification/simplification process for all four languages.
 For the four languages an overall of 32 of such unifications/simplifications were made, reducing the unified grapheme inventory set from 58 to 26.
 Further than that, those graphemes that are non-native to Latin, and can straightforwardly mapped to a native Latin grapheme(s), were also replaced.
 These included mappings from \texttt{x} to \texttt{ks}, \texttt{y} to \texttt{i} and \texttt{w} to \texttt{v}.
@@ -257,7 +257,7 @@ The USG units were then used as acoustic model units in the multiple language tr
 \section{Experimental results}\label{results}
 We conducted experiments on medieval Latin, spoken by native speakers of four languages (Czech, Hungarian, Polish and Slovak), where the test texts were originating from different regions, as described in Sections~\ref{AM}~and~\ref{text}.
 The best performing monolingual grapheme-based model results were that of Hungarian, with $34.6\%$ overall WER (see in Table~\ref{tbl:cz_hu_pl_ro_grapheme}), possibly because of the larger training data - this was the reference value when comparing the results.
-On a related note, we also found that teh Hungarian and Polish monolingual grapheme-based acoustic models had the best performance over their own test sets.
+On a related note, we also found that the Hungarian and Polish monolingual grapheme-based acoustic models had the best performance over their own test sets.
 
 \begin{table}
 \centering
@@ -287,7 +287,7 @@ It is worth mentioning that the Czech and Slovak speaker test sets achieve a sur
 \subsection{USG results}
 The results for the three-language joint acoustic models are in Table~\ref{tbl:three_language_usg}.
 Among the three-language USG models, the Czech-Hungarian-Romanian model had the best performance with a competitive overall $21.9\%$ WER. 
-Cmplemented with Polish, we got the best experimental results of $20.4\%$ with the four-language USG model (see in Table~\ref{tbl:cz_hu_pl_ro_usg}).
+Complemented with Polish, we got the best experimental results of $20.4\%$ with the four-language USG model (see in Table~\ref{tbl:cz_hu_pl_ro_usg}).
 We also measured the WER on any combination of three of the four languages, and found that each language contributed to the four-language model.
 
 It is worth mentioning, that compared to the knowledge-based Hungarian model (Table~\ref{tbl:hu_phoneme}), the results on the Polish speaker test set improved by a significant $6.5\%$ (absolute).
