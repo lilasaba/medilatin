@@ -144,7 +144,7 @@ The test sets were read out loud by historians fluent in medieval Latin.
 One interesting feature of the acquired corpora is that they contain a significant number of spelling variants.
 Having spelling variants in the corpus with identical pronunciation introduces noise, and thus has a negative effect on recognition results.
 To detect the spelling variants we took all pairs in the pronunciation dictionary whose pronunciation were identical, and used context and expert knowledge to decide whether the pair of equivalent pronunciations are spelling variants or homophones.
-We obtained a unified spelling for these variants by favouring the more frequent variant in the corpus (e.g. \textit{maiestati} to \textit{majestati}).
+We obtained a unified spelling for the variants by favouring the more frequent variant in the corpus (e.g. \textit{maiestati} to \textit{majestati}).
 Resolving spelling variants resulted in a more consistent corpus in terms of perplexity (reducing it from 775 to 672), and reduced the OOV rate by 0.8\%.
 \subsubsection{Language model}
 The word trigram language models we built from the two corpora were estimated with the SRI Language Modeling toolkit (SRILM)~\cite{srilm} using modified Kneser-Ney smoothing method.
@@ -166,6 +166,7 @@ Native speakers of Czech, Hungarian, Polish and Slovak - all of whom have experi
 The recording conditions were accurately controlled: close-talking microphones, quiet, non reverberant acoustic environment, fluent, flawless speech, and at least 16 kHz, 16 bit (linear PCM) encoding.
 No instructions were given regarding the pronunciation, the speakers were using their expertise on medieval Latin pronunciation - affected certainly by their native language.
 The overall length of the recorded test speech was around 30 minutes.
+The recordings can be found at the project webpage.\footnote{\url{http://medilatin.speechtex.com}}
 
 \section{Acoustic modeling}\label{AM}
 Building an acoustic model for speech recognition requires long hours of transcribed speech.
