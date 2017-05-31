@@ -141,10 +141,9 @@ In spite of our efforts, at the time of writing this paper, we could not gather 
 Using independent sources, three charters were selected from the Kingdoms of Bohemia (CZ), Hungary (HU) and Poland (PL), from around 1200-1300 AD, as test data for evaluating the language model, and to test the performance of the LVCSR approaches.
 The test sets were read out loud by historians fluent in medieval Latin.
 \subsubsection{Alternate spellings}
-One interesting feature of the acquired corpora is that they contain a significant number of spelling variants.
+One interesting feature of the acquired corpora was that they contained a significant number of spelling variants.
 Having spelling variants in the corpus with identical pronunciation introduces noise, and thus has a negative effect on recognition results.
-To detect the spelling variants we took all pairs in the pronunciation dictionary whose pronunciation were identical, and used context and expert knowledge to decide whether the pair of equivalent pronunciations are spelling variants or homophones.
-We obtained a unified spelling for the variants by favouring the more frequent variant in the corpus (e.g. \textit{maiestati} to \textit{majestati}).
+We merged the spelling for the variants by favouring the more frequent variant in the corpus (e.g. \textit{maiestati} to \textit{majestati}).
 Resolving spelling variants resulted in a more consistent corpus in terms of perplexity (reducing it from 775 to 672), and reduced the OOV rate by 0.8\%.
 \subsubsection{Language model}
 The word trigram language models we built from the two corpora were estimated with the SRI Language Modeling toolkit (SRILM)~\cite{srilm} using modified Kneser-Ney smoothing method.
