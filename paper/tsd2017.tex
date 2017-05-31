@@ -68,7 +68,7 @@
 \mailsa\\
 % TSD 2017: For authors from different institutions, add 2nd institution, etc.
 \and
-ThinkTECH Research Center \\
+THINKTech Research Center \\
 \mailsb\\
 % \url{www.website.org} \\
 \and
@@ -91,8 +91,6 @@ Budapest University of Technology and Economics
 %
 %
 \begin{abstract}
-% TSD 2017:
-%TODO: revise according to new PL results!
 A large vocabulary continuous speech recognition (LVCSR) system designed for dictation of medieval Latin language documents is introduced.
 Such language technology tool can be of great help for preserving Latin language charters from this era, as optical character recognition systems are often challenged by these historical materials.
 As corresponding historical research focuses on the Visegrad region, our primary aim is to make medieval Latin dictation available for texts and speakers of this region, concentrating on Czech, Hungarian and Polish.
@@ -228,7 +226,7 @@ Our motivation with using this technique was three-fold:
 \begin{enumerate}
 \item Develop a target language acoustic model using available language resources.
 \item Support recognition of medieval Latin spoken by speakers of diverse native language background.
-\item As the writing systems in the Visegrad region are originating from medieval Latin, we were aiming to validate the intuition that by unifying and simplifying the native graphemes, the deviations from the common ancestor cancel out.
+\item As the writing systems in the Visegrad region are originating from medieval Latin, we were aiming to validate the intuition that by unifying and simplifying the native graphemes, the deviations from the common ancestor may cancel out.
 \end{enumerate}
 We experimented with joint three- and four-language USG acoustic models of any combination of the four languages (Czech, Hungarian, Polish and Romanian). 
 The joint acoustic model requires a unified grapheme inventory for the training.
@@ -248,8 +246,8 @@ The USG units were then used as acoustic model units in the multiple language tr
 	\hline
 	Language & CZ & HU & PL & RO \\
 	\hline
-	Orthographic & \v{r}ekl & \H{o}z & mi\'{s} & ap\u{a} \\
-	USG & rekl & oz & mis & apa \\
+	Orthographic form & \v{r}ekl & \H{o}z & mi\'{s} & ap\u{a} \\
+	USG transcription & rekl & oz & mis & apa \\
 	\hline
 	\end{tabular}
 \end{table}
@@ -267,7 +265,7 @@ On a related note, we also found that only the Hungarian monolingual grapheme-ba
 
 \subsection{Source-target G2P mapping results}
 The results on the experiments with the knowledge-based pronunciation modeling technique, where the native phonemes of the source phoneme-based acoustic models were mapped to the target phonemes in the pronunciation dictionary, are in Table~\ref{tbl:cz_phoneme} for the source language Czech, and in Table~\ref{tbl:hu_phoneme} for the source language Hungarian.
-The Hungarian knowledge-based acoustic model significantly outperforms the (Hungarian grapheme-based) baseline, with an $21.1\%$ overall WER.
+The Hungarian knowledge-based acoustic model - possibly due to the larger data set - outperforms the (Hungarian grapheme-based) baseline significantly, with an $21.1\%$ overall WER.
 It is worth mentioning that the Czech and Slovak speaker test sets achieve a surprisingly low $6.4\%$ and $9.1\%$ WER respectively on the Hungarian text test set.
 
 \begin{table}
@@ -290,7 +288,7 @@ Among the three-language USG models, the Czech-Hungarian-Romanian model had the 
 Complemented with Polish, we got the best experimental results of $20.4\%$ with the four-language USG model (see in Table~\ref{tbl:cz_hu_pl_ro_usg}).
 We also measured the WER on any combination of three of the four languages, and found that each language contributed to the four-language model.
 
-It is worth mentioning, that compared to the knowledge-based Hungarian model (Table~\ref{tbl:hu_phoneme}), the results on the Polish speaker test set improved by a significant $6.5\%$ (absolute).
+It is worth mentioning, that compared to the knowledge-based Hungarian model (Table~\ref{tbl:hu_phoneme}), the results on the Polish speaker test set improved by an absolute $6.5\%$.
 This could be due to the ability of the four-language model to generalize better over different speaker test tests.
 This generalizing ability intensifies when adding training data of a new language, as the models of similar graphemes are merged, and work better on different native language speaker test sets.
 
@@ -307,12 +305,11 @@ This generalizing ability intensifies when adding training data of a new languag
 \input{tables/cz_hu_pl_ro_usg.tex}\label{tbl:cz_hu_pl_ro_usg}
 }
 \end{table}
-The most striking result in Table~\ref{tbl:hu_phoneme} was that all but the Hungarian speaker test sets performed better on the Hungarian text test set.
-We had expected the Hungarian speakers to perform better with the Hungarian knowledge-based model and Hungarian text test set setting, but in fact the phoneme mapping masked the difference between mid-front \texttt{/e:/} and open-front \texttt{/\textipa{E}/} in the pronunciation of the Hungarian speakers.
-In addition to that, they were pronouncing the named entities using their native pronunciation, which also increased the WER.
 
-Similarly, the results on the Hungarian speaker test set also improved by $3\%$ (absolute) with the four-language USG model compared to the knowledge-based Hungarian model in Table~\ref{tbl:hu_phoneme}.
-This was supposedly also because the pronunciation of the Hungarian speakers deviated from the one defined in the knowledge-based model, and the four-language model was able to generalize better. 
+When comparing Table~\ref{tbl:hu_phoneme} to Table~\ref{tbl:cz_hu_pl_ro_usg}, it is somewhat surprising that the Hungarian speaker test set had an absolute $10.8\%$ less WER on the Hungarian text test set using the knowledge-based G2P model.
+We had expected the Hungarian speakers to perform better with the Hungarian knowledge-based model and Hungarian text test set setting, but in fact the phoneme mapping masked the difference between mid-front \texttt{/e:/} and open-front \texttt{/\textipa{E}/} in the pronunciation of the Hungarian speakers.
+In addition to that, they were pronouncing the named entities using their native pronunciation, which also increased the WER in case of the knowledge-based approach.
+Similarly, we see an absolute $3\%$ WER improvement on the whole Hungarian speaker test set whith the four-language USG model when comparing it to the Hungarian G2P results.
 
 Finally, the results show that the experiments conducted on the Hungarian origin text test set yielded to the best results with all models.
 This is due to the fact that the in-domain part of the language model training data was originating from the Hungarian language region, see Section~\ref{traintext}.
