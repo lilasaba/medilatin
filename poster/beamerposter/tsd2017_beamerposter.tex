@@ -1,0 +1,72 @@
+\documentclass[final,hyperref={pdfpagelabels=false}]{beamer}
+\mode<presentation>
+  {
+  %  \usetheme{Berlin}
+  \usetheme{Dreuw}
+  }
+  \usepackage{times}
+  \usepackage{amsmath,amsthm, amssymb, latexsym}
+  \boldmath
+  \usepackage[english]{babel}
+  \usepackage[latin1]{inputenc}
+  \usepackage[orientation=portrait,size=a0,scale=1.4,debug]{beamerposter}
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+  \graphicspath{{figures/}}
+  \title[Medieval Latin LVCSR]{Unified Simplified Grapheme Acoustic Modeling for Medieval Latin LVCSR}
+  \author[Lili Szab\'{o} et al.]{Lili Szab{\'o} P\'{e}ter Mihajlik, Andr\'{a}s Balog, Tibor Fegy\'{o}}
+  \institute[SpeechTex]{SpeechTex}
+  \date{Aug. 30th, 2017}
+
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+  \begin{document}
+  \begin{frame}{} 
+    \vfill
+    \begin{block}{\large Introduction}
+      \centering
+    \end{block}
+    \vfill
+    \vfill
+    \begin{block}{\large Text data}
+      \centering
+      {\tiny tiny}\par
+    \end{block}
+    \vfill
+    \begin{columns}[t]
+      \begin{column}{.48\linewidth}
+        \begin{block}{Baseline Grapheme Model}
+          \begin{itemize}
+          \item Czech, Hungarian, Polish, Romanian
+          \end{itemize}
+        \end{block}
+      \end{column}
+      \begin{column}{.48\linewidth}
+        \begin{block}{Source-target G2P}
+          \begin{itemize}
+          \item Rule-based g2p
+          \end{itemize}
+        \end{block}
+
+        \begin{block}{Unified Simplified Grapheme Model}
+          \begin{itemize}
+          \item Reducing grapheme inventory
+          \end{itemize}
+        \end{block}
+
+        \begin{block}{Experimental results}
+          \begin{itemize}
+          \item some items and $\alpha=\gamma, \sum_{i}$
+          \end{itemize}
+        \end{block}
+      \end{column}
+    \end{columns}
+  \end{frame}
+\end{document}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-PDF-mode: t
+%%% End:
