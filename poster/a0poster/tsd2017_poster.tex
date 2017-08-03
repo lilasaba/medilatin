@@ -86,21 +86,18 @@
 \end{textblock}
 
 \begin{textblock}{12}(0,1.5)
-\LHead{Lili Szab{\'o} P\'{e}ter Mihajlik, Andr\'{a}s Balog, Tibor Fegy\'{o}}
+\LHead{Lili Szab{\'o}, P\'{e}ter Mihajlik, Andr\'{a}s Balog, Tibor Fegy\'{o}}
 \end{textblock}
 
-% Put the GU logo in the top right.
+% Put logo in the top right.
 \begin{textblock}{2}(13,0)
-Your logo here.
+SpeechTex logo here.
 %\resizebox{2\TPHorizModule}{!}{\includegraphics{/usr/local/share/images/GUVIu/GUVIu.eps}}
 \end{textblock}
 
-
-% An example text block, to get you started!
+% Introduction block.
 \begin{textblock}{7}(0,3)
-  \LHead{Introduction}
-  
-  What is the problem with Latin speech recognition?
+  \LHead{What is the problem with Latin speech recognition?}
 
   \begin{itemize}
       \item Latin is not a spoken language
@@ -110,23 +107,86 @@ Your logo here.
 
 \end{textblock}
 
-% Another text block in the bottom right.
-\begin{textblock}{7}(8,6)
-   \LHead{Baseline Grapheme Model}
+% Text aquisition block.
+\begin{textblock}{7}(0,6)
+   \LHead{Text data}
   
 \end{textblock}
 
+% Speech data block.
+\begin{textblock}{7}(0,9)
+   \LHead{Speech data}
+  
+\end{textblock}
+
+% Test data block.
+\begin{textblock}{7}(0,11)
+   \LHead{Test data}
+
+Native language of test speakers: CZ, HU, PL, SK
+
+Region of read text: CZ, HU, PL
+
+\end{textblock}
+
 % Another text block in the bottom right.
-\begin{textblock}{7}(8,10)
+\begin{textblock}{7}(8,3)
+   \LHead{Baseline Grapheme Model}
+
+Languages: Czech (CZ), Hungarian (HU), Polish (PL), Romanian (RO)
+
+   \begin{itemize}
+     \item All graphemes are trained
+     \item Only those grapheme models are retained that are part of the Latin alphabet
+   \end{itemize}
+
+\begin{table}
+%\centering
+\caption{Word Error Rate (WER[\%]) results for monolingual grapheme-based acoustic models of Czech, Hungarian, Polish and Romanian (CZ, HU, PL, RO).}
+\input{../../paper/tables/cz_hu_pl_ro_grapheme.tex}\label{tbl:cz_hu_pl_ro_grapheme}
+\end{table}
+
+\end{textblock}
+
+% Source-target g2p block.
+\begin{textblock}{7}(8,7)
    \LHead{Source-target grapheme-to-phoneme (G2P) mapping}
   
+\begin{table}
+\parbox{.45\linewidth}{
+\centering
+\caption{WER[\%] for Czech-Latin source-target G2P model. Acoustic model training set: 76 hours.}
+\input{../../paper/tables/cz_phoneme.tex}\label{tbl:cz_phoneme}
+}
+\hfill
+\parbox{.45\linewidth}{
+\centering
+\caption{WER[\%] for Hungarian-Latin source-target G2P model. Acoustic model training set: 567 hours.}
+\input{../../paper/tables/hu_phoneme.tex}\label{tbl:hu_phoneme}
+}
+\end{table}
+
 \end{textblock}
 
 
-% Another text block in the bottom right.
-\begin{textblock}{7}(8,14)
+% USG block.
+\begin{textblock}{7}(8,11)
   \LHead{Unified Simplified Grapheme Model}
   
+\begin{table}
+\parbox{.45\linewidth}{
+\centering
+\caption{WER[\%] for all the three-language USG models.}
+\input{../../paper/tables/three_language_usg.tex}\label{tbl:three_language_usg}
+}
+\hfill
+\parbox{.45\linewidth}{
+\centering
+\caption{WER[\%] for USG model of Czech, Hungarian, Polish and Romanian (CZ+HU+PL+RO).}
+\input{../../paper/tables/cz_hu_pl_ro_usg.tex}\label{tbl:cz_hu_pl_ro_usg}
+}
+\end{table}
+
 \end{textblock}
 
 % If you want to add a figure do something like this:
