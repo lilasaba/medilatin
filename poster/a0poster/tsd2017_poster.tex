@@ -127,6 +127,8 @@ Native language of test speakers: CZ, HU, PL, SK
 
 Region of read text: CZ, HU, PL
 
+Perplexity
+
 \end{textblock}
 
 % Another text block in the bottom right.
@@ -152,6 +154,34 @@ Languages: Czech (CZ), Hungarian (HU), Polish (PL), Romanian (RO)
 \begin{textblock}{7}(8,7)
    \LHead{Source-target grapheme-to-phoneme (G2P) mapping}
   
+   Languages: CZ, HU
+
+\begin{table}
+\centering
+\caption{Latin digraph context-insensitive rewrite rules.}\label{tbl:digraph}
+\begin{tabular}{l|rrrr}
+\hline
+& \multicolumn{4}{c}{Digraph} \\
+\hline
+   & ae & oe & ph & qu \\
+\hline
+CZ & e & oe & f & kv \\
+HU & e & \o & f & kv \\
+\hline
+\end{tabular}
+\vspace*{0.4 cm}
+\centering
+\caption{Latin context-sensitive rewrite rules. V: vowel, VP: palatal vowel, \string^VP: everything but a palatal vowel, C: consonant, $*$: zero or any, \string^: beginning of word, $[\string^stx]$: not s, t or x.}\label{tbl:context}
+\begin{tabular}{l|cc|cc|cc|cc}
+\hline
+GR & c & c & ch & ch & gu & gu & ti & ti \\
+PH & ts & k & h & k & gv & gu & tsi & ti \\
+\hline
+rule & \multicolumn{1}{c|}{cVP} & \multicolumn{1}{c|}{c\string^VP} & \multicolumn{1}{c|}{VC*ch} & \multicolumn{1}{c|}{\string^C*ch} & \multicolumn{1}{c|}{guV} & \multicolumn{1}{c|}{guC} & \multicolumn{1}{c|}{$[\string^stx]$tiV} & \multicolumn{1}{c|}{tiC} \\
+\hline
+\end{tabular}
+\end{table}
+
 \begin{table}
 \parbox{.45\linewidth}{
 \centering
@@ -170,9 +200,22 @@ Languages: Czech (CZ), Hungarian (HU), Polish (PL), Romanian (RO)
 
 
 % USG block.
-\begin{textblock}{7}(8,11)
+\begin{textblock}{7}(8,14)
   \LHead{Unified Simplified Grapheme Model}
   
+\begin{table}
+\centering
+\caption{Simplification examples for the unified model.}\label{tbl:usg-examples}
+\begin{tabular}{l|rrrr}
+\hline
+Language & CZ & HU & PL & RO \\
+\hline
+Orthographic form & \v{r}ekl & \H{o}z & mi\'{s} & ap\u{a} \\
+USG transcription & rekl & oz & mis & apa \\
+\hline
+\end{tabular}
+\end{table}
+
 \begin{table}
 \parbox{.45\linewidth}{
 \centering
