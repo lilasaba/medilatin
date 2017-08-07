@@ -25,6 +25,7 @@
 % Graphics to include graphics. Times is nice on posters, but you
 % might want to switch it off and go for CMR fonts.
 \usepackage{graphics,wrapfig,times}
+\usepackage{tikz}
 
 % These colours are tried and tested for titles and headers. Don't
 % over use color!
@@ -100,23 +101,49 @@ SpeechTex logo here.
   \LHead{What is the problem with Latin speech recognition?}
 
   \begin{itemize}
-      \item Latin is not a spoken language
+      \item Latin is not spoken natively 
       \item There is no available speech database, and it is resource-heavy to create one
       \item Many variants/dialects exists, and we can only make guesses about the pronunciation
+      \item The pronunciation mainly depends on
+      \begin{itemize}
+          \item the era of the read text 
+          \item the native language of the speaker
+      \end{itemize}
   \end{itemize}
 
 \end{textblock}
 
 % Text aquisition block.
-\begin{textblock}{7}(0,6)
+\begin{textblock}{3}(0,6)
    \LHead{Text data}
-  
+
+Regions of origin: Kingdom of Bohemia (CZ), Kingdom of Hungary (HU), Kingdom of Poland (PL)
+
+\begin{itemize}
+    \item In-domain data (Monasterium): medieval charters (HU), 480k/35k token/type
+    \item Background data (Latin Library): historical texts, 1.3M/115k token/type
+\end{itemize}
+
+\end{textblock}
+
+% Alternate spellings.
+\begin{textblock}{3}(4,6)
+   \LHead{Spelling variants}
+
+jam --> iam
+
+judex --> iudex
+
+gracia --> gratia
+
 \end{textblock}
 
 % Speech data block.
 \begin{textblock}{7}(0,9)
    \LHead{Speech data}
-  
+
+Languages: CZ, HU, PL, RO
+
 \end{textblock}
 
 % Test data block.
@@ -127,7 +154,32 @@ Native language of test speakers: CZ, HU, PL, SK
 
 Region of read text: CZ, HU, PL
 
-Perplexity
+Perplexity:
+
+\end{textblock}
+
+% Data dimensions.
+\begin{textblock}{7}(0,13)
+   \LHead{Dimensions of data}
+
+Native language of test speakers: CZ, HU, PL, SK
+
+Region of read text: CZ, HU, PL
+
+Speech data: CZ, HU, PL, RO
+
+Model type: baseline, knowledge-based, USG
+\end{textblock}
+
+% LM.
+\begin{textblock}{3}(0,15)
+   \LHead{Language model}
+
+\end{textblock}
+
+% AM.
+\begin{textblock}{3}(4,15)
+   \LHead{Acoustic model}
 
 \end{textblock}
 
@@ -202,7 +254,9 @@ rule & \multicolumn{1}{c|}{cVP} & \multicolumn{1}{c|}{c\string^VP} & \multicolum
 % USG block.
 \begin{textblock}{7}(8,14)
   \LHead{Unified Simplified Grapheme Model}
-  
+
+Languages: CZ, HU, PL, RO
+
 \begin{table}
 \centering
 \caption{Simplification examples for the unified model.}\label{tbl:usg-examples}
@@ -244,7 +298,10 @@ USG transcription & rekl & oz & mis & apa \\
 \begin{textblock}{9}(3.5,21.2)
 \LHead{Conclusions}
 
-Four-language USG is the best.
+\begin{itemize}
+\item Four-language USG is the best
+\item It is able to generalize over different speaker test sets
+\end{itemize}
 
 \end{textblock}
 
