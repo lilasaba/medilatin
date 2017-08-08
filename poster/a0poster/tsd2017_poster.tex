@@ -147,19 +147,53 @@ Languages: CZ, HU, PL, RO
 \end{textblock}
 
 % Test data block.
-\begin{textblock}{7}(0,11)
+\begin{textblock}{3}(0,11)
    \LHead{Test data}
 
-Native language of test speakers: CZ, HU, PL, SK
+\begin{itemize}
+\item Independent medieval charters
+\item Region of read text: CZ, HU, PL
+\item Native language of test speakers: CZ, HU, PL, SK
+\end{itemize}
 
-Region of read text: CZ, HU, PL
+\end{textblock}
 
-Perplexity:
+% Perplexity.
+\begin{textblock}{3}(4,11)
+   \LHead{Perplexity measures on test}
+
+\begin{table}
+\centering
+\caption{Perplexity/OOV rate}\label{tbl:perplexity}
+\begin{tabular}{l|rrr|r}
+\hline
+& \multicolumn{3}{|c|}{Text region} & \\
+\hline
+Corpus & CZ & HU & PL & All \\
+\hline
+Monasterium & 551 & 82 & 3130 & 671 \\
+Latin Library & 3266 & 3549 & 2305 & 4303 \\
+Interpolated & 924 & 82 & 2288 & 953 \\
+\hline
+\end{tabular}
+\end{table}
+
+\end{textblock}
+
+% LM.
+\begin{textblock}{3}(0,14)
+   \LHead{Language model}
+
+\end{textblock}
+
+% AM.
+\begin{textblock}{3}(4,14)
+   \LHead{Acoustic model}
 
 \end{textblock}
 
 % Data dimensions.
-\begin{textblock}{7}(0,13)
+\begin{textblock}{7}(0,18)
    \LHead{Dimensions of data}
 
 Native language of test speakers: CZ, HU, PL, SK
@@ -171,19 +205,7 @@ Speech data: CZ, HU, PL, RO
 Model type: baseline, knowledge-based, USG
 \end{textblock}
 
-% LM.
-\begin{textblock}{3}(0,15)
-   \LHead{Language model}
-
-\end{textblock}
-
-% AM.
-\begin{textblock}{3}(4,15)
-   \LHead{Acoustic model}
-
-\end{textblock}
-
-% Another text block in the bottom right.
+% Baseline.
 \begin{textblock}{7}(8,3)
    \LHead{Baseline Grapheme Model}
 
@@ -204,7 +226,7 @@ Languages: Czech (CZ), Hungarian (HU), Polish (PL), Romanian (RO)
 
 % Source-target g2p block.
 \begin{textblock}{7}(8,7)
-   \LHead{Source-target grapheme-to-phoneme (G2P) mapping}
+   \LHead{Knowledge-based grapheme-to-phoneme (G2P) mapping}
   
    Languages: CZ, HU
 
@@ -253,7 +275,7 @@ rule & \multicolumn{1}{c|}{cVP} & \multicolumn{1}{c|}{c\string^VP} & \multicolum
 
 % USG block.
 \begin{textblock}{7}(8,14)
-  \LHead{Unified Simplified Grapheme Model}
+	\LHead{Unified Simplified Grapheme (USG) Model}
 
 Languages: CZ, HU, PL, RO
 
