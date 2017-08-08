@@ -130,11 +130,15 @@ Regions of origin: Kingdom of Bohemia (CZ), Kingdom of Hungary (HU), Kingdom of 
 \begin{textblock}{3}(4,6)
    \LHead{Spelling variants}
 
-jam --> iam
+\begin{tikzpicture}
+\node[draw,align=left] (corpus) at (0,0) {jam\\judex\\gracia};
+\node[draw,align=left] (eval) at (5,0) {iam\\ iudex\\ gratia} (7,0);
+\draw[->,thick] (corpus) -- (eval);
+%\node[draw] at (0,0) {some text\\ bla bla\\ test test};
+%\node[draw,align=left] at (3,0) {some text\\ spanning three lines\\ with manual line breaks};
+%\node[draw,text width=4cm] at (2,-2) {some text spanning three lines with automatic line breaks};
 
-judex --> iudex
-
-gracia --> gratia
+\end{tikzpicture}
 
 \end{textblock}
 
