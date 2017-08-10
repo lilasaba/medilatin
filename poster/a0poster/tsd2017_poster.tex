@@ -22,10 +22,15 @@
 % places on the page.
 \usepackage[absolute]{textpos}
 
+% Include standalone tex files.
+\usepackage{standalone}
+\standaloneconfig{mode=buildnew}
+
 % Graphics to include graphics. Times is nice on posters, but you
 % might want to switch it off and go for CMR fonts.
 \usepackage{graphics,wrapfig,times}
 \usepackage{tikz}
+\usetikzlibrary{shapes.geometric,arrows}
 
 % These colours are tried and tested for titles and headers. Don't
 % over use color!
@@ -214,6 +219,17 @@ Speech data: CZ, HU, PL, RO
 Model type: baseline, knowledge-based, USG
 \end{textblock}
 
+% System diagram.
+\begin{textblock}{7}(0,20)
+   \LHead{System diagram}
+
+\begin{figure}
+  \includestandalone{system}
+  \caption{Medieval Latin Speech Recognizer}
+\end{figure}
+
+\end{textblock}
+
 % Baseline.
 \begin{textblock}{7}(8,3)
    \LHead{Baseline Grapheme Model}
@@ -326,7 +342,7 @@ USG transcription & rekl & oz & mis & apa \\
 %  \end{center}
 %\end{textblock}
 
-\begin{textblock}{9}(3.5,21.2)
+\begin{textblock}{9}(7,20)
 \LHead{Conclusions}
 
 \begin{itemize}

@@ -1,0 +1,46 @@
+\documentclass{article}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric,arrows}
+\begin{document}
+\pagestyle{empty}
+
+% Define block styles
+\tikzstyle{model} = [diamond, draw, fill=green!20, node distance=3cm]
+%    text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+    text width=5em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [ellipse, draw, fill=red!20, node distance=3cm,
+    minimum height=2em]
+    
+\begin{tikzpicture} %[node distance = 4cm] %, auto]
+    % Place nodes
+    \node [block] (lm) at (0,0) {Language Model};
+    \node [block] (am) at (7,0) {Acoustic Model};
+    \node [block] (medilatin) at (3.5,-5) {Medieval Latin ASR};
+    \node [block] (evaluate) at (3.5,-9) {Evaluate};
+    \node [cloud] (cz) at (15,0) {CZ};
+    \node [cloud] (hu) at (15,-2) {HU};
+    \node [cloud] (pl) at (15,-4) {PL};
+    \node [cloud] (ro) at (15,-6) {RO};
+    \node [cloud] (sk) at (15,-8) {SK};
+    \node [cloud] (text) at (0,4) {Text};
+    \node [cloud] (speaker) at (0,-13) {Speaker};
+    \node [cloud] (readtext) at (6,-13) {Read text};
+    \node [model] (baseline) at (5,4) {Base};
+    \node [model] (g2p) at (9,4) {G2P};
+    \node [model] (usg) at (13,4) {USG};
+    % Draw edges
+%    \path [line] (init) -- (identify);
+%    \path [line] (identify) -- (evaluate);
+%    \path [line] (evaluate) -- (decide);
+%    \path [line] (decide) -| node [near start] {yes} (update);
+%    \path [line] (update) |- (identify);
+%    \path [line] (decide) -- node {no}(stop);
+%    \path [line,dashed] (expert) -- (init);
+%    \path [line,dashed] (system) -- (init);
+%    \path [line,dashed] (system) |- (evaluate);
+\end{tikzpicture}
+
+\end{document}
