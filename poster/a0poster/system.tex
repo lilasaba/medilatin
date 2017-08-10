@@ -33,8 +33,24 @@
     \node [model] (g2p) at (9,4) {G2P};
     \node [model] (usg) at (13,4) {USG};
     % Draw edges
-%    \path [line] (init) -- (identify);
-%    \path [line] (identify) -- (evaluate);
+    \path [line] (text) -- (hu);
+    \path [line] (baseline) -- (cz);
+    \path [line] (baseline) -- (hu);
+    \path [line] (baseline) -- (pl);
+    \path [line] (baseline) -- (ro);
+    \path [line] (g2p) -- (cz);
+    \path [line] (g2p) -- (hu);
+    \path [line] (usg) -- (cz);
+    \path [line] (usg) -- (hu);
+    \path [line] (usg) -- (pl);
+    \path [line] (usg) -- (ro);
+    \path [line] (speaker) -- (cz);
+    \path [line] (speaker) -- (hu);
+    \path [line] (speaker) -- (pl);
+    \path [line] (speaker) -- (sk);
+    \path [line] (readtext) -- (cz);
+    \path [line] (readtext) -- (hu);
+    \path [line] (readtext) -- (pl);
 %    \path [line] (evaluate) -- (decide);
 %    \path [line] (decide) -| node [near start] {yes} (update);
 %    \path [line] (update) |- (identify);
