@@ -6,7 +6,8 @@
 \pagestyle{empty}
 
 % Define block styles
-\tikzstyle{model} = [diamond, draw, fill=green!20, node distance=3cm]
+\tikzstyle{eval} = [diamond, draw, fill=yellow!20, node distance=3cm]
+\tikzstyle{model} = [rectangle, draw, fill=green!20, node distance=3cm]
 %    text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
 \tikzstyle{block} = [rectangle, draw, fill=blue!20, 
     text width=5em, text centered, rounded corners, minimum height=4em]
@@ -19,7 +20,7 @@
     \node [block] (lm) at (0,0) {Language Model};
     \node [block] (am) at (7,0) {Acoustic Model};
     \node [block] (medilatin) at (3.5,-5) {Medieval Latin ASR};
-    \node [block] (evaluate) at (3.5,-9) {Evaluate};
+    \node [eval] (evaluate) at (3.5,-10) {Evaluate};
     \node [cloud] (cz) at (15,0) {CZ};
     \node [cloud] (hu) at (15,-2) {HU};
     \node [cloud] (pl) at (15,-4) {PL};
