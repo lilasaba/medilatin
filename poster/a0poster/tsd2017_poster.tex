@@ -157,7 +157,12 @@ Regions of origin: Kingdom of Bohemia (CZ), Kingdom of Hungary (HU), Kingdom of 
 \begin{textblock}{7}(0,9)
    \LHead{Speech data}
 
-Languages: CZ, HU, PL, RO
+\begin{itemize}
+\item CZ: 76 hours
+\item HU: 567 hours (G2P) or 112 hours (grapheme and USG)
+\item PL: 31 hours
+\item RO: 35 hours
+\end{itemize}
 
 \end{textblock}
 
@@ -252,8 +257,6 @@ Model type: baseline, knowledge-based, USG
 \begin{textblock}{7}(8,3)
    \LHead{Baseline Grapheme Model}
 
-Languages: Czech (CZ), Hungarian (HU), Polish (PL), Romanian (RO)
-
    \begin{itemize}
      \item All graphemes are trained
      \item Only those grapheme models are retained that are part of the Latin alphabet
@@ -270,8 +273,6 @@ Languages: Czech (CZ), Hungarian (HU), Polish (PL), Romanian (RO)
 % Source-target g2p block.
 \begin{textblock}{7}(8,7)
    \LHead{Knowledge-based grapheme-to-phoneme (G2P) mapping}
-  
-   Languages: CZ, HU
 
 \begin{table}
 \centering
@@ -318,9 +319,7 @@ rule & \multicolumn{1}{c|}{cVP} & \multicolumn{1}{c|}{c\string^VP} & \multicolum
 
 % USG block.
 \begin{textblock}{7}(8,14)
-	\LHead{Unified Simplified Grapheme (USG) Model}
-
-Languages: CZ, HU, PL, RO
+\LHead{Unified Simplified Grapheme (USG) Model}
 
 \begin{table}
 \centering
