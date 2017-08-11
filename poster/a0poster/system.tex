@@ -1,19 +1,22 @@
 \documentclass{standalone}
 
 \usepackage{tikz}
-\usetikzlibrary{shapes.geometric,arrows}
+\usetikzlibrary{shapes.geometric,arrows,fit}
 \begin{document}
 \pagestyle{empty}
 
 % Define block styles
 \tikzstyle{eval} = [diamond, draw, fill=yellow!20, node distance=3cm]
-\tikzstyle{model} = [rectangle, draw, fill=green!20, node distance=3cm]
+\tikzstyle{model} = [rectangle, draw, fill=orange!20, node distance=3cm]
 %    text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
 \tikzstyle{block} = [rectangle, draw, fill=blue!20, 
     text width=5em, text centered, rounded corners, minimum height=4em]
 \tikzstyle{line} = [draw, -latex']
-\tikzstyle{cloud} = [ellipse, draw, fill=red!20, node distance=3cm,
+\tikzstyle{lang} = [circle, draw, fill=red!20, node distance=3cm,
     minimum height=2em]
+\tikzstyle{data} = [ellipse, draw, fill=green!20, node distance=3cm,
+    minimum height=2em]
+\tikzstyle{none} = [anchor=west, draw=none, fill=none, align=left]
     
 \begin{tikzpicture} %[node distance = 4cm] %, auto]
     % Place nodes
@@ -21,17 +24,21 @@
     \node [block] (am) at (0,-5.5) {Acoustic Model};
     \node [block] (system) at (5.5,-3.5) {Medieval Latin ASR};
     \node [eval] (evaluate) at (5.5,-10) {Evaluate};
-    \node [cloud] (cz) at (-10,0) {CZ};
-    \node [cloud] (hu) at (-10,-2) {HU};
-    \node [cloud] (pl) at (-10,-4) {PL};
-    \node [cloud] (ro) at (-10,-6) {RO};
-    \node [cloud] (sk) at (-10,-8) {SK};
-    \node [cloud] (text) at (0,4) {Text};
-    \node [cloud] (speaker) at (0,-10) {Speaker};
-    \node [cloud] (readtext) at (0,-13) {Read text};
+    \node [lang] (cz) at (-10,0) {CZ};
+    \node [lang] (hu) at (-10,-2) {HU};
+    \node [lang] (pl) at (-10,-4) {PL};
+    \node [lang] (ro) at (-10,-6) {RO};
+    \node [lang] (sk) at (-10,-8) {SK};
+    \node [data] (text) at (0,4) {Training text};
+    \node [data] (speaker) at (0,-10) {Speaker};
+    \node [data] (readtext) at (0,-13) {Test text};
     \node [model] (baseline) at (-4.5,-4) {GRA};
     \node [model] (g2p) at (-4.5,-5.5) {G2P};
     \node [model] (usg) at (-4.5,-7) {USG};
+    \node [none] (gra) at (8,-15) {\textbf{GRA}: baseline grapheme model};
+    \node [none] (knowledge) at (8,-16) {\textbf{G2P}: grapheme-to-phoneme model};
+    \node [none] (usgm) at (8,-17) {\textbf{USG}: Unified Simplified Grapheme model};
+    \node [draw, line, fit=(gra) (knowledge) (usgm)] {};
     % Draw edges
     \path [line] (hu) -- (text);
     \path [line] (cz) -- (baseline);
