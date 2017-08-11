@@ -198,11 +198,28 @@ Interpolated & 924 & 82 & 2288 & 953 \\
 \begin{textblock}{3}(0,14)
    \LHead{Language model}
 
+\begin{itemize}
+\item 3-gram language model
+\item Kneser-Ney smoothing
+\item Interpolating the two corpora
+\item SRILM~\cite{srilm}
+\end{itemize}
+
 \end{textblock}
 
 % AM.
 \begin{textblock}{3}(4,14)
    \LHead{Acoustic model}
+
+\begin{itemize}
+\item Mel-Frequency Cepstrum $+$ Energy features were used with Linear Discriminant Analysis (LDA) + Maximum Likelihood Linear Transformation (MLLT), with a splice context of $\pm4$ frames, 10 ms of frame shift.
+\item $9\times40$ dimensional spliced up feature vectors served as input to the feed-forward, 6 hidden-layer neural network with p-norm~\cite{kaldi} activation function.
+\item Prior to DNN training, a Gaussian Mixture Model (GMM) pre-training was performed.
+\item Clustering and Regression Tree (CART)~\cite{kaldi} was applied to obtain across‒word context dependent shared state phone (or graph) models and their time alignment.
+\item The number of senones (and so the size of the DNN softmax output layer) was between 7.000 and 11.000 depending on the nature of the training data.
+\item The size of the hidden layers was kept constantly on 2.000.
+\item A minibatch size of 512, an initial learning rate of 0.1, and final learning rate of 0.01 was applied in 20 epochs using the Kaldi toolkit~\cite{kaldi}.
+\end{itemize}
 
 \end{textblock}
 
@@ -342,13 +359,22 @@ USG transcription & rekl & oz & mis & apa \\
 %  \end{center}
 %\end{textblock}
 
-\begin{textblock}{9}(7,20)
+\begin{textblock}{7}(8,20)
 \LHead{Conclusions}
 
 \begin{itemize}
 \item Four-language USG is the best
 \item It is able to generalize over different speaker test sets
 \end{itemize}
+
+% Bibliography.
+\begin{textblock}{7}(8,22)
+%\LHead{References}
+
+\bibliographystyle{../../splncs03}
+\bibliography{../../paper/tsd2017}
+
+\end{textblock}
 
 \end{textblock}
 
