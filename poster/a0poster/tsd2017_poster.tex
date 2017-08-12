@@ -30,7 +30,7 @@
 % might want to switch it off and go for CMR fonts.
 \usepackage{graphics,wrapfig,times}
 \usepackage{tikz}
-\usetikzlibrary{shapes.geometric,arrows,fit}
+\usetikzlibrary{shapes.geometric,arrows,fit,calc}
 
 % These colours are tried and tested for titles and headers. Don't
 % over use color!
@@ -201,7 +201,7 @@ Interpolated & 924 & 82 & 2288 & 953 \\
 \end{textblock}
 
 % LM.
-\begin{textblock}{3}(0,14)
+\begin{textblock}{3}(0,13.5)
    \LHead{Language model}
 
 \begin{itemize}
@@ -214,7 +214,7 @@ Interpolated & 924 & 82 & 2288 & 953 \\
 \end{textblock}
 
 % AM.
-\begin{textblock}{3}(4,14)
+\begin{textblock}{3}(4,13.5)
    \LHead{Acoustic model}
 
 \begin{itemize}
@@ -230,16 +230,17 @@ Interpolated & 924 & 82 & 2288 & 953 \\
 \end{textblock}
 
 % Data dimensions.
-\begin{textblock}{7}(0,16)
+\begin{textblock}{7}(0,15.5)
    \LHead{Dimensions of data}
 
-Native language of test speakers: CZ, HU, PL, SK
+\begin{itemize}
+\item \textbf{Region of training text}: HU, mixed
+\item \textbf{Speech data}: CZ, HU, PL, RO
+\item \textbf{Model type}: grapheme, G2P, USG
+\item \textbf{Native language of test speakers}: CZ, HU, PL, SK
+\item \textbf{Region of test text}: CZ, HU, PL
+\end{itemize}
 
-Region of read text: CZ, HU, PL
-
-Speech data: CZ, HU, PL, RO
-
-Model type: baseline, knowledge-based, USG
 \end{textblock}
 
 % System diagram.

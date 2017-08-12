@@ -1,7 +1,7 @@
 \documentclass{standalone}
 
 \usepackage{tikz}
-\usetikzlibrary{shapes.geometric,arrows,fit}
+\usetikzlibrary{shapes.geometric,arrows,fit,calc}
 \begin{document}
 \pagestyle{empty}
 
@@ -12,7 +12,8 @@
     text width=5em, text centered, rounded corners, minimum height=4em]
 \tikzstyle{line} = [draw, -latex']
 \tikzstyle{lang} = [circle, draw, fill=red!20]
-\tikzstyle{data} = [ellipse, draw, fill=green!20]
+\tikzstyle{tdata} = [ellipse, draw, fill=green!20]
+\tikzstyle{sdata} = [ellipse, draw, fill=purple!20]
 \tikzstyle{none} = [anchor=west, draw=none, fill=none, align=left]
     
 \begin{tikzpicture} %[node distance = 4cm] %, auto]
@@ -21,14 +22,14 @@
     \node [block] (am) at (0,-5.5) {Acoustic Model};
     \node [block] (system) at (5.5,-3.5) {Medieval Latin ASR};
     \node [eval] (evaluate) at (5.5,-10) {Evaluate};
-    \node [lang] (cz) at (-10,0) {CZ};
-    \node [lang] (hu) at (-10,-2) {HU};
-    \node [lang] (pl) at (-10,-4) {PL};
-    \node [lang] (ro) at (-10,-6) {RO};
-    \node [lang] (sk) at (-10,-8) {SK};
-    \node [data] (text) at (0,4) {Training text};
-    \node [data] (speaker) at (0,-10) {Speaker};
-    \node [data] (readtext) at (0,-13) {Test text};
+    \node [lang] (cz) at (-9,0) {CZ};
+    \node [lang] (hu) at (-9,-2) {HU};
+    \node [lang] (pl) at (-9,-4) {PL};
+    \node [lang] (ro) at (-9,-6) {RO};
+    \node [lang] (sk) at (-9,-8) {SK};
+    \node [tdata] (text) at (0,4) {Training text};
+    \node [sdata] (speaker) at (0,-10) {Speaker};
+    \node [tdata] (readtext) at (0,-13) {Test text};
     \node [model] (baseline) at (-4.5,-4) {GRA};
     \node [model] (g2p) at (-4.5,-5.5) {G2P};
     \node [model] (usg) at (-4.5,-7) {USG};
@@ -37,24 +38,17 @@
     \node [none] (usgm) at (8,-17) {\textbf{USG}: Unified Simplified Grapheme model};
     \node [draw, line, fit=(gra) (knowledge) (usgm)] {};
     % Draw edges
-    \path [line] (hu) -- (text);
-    \path [line] (cz) -- (baseline);
-    \path [line] (hu) -- (baseline);
-    \path [line] (pl) -- (baseline);
-    \path [line] (ro) -- (baseline);
-    \path [line] (cz) -- (g2p);
-    \path [line] (hu) -- (g2p);
-    \path [line] (cz) -- (usg);
-    \path [line] (hu) -- (usg);
-    \path [line] (pl) -- (usg);
-    \path [line] (ro) -- (usg);
-    \path [line] (cz) |- (speaker);
-    \path [line] (hu) -- (speaker);
-    \path [line] (pl) -- (speaker);
-    \path [line] (sk) -- (speaker);
-    \path [line] (cz) -- (readtext);
-    \path [line] (hu) -- (readtext);
-    \path [line] (pl) -- (readtext);
+    \path [line] (hu) -> (text);
+    \path [line] (cz.east) -- (baseline.west);
+    \path [line] (hu.east) -- (baseline.west);
+    \path [line] (pl.east) -- (baseline.west);
+    \path [line] (ro.east) -- (baseline.west);
+    \path [line] (cz.east) -- (g2p.west);
+    \path [line] (hu.east) -- (g2p.west);
+    \path [line] (cz.east) -- (usg.west);
+    \path [line] (hu.east) -- (usg.west);
+    \path [line] (pl.east) -- (usg.west);
+    \path [line] (ro.east) -- (usg.west);
     \path [line] (system) -- (evaluate);
     \path [line] (lm) -| (system);
     \path [line] (am) -| (system);
@@ -64,12 +58,21 @@
     \path [line] (usg) -- (am);
     \path [line] (speaker) -- (evaluate);
     \path [line] (readtext) -- (evaluate);
-%    \path [line] (decide) -| node [near start] {yes} (update);
-%    \path [line] (update) |- (identify);
-%    \path [line] (decide) -- node {no}(stop);
-%    \path [line,dashed] (expert) -- (init);
-%    \path [line,dashed] (system) -- (init);
-%    \path [line,dashed] (system) |- (evaluate);
+
+    % sk to speaker.
+    \path [line,-] (sk.west) -- ($(sk.west)-(1,0)$) |- (speaker); 
+    % pl to speaker and readtext.
+    \path [line,-] (pl.west) -- ($(pl.west)-(1.5,0)$) |- (speaker); 
+    \path [line,-] (pl.west) -- ($(pl.west)-(1.5,0)$) |- (readtext); 
+    % hu to speaker and readtext.
+    \path [line,-] (hu.west) -- ($(hu.west)-(2,0)$) |- (speaker); 
+    \path [line,-] (hu.west) -- ($(hu.west)-(2,0)$) |- (readtext); 
+    % cz to speaker and readtext.
+    \path [line,-] (cz.west) -- ($(cz.west)-(1.5,0)$) |- (speaker); 
+    \path [line,-] (cz.west) -- ($(cz.west)-(1.5,0)$) |- (readtext); 
+%    \foreach \module in {cz.west,hu.west,pl.west,sk.west}
+%    \path [line,-] (\module-|below scheme)--(speaker);
+
 \end{tikzpicture}
 
 \end{document}
