@@ -1,0 +1,41 @@
+digraph FST {
+rankdir = LR;
+size = "8.5,11";
+label = "";
+center = 1;
+orientation = Landscape;
+ranksep = "0.4";
+nodesep = "0.25";
+0 [label = "0", shape = circle, style = bold, fontsize = 14]
+	0 -> 1 [label = "*:*", fontsize = 14];
+1 [label = "1", shape = circle, style = solid, fontsize = 14]
+	1 -> 2 [label = "ae:e", fontsize = 14];
+	1 -> 2 [label = "oe:ø", fontsize = 14];
+	1 -> 2 [label = "ph:f", fontsize = 14];
+	1 -> 2 [label = "qu:kv", fontsize = 14];
+	1 -> 3 [label = "c:ts", fontsize = 14];
+	1 -> 4 [label = "c:k", fontsize = 14];
+	1 -> 5 [label = "gu:gv", fontsize = 14];
+	1 -> 6 [label = "[^stx]:[^stx]", fontsize = 14];
+	1 -> 7 [label = "eps:eps", fontsize = 14];
+	1 -> 8 [label = "V:V", fontsize = 14];
+2 [label = "2", shape = circle, style = solid, fontsize = 14]
+	2 -> 10 [label = "*:*", fontsize = 14];
+3 [label = "3", shape = circle, style = solid, fontsize = 14]
+	3 -> 2 [label = "VP:VP", fontsize = 14];
+4 [label = "4", shape = circle, style = solid, fontsize = 14]
+	4 -> 2 [label = "^VP:^VP", fontsize = 14];
+5 [label = "5", shape = circle, style = solid, fontsize = 14]
+	5 -> 2 [label = "V:V", fontsize = 14];
+6 [label = "6", shape = circle, style = solid, fontsize = 14]
+	6 -> 5 [label = "ti:tsi", fontsize = 14];
+7 [label = "7", shape = circle, style = solid, fontsize = 14]
+	7 -> 7 [label = "C:C", fontsize = 14];
+	7 -> 2 [label = "ch:k", fontsize = 14];
+8 [label = "8", shape = circle, style = solid, fontsize = 14]
+	8 -> 9 [label = "eps:eps", fontsize = 14];
+9 [label = "9", shape = circle, style = solid, fontsize = 14]
+	9 -> 9 [label = "C:C", fontsize = 14];
+	9 -> 2 [label = "ch:h", fontsize = 14];
+10 [label = "10", shape = doublecircle, style = solid, fontsize = 14]
+}
