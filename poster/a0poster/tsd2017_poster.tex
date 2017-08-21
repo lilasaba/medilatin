@@ -256,7 +256,11 @@ Interpolated & 924 & 82 & 2288 & 953 \\
 
    \begin{itemize}
      \item All graphemes are trained
-     \item Only those grapheme models are retained that are part of the Latin alphabet
+     \item Only those grapheme models are retained that are part of the Latin alphabet, e.g.
+       \begin{itemize}
+         \item keeping model of \texttt{r} 
+         \item throwing away model of \texttt{\v{r}} 
+       \end{itemize}
    \end{itemize}
 
 \begin{table}
@@ -297,6 +301,10 @@ Interpolated & 924 & 82 & 2288 & 953 \\
 \begin{textblock}{7}(8,15.5)
 \LHead{Unified Simplified Grapheme (USG) Model}
 
+\begin{itemize}
+\item Utilizing many available language resources in the hopes that statistical variations help generalizing over different pronunciations
+\end{itemize}
+
 \begin{table}
 \centering
 \caption{Simplification examples for the unified model.}\label{tbl:usg-examples}
@@ -335,12 +343,15 @@ USG transcription & rekl & oz & mis & apa \\
 %  \end{center}
 %\end{textblock}
 
-\begin{textblock}{7}(8,20)
+\begin{textblock}{7}(8,20.5)
 \LHead{Conclusions}
 
 \begin{itemize}
-\item Four-language USG is the best
+\item Knowledge-based G2P modeling is good, but time consuming and restricted
+\item Four-language USG modeling is the best
+\begin{itemize}
 \item It is able to generalize over different speaker test sets
+\end{itemize}
 \end{itemize}
 
 % Bibliography.
