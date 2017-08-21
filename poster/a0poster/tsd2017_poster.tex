@@ -21,6 +21,7 @@
 % The textpos package is necessary to position textblocks at arbitary 
 % places on the page.
 \usepackage[absolute]{textpos}
+%\usepackage{floatrow}
 
 % Include standalone tex files.
 \usepackage{standalone}
@@ -106,6 +107,14 @@
 \resizebox{2\TPHorizModule}{!}{\includegraphics{speechtex_logo.eps}}
 \end{textblock}
 
+\begin{textblock}{2}(13,1)
+\resizebox{2\TPHorizModule}{!}{\includegraphics{thinktech_logo.eps}}
+\end{textblock}
+
+\begin{textblock}{2}(13,2)
+\resizebox{2\TPHorizModule}{!}{\includegraphics{bme_logo.eps}}
+\end{textblock}
+
 % Introduction block.
 \begin{textblock}{7}(0,3)
   \LHead{What is the problem with Latin speech recognition?}
@@ -179,6 +188,7 @@ Regions of origin: Kingdom of Bohemia (CZ), Kingdom of Hungary (HU), Kingdom of 
    \LHead{Perplexity measures on test}
 
 \begin{table}
+%\RawFloats
 \centering
 \caption{Perplexity/OOV rate}\label{tbl:perplexity}
 \begin{tabular}{l|rrr|r}
