@@ -34,6 +34,9 @@
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric,arrows,fit,calc}
 
+% Drawing boxes around multiple textblocks.
+\usepackage[framemethod=tikz]{mdframed}
+
 % These colours are tried and tested for titles and headers. Don't
 % over use color!
 \usepackage{color}
@@ -45,6 +48,12 @@
 \definecolor{oldgold}{rgb}{0.81,0.71,0.23}
 \definecolor{olive}{rgb}{0.5, 0.5, 0.0}
 \definecolor{yellow-green}{rgb}{0.6,0.8,0.2}
+\definecolor{bronze}{rgb}{0.8, 0.5, 0.2}
+\definecolor{bulgarianrose}{rgb}{0.28, 0.02, 0.03}
+
+% Create frames.
+\newmdenv[roundcorner=6pt,linecolor=DarkBlue,innerleftmargin=6pt,innerrightmargin=7pt,innertopmargin=6pt,innerbottommargin=6pt,backgroundcolor=DarkBlue!10]{databox}
+\newmdenv[roundcorner=6pt,linecolor=bulgarianrose,innerleftmargin=6pt,innerrightmargin=7pt,innertopmargin=6pt,innerbottommargin=6pt,backgroundcolor=bulgarianrose!10]{modelbox}
 
 % see documentation for a0poster class for the size options here
 \let\Textsize\normalsize
@@ -144,9 +153,9 @@
       \item Many variants/dialects exists, and we can only make guesses about the pronunciation
       \item The pronunciation mainly depends on
       \begin{itemize}
-	      \item the \textbf{era} of the read text 
-	      \item the \textbf{georaphical region} where the text originates from
-	      \item the \textbf{native language} of the speaker
+          \item the \textbf{era} of the read text 
+          \item the \textbf{georaphical region} where the text originates from
+          \item the \textbf{native language} of the speaker
       \end{itemize}
   \end{itemize}
 
@@ -157,38 +166,50 @@
    \LHead{Text data}
 
 %\textblockcolour{applegreen}
-
-Regions of origin: Kingdom of Bohemia (CZ), Kingdom of Hungary (HU), Kingdom of Poland (PL)
+\begin{databox}
 
 \begin{itemize}
-    \item In-domain data (Monasterium): medieval charters (HU), 480k/35k token/type
-    \item Background data (Latin Library): historical texts, 1.3M/115k token/type
+    \item In-domain (Monasterium): medieval\\charters (HU)
+\begin{itemize}
+\item 480k/35k token/type
 \end{itemize}
+    \item Background (Latin Library): historical texts
+\begin{itemize}
+\item 1.3M/115k token/type
+\end{itemize}
+\end{itemize}
+\end{databox}
 
 \end{textblock}
 
 % Alternate spellings.
 \begin{textblock}{3}(0,9.5)
    \LHead{Spelling variants}
-
+\begin{databox}
 \begin{tikzpicture}
 \node[draw,align=left] (corpus) at (0,0) {jam\\judex\\gracia};
 \node[draw,align=left] (eval) at (5,0) {iam\\ iudex\\ gratia} (7,0);
 \draw[->,thick] (corpus) -- (eval);
 \end{tikzpicture}
+\end{databox}
 
 \end{textblock}
 
 % Speech data block.
 \begin{textblock}{3}(4,7)
    \LHead{Speech data}
-
+\begin{databox}
 \begin{itemize}
 \item CZ: 76 hours
-\item HU: 567 hours (G2P) or 112 hours (grapheme and USG)
+\item HU:
+\begin{itemize}
+\item G2P model: 567 hours
+\item GRA and USG models: 112 hours
+\end{itemize}
 \item PL: 31 hours
 \item RO: 35 hours
 \end{itemize}
+\end{databox}
 
 \end{textblock}
 
@@ -196,11 +217,13 @@ Regions of origin: Kingdom of Bohemia (CZ), Kingdom of Hungary (HU), Kingdom of 
 \begin{textblock}{3}(4,9.5)
    \LHead{Test data}
 
+\begin{databox}
 \begin{itemize}
-\item Independent medieval charters
-\item Region of read text: CZ, HU, PL
+\item Independent medieval charters read by historians
+\item Region of test text origin: CZ, HU, PL
 \item Native language of test speakers: CZ, HU, PL, SK
 \end{itemize}
+\end{databox}
 
 \end{textblock}
 
@@ -208,6 +231,7 @@ Regions of origin: Kingdom of Bohemia (CZ), Kingdom of Hungary (HU), Kingdom of 
 \begin{textblock}{3}(0,13.5)
    \LHead{Perplexity measures on test}
 
+%\begin{modelbox}
 \begin{table}
 %\RawFloats
 \centering
@@ -224,6 +248,7 @@ Interpolated & 924/3.9 & \bf{82/0.9} & 2288/5.5 & 672/3.5 \\
 \hline
 \end{tabular}
 \end{table}
+%\end{modelbox}
 
 \end{textblock}
 
@@ -231,12 +256,14 @@ Interpolated & 924/3.9 & \bf{82/0.9} & 2288/5.5 & 672/3.5 \\
 \begin{textblock}{3}(0,11.5)
    \LHead{Language model}
 
+\begin{modelbox}
 \begin{itemize}
 \item 3-gram language model
 \item Kneser-Ney smoothing
 \item Interpolating the two corpora
 \item SRILM~\cite{srilm}
 \end{itemize}
+\end{modelbox}
 
 \end{textblock}
 
@@ -244,6 +271,7 @@ Interpolated & 924/3.9 & \bf{82/0.9} & 2288/5.5 & 672/3.5 \\
 \begin{textblock}{3}(4,11.5)
    \LHead{Acoustic model}
 
+\begin{modelbox}
 \begin{itemize}
 \item 6-hidden-layer DNN
 \item 2000 neurons per layer
@@ -251,6 +279,7 @@ Interpolated & 924/3.9 & \bf{82/0.9} & 2288/5.5 & 672/3.5 \\
 \item 7000-11000 senones (softmax size)
 \item Kaldi toolkit~\cite{kaldi}
 \end{itemize}
+\end{modelbox}
 
 \end{textblock}
 
@@ -259,11 +288,11 @@ Interpolated & 924/3.9 & \bf{82/0.9} & 2288/5.5 & 672/3.5 \\
    \LHead{Dimensions of data}
 
 \begin{itemize}
-\item \textbf{Region of training text}: HU, mixed
-\item \textbf{Speech data}: CZ, HU, PL, RO
-\item \textbf{Model type}: grapheme, G2P, USG
-\item \textbf{Native language of test speakers}: CZ, HU, PL, SK
-\item \textbf{Region of test text}: CZ, HU, PL
+\item \textbf{Region of training text}: Kingdom of Hungary (HU), mixed
+\item \textbf{Region of test text origin}: Kingdom of Bohemia (CZ), Kingdom of Hungary (HU), Kingdom of Poland (PL)
+\item \textbf{Speech data}: Czech (CZ), Hungarian (HU), Polish (PL), Romanian (RO)
+\item \textbf{Native language of test speakers}: CZ, HU, PL, Slovak (SK)
+\item \textbf{Model type}: GRA, G2P, USG
 \end{itemize}
 
 \end{textblock}
