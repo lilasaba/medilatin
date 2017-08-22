@@ -21,6 +21,7 @@
 % The textpos package is necessary to position textblocks at arbitary 
 % places on the page.
 \usepackage[absolute]{textpos}
+%\usepackage{xcolor}
 %\usepackage{floatrow}
 
 % Include standalone tex files.
@@ -155,6 +156,8 @@
 \begin{textblock}{3}(0,7)
    \LHead{Text data}
 
+%\textblockcolour{applegreen}
+
 Regions of origin: Kingdom of Bohemia (CZ), Kingdom of Hungary (HU), Kingdom of Poland (PL)
 
 \begin{itemize}
@@ -242,17 +245,11 @@ Interpolated & 924/3.9 & 82/0.9 & 2288/5.5 & 672/3.5 \\
    \LHead{Acoustic model}
 
 \begin{itemize}
-\item TODO bullet 1
-\item TODO bullet 2
-\item TODO bullet 3
-\item TODO bullet 4
-%\item Mel-Frequency Cepstrum $+$ Energy features were used with Linear Discriminant Analysis (LDA) + Maximum Likelihood Linear Transformation (MLLT), with a splice context of $\pm4$ frames, 10 ms of frame shift.
-%\item $9\times40$ dimensional spliced up feature vectors served as input to the feed-forward, 6 hidden-layer neural network with p-norm~\cite{kaldi} activation function.
-%\item Prior to DNN training, a Gaussian Mixture Model (GMM) pre-training was performed.
-%\item Clustering and Regression Tree (CART)~\cite{kaldi} was applied to obtain across‒word context dependent shared state phone (or graph) models and their time alignment.
-%\item The number of senones (and so the size of the DNN softmax output layer) was between 7.000 and 11.000 depending on the nature of the training data.
-%\item The size of the hidden layers was kept constantly on 2.000.
-%\item A minibatch size of 512, an initial learning rate of 0.1, and final learning rate of 0.01 was applied in 20 epochs using the Kaldi toolkit~\cite{kaldi}.
+\item 6-hidden-layer DNN
+\item 2000 neurons per layer
+\item p-norm activation function
+\item 7000-11000 senones (softmax size)
+\item Kaldi toolkit~\cite{kaldi}
 \end{itemize}
 
 \end{textblock}
