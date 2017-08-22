@@ -52,8 +52,8 @@
 \definecolor{bulgarianrose}{rgb}{0.28, 0.02, 0.03}
 
 % Create frames.
-\newmdenv[roundcorner=6pt,linecolor=DarkBlue,innerleftmargin=6pt,innerrightmargin=7pt,innertopmargin=6pt,innerbottommargin=6pt,backgroundcolor=DarkBlue!10]{databox}
-\newmdenv[roundcorner=6pt,linecolor=bulgarianrose,innerleftmargin=6pt,innerrightmargin=7pt,innertopmargin=6pt,innerbottommargin=6pt,backgroundcolor=bulgarianrose!10]{modelbox}
+\newmdenv[roundcorner=10pt,linecolor=DarkBlue,innerleftmargin=6pt,innerrightmargin=7pt,innertopmargin=6pt,innerbottommargin=6pt,backgroundcolor=DarkBlue!10]{databox}
+\newmdenv[roundcorner=10pt,linecolor=bulgarianrose,innerleftmargin=6pt,innerrightmargin=7pt,innertopmargin=6pt,innerbottommargin=6pt,backgroundcolor=bulgarianrose!10]{modelbox}
 
 % see documentation for a0poster class for the size options here
 \let\Textsize\normalsize
@@ -135,7 +135,7 @@
 
 % Motivation block.
 \begin{textblock}{7}(0,3)
-  \LHead{Motivation}
+  \LHead{\textbf{Motivation}}
 
 \begin{itemize}
 \item Digitizing medieval charters when optical character recognition in not sufficient
@@ -145,7 +145,7 @@
 
 % Challenges block.
 \begin{textblock}{7}(0,4)
-  \LHead{Challenges}
+  \LHead{\textbf{Challenges}}
 
   \begin{itemize}
       \item Latin is not spoken natively 
@@ -163,7 +163,7 @@
 
 % Text aquisition block.
 \begin{textblock}{3}(0,7)
-   \LHead{Text data}
+   \LHead{\textbf{Text data}}
 
 %\textblockcolour{applegreen}
 \begin{databox}
@@ -184,7 +184,7 @@
 
 % Alternate spellings.
 \begin{textblock}{3}(0,9.5)
-   \LHead{Spelling variants}
+   \LHead{\textbf{Spelling variants}}
 \begin{databox}
 \begin{tikzpicture}
 \node[draw,align=left] (corpus) at (0,0) {jam\\judex\\gracia};
@@ -197,7 +197,7 @@
 
 % Speech data block.
 \begin{textblock}{3}(4,7)
-   \LHead{Speech data}
+   \LHead{\textbf{Speech data}}
 \begin{databox}
 \begin{itemize}
 \item CZ: 76 hours
@@ -215,7 +215,7 @@
 
 % Test data block.
 \begin{textblock}{3}(4,9.5)
-   \LHead{Test data}
+   \LHead{\textbf{Test data}}
 
 \begin{databox}
 \begin{itemize}
@@ -229,7 +229,7 @@
 
 % Perplexity.
 \begin{textblock}{3}(0,13.5)
-   \LHead{Perplexity measures on test}
+   \LHead{\textbf{Perplexity measures on test}}
 
 %\begin{modelbox}
 \begin{table}
@@ -254,7 +254,7 @@ Interpolated & 924/3.9 & \bf{82/0.9} & 2288/5.5 & 672/3.5 \\
 
 % LM.
 \begin{textblock}{3}(0,11.5)
-   \LHead{Language model}
+   \LHead{\textbf{Language model}}
 
 \begin{modelbox}
 \begin{itemize}
@@ -269,7 +269,7 @@ Interpolated & 924/3.9 & \bf{82/0.9} & 2288/5.5 & 672/3.5 \\
 
 % AM.
 \begin{textblock}{3}(4,11.5)
-   \LHead{Acoustic model}
+   \LHead{\textbf{Acoustic model}}
 
 \begin{modelbox}
 \begin{itemize}
@@ -285,7 +285,7 @@ Interpolated & 924/3.9 & \bf{82/0.9} & 2288/5.5 & 672/3.5 \\
 
 % Data dimensions.
 \begin{textblock}{3}(4,16.5)
-   \LHead{Dimensions of data}
+   \LHead{\textbf{Dimensions of data}}
 
 \begin{itemize}
 \item \textbf{Region of training text}: Kingdom of Hungary (HU), mixed
@@ -299,7 +299,7 @@ Interpolated & 924/3.9 & \bf{82/0.9} & 2288/5.5 & 672/3.5 \\
 
 % System diagram.
 \begin{textblock}{7}(0,16.5)
-   \LHead{System diagram}
+   \LHead{\textbf{System diagram}}
 
 \begin{figure}
   \includestandalone{system}
@@ -310,7 +310,7 @@ Interpolated & 924/3.9 & \bf{82/0.9} & 2288/5.5 & 672/3.5 \\
 
 % Baseline.
 \begin{textblock}{7}(8,3)
-   \LHead{Baseline Grapheme Model}
+   \LHead{\textbf{Baseline Grapheme Model}}
 
    \begin{itemize}
      \item All graphemes are trained
@@ -331,7 +331,7 @@ Interpolated & 924/3.9 & \bf{82/0.9} & 2288/5.5 & 672/3.5 \\
 
 % Source-target g2p block.
 \begin{textblock}{7}(8,7)
-   \LHead{Knowledge-based grapheme-to-phoneme (G2P) mapping}
+   \LHead{\textbf{Knowledge-based grapheme-to-phoneme (G2P) mapping}}
 
   \begin{figure}
   \caption{Latin digraph context-insensitive rewrite rules and context-sensitive rewrite rules.\\V: vowel, VP: palatal vowel, \string^VP: everything but a palatal vowel, C: consonant, $*$: zero or any, \string^: beginning of word, $[\string^stx]$: not s, t or x.}\label{tbl:context}
@@ -357,7 +357,7 @@ Interpolated & 924/3.9 & \bf{82/0.9} & 2288/5.5 & 672/3.5 \\
 
 % USG block.
 \begin{textblock}{7}(8,15.5)
-\LHead{Unified Simplified Grapheme (USG) Model}
+\LHead{\textbf{Unified Simplified Grapheme (USG) Model}}
 
 \begin{itemize}
 \item Utilizing many available language resources in the hopes that statistical variations help generalizing over different pronunciations
@@ -402,7 +402,7 @@ USG transcription & rekl & oz & mis & apa \\
 %\end{textblock}
 
 \begin{textblock}{7}(8,20.5)
-\LHead{Conclusions}
+\LHead{\textbf{Conclusions}}
 
 \begin{itemize}
 \item Knowledge-based G2P modeling is good, but time consuming and restricted
@@ -414,7 +414,7 @@ USG transcription & rekl & oz & mis & apa \\
 
 % Bibliography.
 \begin{textblock}{7}(8,22)
-%\LHead{References}
+%\LHead{\textbf{References}}
 
 \bibliographystyle{../../splncs03}
 \bibliography{../../paper/tsd2017}
