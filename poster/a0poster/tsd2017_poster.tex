@@ -59,6 +59,7 @@
 % Create frames.
 \newmdenv[roundcorner=10pt,linecolor=green,innerleftmargin=6pt,innerrightmargin=7pt,innertopmargin=6pt,innerbottommargin=6pt,backgroundcolor=green!10]{databox}
 \newmdenv[roundcorner=10pt,linecolor=blue,innerleftmargin=6pt,innerrightmargin=7pt,innertopmargin=6pt,innerbottommargin=6pt,backgroundcolor=blue!10]{modelbox}
+\newmdenv[roundcorner=10pt,linecolor=Red,innerleftmargin=6pt,innerrightmargin=7pt,innertopmargin=6pt,innerbottommargin=6pt,backgroundcolor=Red!10]{dimbox}
 
 % see documentation for a0poster class for the size options here
 \let\Textsize\normalsize
@@ -292,6 +293,7 @@ Interpolated & 924/3.9 & \bf{82/0.9} & 2288/5.5 & 672/3.5 \\
 \begin{textblock}{3}(4,16.5)
    \LHead{\textbf{Dimensions of data}}
 
+\begin{dimbox}
 \begin{itemize}
 \item \textbf{Region of training text}: Kingdom of Hungary (HU), mixed
 \item \textbf{Region of test text origin}: Kingdom of Bohemia (CZ), Kingdom of Hungary (HU), Kingdom of Poland (PL)
@@ -299,6 +301,7 @@ Interpolated & 924/3.9 & \bf{82/0.9} & 2288/5.5 & 672/3.5 \\
 \item \textbf{Native language of test speakers}: CZ, HU, PL, Slovak (SK)
 \item \textbf{Model type}: GRA, G2P, USG
 \end{itemize}
+\end{dimbox}
 
 \end{textblock}
 
